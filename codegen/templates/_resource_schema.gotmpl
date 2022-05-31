@@ -1,0 +1,38 @@
+            {{ define "SCHEMA" }}
+            {{- range $key, $value := .children }}
+            {{- if eq $value.category "unitary" }}
+            "{{ if $value.NameReserved }}fos{{end}}{{(flatten $value.name)}}":{
+            	{{ (schemaTypeLookup $value.type) }}
+				{{ (valiLookup $value) }}
+                {{ (diffLookup $value $.fpath) }}
+                {{ $value.help | printf "Description: %q" }},
+                {{- if $value.schema_required }}
+                ForceNew: true,
+                Required: true,
+                {{- else if $value.schema_opt_force }}
+                ForceNew: true,
+                Optional: true,
+                Computed: true,
+                {{- else }}
+                Optional: true,
+                Computed: true,
+                {{- end }}
+                {{ if $value.sensitive }}Sensitive:    true,{{- end }}
+			},
+            {{- end }}
+            {{- if or (eq $value.category "table") (eq $value.category "complex") }}
+            "{{ if $value.NameReserved }}fos{{end}}{{(flatten $value.name)}}": {
+            	Type:         schema.TypeList,
+                Description: {{ $value.help | printf "%q"}},
+				Optional:     true,
+                {{- if eq $value.category "complex" }}MaxItems: 1,{{end}}
+			    Elem: &schema.Resource{
+                        Schema: map[string]*schema.Schema{
+                        {{- template "SCHEMA" $value}}
+                    },
+                },
+			},
+            {{- end }}
+            {{- end }}
+
+{{- end }}

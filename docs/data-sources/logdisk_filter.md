@@ -1,0 +1,65 @@
+---
+subcategory: "FortiGate Log"
+layout: "fortios"
+page_title: "FortiOS: fortios_logdisk_filter"
+description: |-
+  Get information on a fortios Configure filters for local disk logging. Use these filters to determine the log messages to record according to severity and type.
+---
+
+# Data Source: fortios_logdisk_filter
+Use this data source to get information on a fortios Configure filters for local disk logging. Use these filters to determine the log messages to record according to severity and type.
+
+
+## Example Usage
+
+```hcl
+
+```
+
+## Argument Reference
+
+* `vdomparam` - Specifies the vdom to which the data source will be applied when the FortiGate unit is running in VDOM mode. Only one vdom can be specified. If you want to inherit the vdom configuration of the provider, please do not set this parameter.
+* `deviceparam` - Specifies the device to which the resource will be applied to on the FortiManager. If you want to inherit the configuration from the provider, do not set this parameter.
+
+## Attribute Reference
+
+The following attributes are exported:
+
+* `admin` - Enable/disable admin login/logout logging.
+* `anomaly` - Enable/disable anomaly logging.
+* `auth` - Enable/disable firewall authentication logging.
+* `cpu_memory_usage` - Enable/disable CPU & memory usage logging every 5 minutes.
+* `dhcp` - Enable/disable DHCP service messages logging.
+* `dlp_archive` - Enable/disable DLP archive logging.
+* `event` - Enable/disable event logging.
+* `filter` - Disk log filter.
+* `filter_type` - Include/exclude logs that match the filter.
+* `forward_traffic` - Enable/disable forward traffic logging.
+* `gtp` - Enable/disable GTP messages logging.
+* `ha` - Enable/disable HA logging.
+* `ipsec` - Enable/disable IPsec negotiation messages logging.
+* `ldb_monitor` - Enable/disable VIP real server health monitoring logging.
+* `local_traffic` - Enable/disable local in or out traffic logging.
+* `multicast_traffic` - Enable/disable multicast traffic logging.
+* `pattern` - Enable/disable pattern update logging.
+* `ppp` - Enable/disable L2TP/PPTP/PPPoE logging.
+* `radius` - Enable/disable RADIUS messages logging.
+* `severity` - Log to disk every message above and including this severity level.
+* `sniffer_traffic` - Enable/disable sniffer traffic logging.
+* `sslvpn_log_adm` - Enable/disable SSL administrator login logging.
+* `sslvpn_log_auth` - Enable/disable SSL user authentication logging.
+* `sslvpn_log_session` - Enable/disable SSL session logging.
+* `system` - Enable/disable system activity logging.
+* `vip_ssl` - Enable/disable VIP SSL logging.
+* `voip` - Enable/disable VoIP logging.
+* `wan_opt` - Enable/disable WAN optimization event logging.
+* `wireless_activity` - Enable/disable wireless activity event logging.
+* `ztna_traffic` - Enable/disable ztna traffic logging.
+* `free_style` - Free style filters.The structure of `free_style` block is documented below.
+
+The `free_style` block contains:
+
+* `category` - Log category.
+* `filter` - Free style filter string.
+* `filter_type` - Include/exclude logs that match the filter.
+* `id` - Entry ID.

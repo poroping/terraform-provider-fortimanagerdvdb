@@ -1,0 +1,16 @@
+{{ define "provider_data_source" }}
+// Unofficial FortiManager Device Database Terraform Provider
+// Generated from templates do not manually modify
+// Maintainers:
+// Justin Roberts (@poroping)
+package provider
+
+import "github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+
+func providerDataSources() map[string]*schema.Resource {
+	return map[string]*schema.Resource{
+    {{ range . }}"fortimanagerdvdb_{{(resFlatten .Path)}}_{{(resFlatten .Name)}}{{with .ChildPath}}_{{(resFlatten .)}}{{end}}": dataSource{{.Fpath}}(),
+    {{ end }}
+	}
+}
+{{ end }}
