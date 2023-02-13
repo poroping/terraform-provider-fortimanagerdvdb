@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/validators"
 )
@@ -491,13 +491,8 @@ func refreshObjectRouterStatic(d *schema.ResourceData, o *models.RouterStatic, s
 
 	if o.Dst != nil {
 		v := *o.Dst
-		if current, ok := d.GetOk("dst"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("dst", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("dst", v2); err != nil {
 			return diag.Errorf("error reading dst: %v", err)
 		}
 	}
@@ -582,13 +577,8 @@ func refreshObjectRouterStatic(d *schema.ResourceData, o *models.RouterStatic, s
 
 	if o.Src != nil {
 		v := *o.Src
-		if current, ok := d.GetOk("src"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("src", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("src", v2); err != nil {
 			return diag.Errorf("error reading src: %v", err)
 		}
 	}
@@ -700,6 +690,7 @@ func getObjectRouterStatic(d *schema.ResourceData, sv string) (*models.RouterSta
 			}
 			tmp := int64(v2)
 			obj.Distance = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("dst"); ok {
@@ -708,7 +699,9 @@ func getObjectRouterStatic(d *schema.ResourceData, sv string) (*models.RouterSta
 				e := utils.AttributeVersionWarning("dst", sv)
 				diags = append(diags, e)
 			}
-			obj.Dst = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.Dst = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("dstaddr"); ok {
@@ -746,6 +739,7 @@ func getObjectRouterStatic(d *schema.ResourceData, sv string) (*models.RouterSta
 			}
 			tmp := int64(v2)
 			obj.InternetService = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("internet_service_custom"); ok {
@@ -774,6 +768,7 @@ func getObjectRouterStatic(d *schema.ResourceData, sv string) (*models.RouterSta
 			}
 			tmp := int64(v2)
 			obj.Priority = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("sdwan"); ok {
@@ -810,6 +805,7 @@ func getObjectRouterStatic(d *schema.ResourceData, sv string) (*models.RouterSta
 			}
 			tmp := int64(v2)
 			obj.SeqNum = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("src"); ok {
@@ -818,7 +814,9 @@ func getObjectRouterStatic(d *schema.ResourceData, sv string) (*models.RouterSta
 				e := utils.AttributeVersionWarning("src", sv)
 				diags = append(diags, e)
 			}
-			obj.Src = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.Src = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("status"); ok {
@@ -847,6 +845,7 @@ func getObjectRouterStatic(d *schema.ResourceData, sv string) (*models.RouterSta
 			}
 			tmp := int64(v2)
 			obj.Vrf = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("weight"); ok {
@@ -857,6 +856,7 @@ func getObjectRouterStatic(d *schema.ResourceData, sv string) (*models.RouterSta
 			}
 			tmp := int64(v2)
 			obj.Weight = &tmp
+
 		}
 	}
 	return &obj, diags

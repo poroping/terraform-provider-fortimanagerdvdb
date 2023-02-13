@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -597,6 +597,7 @@ func getObjectFirewallIppool(d *schema.ResourceData, sv string) (*models.Firewal
 			}
 			tmp := int64(v2)
 			obj.BlockSize = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("comments"); ok {
@@ -625,6 +626,7 @@ func getObjectFirewallIppool(d *schema.ResourceData, sv string) (*models.Firewal
 			}
 			tmp := int64(v2)
 			obj.Endport = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("name"); ok {
@@ -653,6 +655,7 @@ func getObjectFirewallIppool(d *schema.ResourceData, sv string) (*models.Firewal
 			}
 			tmp := int64(v2)
 			obj.NumBlocksPerUser = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("pba_timeout"); ok {
@@ -663,6 +666,7 @@ func getObjectFirewallIppool(d *schema.ResourceData, sv string) (*models.Firewal
 			}
 			tmp := int64(v2)
 			obj.PbaTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("permit_any_host"); ok {
@@ -682,6 +686,7 @@ func getObjectFirewallIppool(d *schema.ResourceData, sv string) (*models.Firewal
 			}
 			tmp := int64(v2)
 			obj.PortPerUser = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("source_endip"); ok {
@@ -719,6 +724,7 @@ func getObjectFirewallIppool(d *schema.ResourceData, sv string) (*models.Firewal
 			}
 			tmp := int64(v2)
 			obj.Startport = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("type"); ok {

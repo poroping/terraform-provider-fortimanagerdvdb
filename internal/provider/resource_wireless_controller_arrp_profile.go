@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -678,6 +678,7 @@ func getObjectWirelessControllerArrpProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.DarrpOptimize = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("darrp_optimize_schedules"); ok {
@@ -723,6 +724,7 @@ func getObjectWirelessControllerArrpProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.MonitorPeriod = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("name"); ok {
@@ -751,6 +753,7 @@ func getObjectWirelessControllerArrpProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.SelectionPeriod = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("threshold_ap"); ok {
@@ -761,6 +764,7 @@ func getObjectWirelessControllerArrpProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.ThresholdAp = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("threshold_channel_load"); ok {
@@ -771,6 +775,7 @@ func getObjectWirelessControllerArrpProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.ThresholdChannelLoad = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("threshold_noise_floor"); ok {
@@ -790,6 +795,7 @@ func getObjectWirelessControllerArrpProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.ThresholdRxErrors = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("threshold_spectral_rssi"); ok {
@@ -809,6 +815,7 @@ func getObjectWirelessControllerArrpProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.ThresholdTxRetries = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("weight_channel_load"); ok {
@@ -819,6 +826,7 @@ func getObjectWirelessControllerArrpProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.WeightChannelLoad = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("weight_dfs_channel"); ok {
@@ -829,6 +837,7 @@ func getObjectWirelessControllerArrpProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.WeightDfsChannel = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("weight_managed_ap"); ok {
@@ -839,6 +848,7 @@ func getObjectWirelessControllerArrpProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.WeightManagedAp = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("weight_noise_floor"); ok {
@@ -849,6 +859,7 @@ func getObjectWirelessControllerArrpProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.WeightNoiseFloor = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("weight_rogue_ap"); ok {
@@ -859,6 +870,7 @@ func getObjectWirelessControllerArrpProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.WeightRogueAp = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("weight_spectral_rssi"); ok {
@@ -869,6 +881,7 @@ func getObjectWirelessControllerArrpProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.WeightSpectralRssi = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("weight_weather_channel"); ok {
@@ -879,6 +892,7 @@ func getObjectWirelessControllerArrpProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.WeightWeatherChannel = &tmp
+
 		}
 	}
 	return &obj, diags

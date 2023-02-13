@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/validators"
@@ -318,13 +318,8 @@ func refreshObjectSwitchControllerInitialConfigTemplate(d *schema.ResourceData, 
 
 	if o.Ip != nil {
 		v := *o.Ip
-		if current, ok := d.GetOk("ip"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("ip", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("ip", v2); err != nil {
 			return diag.Errorf("error reading ip: %v", err)
 		}
 	}
@@ -385,7 +380,9 @@ func getObjectSwitchControllerInitialConfigTemplate(d *schema.ResourceData, sv s
 				e := utils.AttributeVersionWarning("ip", sv)
 				diags = append(diags, e)
 			}
-			obj.Ip = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.Ip = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("name"); ok {
@@ -405,6 +402,7 @@ func getObjectSwitchControllerInitialConfigTemplate(d *schema.ResourceData, sv s
 			}
 			tmp := int64(v2)
 			obj.Vlanid = &tmp
+
 		}
 	}
 	return &obj, diags

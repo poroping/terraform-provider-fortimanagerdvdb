@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -2911,6 +2911,7 @@ func getObjectFirewallPolicy6(d *schema.ResourceData, sv string) (*models.Firewa
 			}
 			tmp := int64(v2)
 			obj.Policyid = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("poolname"); ok {
@@ -3141,6 +3142,7 @@ func getObjectFirewallPolicy6(d *schema.ResourceData, sv string) (*models.Firewa
 			}
 			tmp := int64(v2)
 			obj.TcpMssReceiver = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("tcp_mss_sender"); ok {
@@ -3151,6 +3153,7 @@ func getObjectFirewallPolicy6(d *schema.ResourceData, sv string) (*models.Firewa
 			}
 			tmp := int64(v2)
 			obj.TcpMssSender = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("tcp_session_without_syn"); ok {
@@ -3276,6 +3279,7 @@ func getObjectFirewallPolicy6(d *schema.ResourceData, sv string) (*models.Firewa
 			}
 			tmp := int64(v2)
 			obj.VlanCosFwd = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("vlan_cos_rev"); ok {
@@ -3286,6 +3290,7 @@ func getObjectFirewallPolicy6(d *schema.ResourceData, sv string) (*models.Firewa
 			}
 			tmp := int64(v2)
 			obj.VlanCosRev = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("vlan_filter"); ok {

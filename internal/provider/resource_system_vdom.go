@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -319,6 +319,7 @@ func getObjectSystemVdom(d *schema.ResourceData, sv string) (*models.SystemVdom,
 			}
 			tmp := int64(v2)
 			obj.Flag = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("name"); ok {
@@ -347,6 +348,7 @@ func getObjectSystemVdom(d *schema.ResourceData, sv string) (*models.SystemVdom,
 			}
 			tmp := int64(v2)
 			obj.VclusterId = &tmp
+
 		}
 	}
 	return &obj, diags

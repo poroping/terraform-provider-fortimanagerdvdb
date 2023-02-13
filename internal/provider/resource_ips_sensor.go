@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/validators"
@@ -1349,7 +1349,8 @@ func expandIpsSensorEntriesExemptIp(d *schema.ResourceData, v interface{}, pre s
 		pre_append = fmt.Sprintf("%s.%d.dst_ip", pre, i)
 		if v1, ok := d.GetOk(pre_append); ok {
 			if v2, ok := v1.(string); ok {
-				tmp.DstIp = &v2
+				v3 := utils.Ipv4Split(v2)
+				tmp.DstIp = &v3
 			}
 		}
 
@@ -1364,7 +1365,8 @@ func expandIpsSensorEntriesExemptIp(d *schema.ResourceData, v interface{}, pre s
 		pre_append = fmt.Sprintf("%s.%d.src_ip", pre, i)
 		if v1, ok := d.GetOk(pre_append); ok {
 			if v2, ok := v1.(string); ok {
-				tmp.SrcIp = &v2
+				v3 := utils.Ipv4Split(v2)
+				tmp.SrcIp = &v3
 			}
 		}
 
@@ -1607,7 +1609,8 @@ func expandIpsSensorOverrideExemptIp(d *schema.ResourceData, v interface{}, pre 
 		pre_append = fmt.Sprintf("%s.%d.dst_ip", pre, i)
 		if v1, ok := d.GetOk(pre_append); ok {
 			if v2, ok := v1.(string); ok {
-				tmp.DstIp = &v2
+				v3 := utils.Ipv4Split(v2)
+				tmp.DstIp = &v3
 			}
 		}
 
@@ -1622,7 +1625,8 @@ func expandIpsSensorOverrideExemptIp(d *schema.ResourceData, v interface{}, pre 
 		pre_append = fmt.Sprintf("%s.%d.src_ip", pre, i)
 		if v1, ok := d.GetOk(pre_append); ok {
 			if v2, ok := v1.(string); ok {
-				tmp.SrcIp = &v2
+				v3 := utils.Ipv4Split(v2)
+				tmp.SrcIp = &v3
 			}
 		}
 

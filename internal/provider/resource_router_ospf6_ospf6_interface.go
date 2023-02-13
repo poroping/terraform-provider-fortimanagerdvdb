@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
@@ -664,6 +664,7 @@ func getObjectRouterOspf6Ospf6Interface(d *schema.ResourceData, sv string) (*mod
 			}
 			tmp := int64(v2)
 			obj.Cost = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("dead_interval"); ok {
@@ -674,6 +675,7 @@ func getObjectRouterOspf6Ospf6Interface(d *schema.ResourceData, sv string) (*mod
 			}
 			tmp := int64(v2)
 			obj.DeadInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("hello_interval"); ok {
@@ -684,6 +686,7 @@ func getObjectRouterOspf6Ospf6Interface(d *schema.ResourceData, sv string) (*mod
 			}
 			tmp := int64(v2)
 			obj.HelloInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("interface"); ok {
@@ -738,6 +741,7 @@ func getObjectRouterOspf6Ospf6Interface(d *schema.ResourceData, sv string) (*mod
 			}
 			tmp := int64(v2)
 			obj.KeyRolloverInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("mtu"); ok {
@@ -748,6 +752,7 @@ func getObjectRouterOspf6Ospf6Interface(d *schema.ResourceData, sv string) (*mod
 			}
 			tmp := int64(v2)
 			obj.Mtu = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("mtu_ignore"); ok {
@@ -802,6 +807,7 @@ func getObjectRouterOspf6Ospf6Interface(d *schema.ResourceData, sv string) (*mod
 			}
 			tmp := int64(v2)
 			obj.Priority = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("retransmit_interval"); ok {
@@ -812,6 +818,7 @@ func getObjectRouterOspf6Ospf6Interface(d *schema.ResourceData, sv string) (*mod
 			}
 			tmp := int64(v2)
 			obj.RetransmitInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("status"); ok {
@@ -831,6 +838,7 @@ func getObjectRouterOspf6Ospf6Interface(d *schema.ResourceData, sv string) (*mod
 			}
 			tmp := int64(v2)
 			obj.TransmitDelay = &tmp
+
 		}
 	}
 	return &obj, diags

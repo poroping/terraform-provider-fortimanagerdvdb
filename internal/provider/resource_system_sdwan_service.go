@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -1257,6 +1257,7 @@ func getObjectSystemSdwanService(d *schema.ResourceData, sv string) (*models.Sys
 			}
 			tmp := int64(v2)
 			obj.BandwidthWeight = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("default"); ok {
@@ -1355,6 +1356,7 @@ func getObjectSystemSdwanService(d *schema.ResourceData, sv string) (*models.Sys
 			}
 			tmp := int64(v2)
 			obj.EndPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("gateway"); ok {
@@ -1417,6 +1419,7 @@ func getObjectSystemSdwanService(d *schema.ResourceData, sv string) (*models.Sys
 			}
 			tmp := int64(v2)
 			obj.HoldDownTime = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("fosid"); ok {
@@ -1427,6 +1430,7 @@ func getObjectSystemSdwanService(d *schema.ResourceData, sv string) (*models.Sys
 			}
 			tmp := int64(v2)
 			obj.Id = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("input_device"); ok {
@@ -1574,6 +1578,7 @@ func getObjectSystemSdwanService(d *schema.ResourceData, sv string) (*models.Sys
 			}
 			tmp := int64(v2)
 			obj.JitterWeight = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("latency_weight"); ok {
@@ -1584,6 +1589,7 @@ func getObjectSystemSdwanService(d *schema.ResourceData, sv string) (*models.Sys
 			}
 			tmp := int64(v2)
 			obj.LatencyWeight = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("link_cost_factor"); ok {
@@ -1603,6 +1609,7 @@ func getObjectSystemSdwanService(d *schema.ResourceData, sv string) (*models.Sys
 			}
 			tmp := int64(v2)
 			obj.LinkCostThreshold = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("minimum_sla_meet_members"); ok {
@@ -1613,6 +1620,7 @@ func getObjectSystemSdwanService(d *schema.ResourceData, sv string) (*models.Sys
 			}
 			tmp := int64(v2)
 			obj.MinimumSlaMeetMembers = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("mode"); ok {
@@ -1641,6 +1649,7 @@ func getObjectSystemSdwanService(d *schema.ResourceData, sv string) (*models.Sys
 			}
 			tmp := int64(v2)
 			obj.PacketLossWeight = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("passive_measurement"); ok {
@@ -1694,6 +1703,7 @@ func getObjectSystemSdwanService(d *schema.ResourceData, sv string) (*models.Sys
 			}
 			tmp := int64(v2)
 			obj.Protocol = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("quality_link"); ok {
@@ -1704,6 +1714,7 @@ func getObjectSystemSdwanService(d *schema.ResourceData, sv string) (*models.Sys
 			}
 			tmp := int64(v2)
 			obj.QualityLink = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("role"); ok {
@@ -1723,6 +1734,7 @@ func getObjectSystemSdwanService(d *schema.ResourceData, sv string) (*models.Sys
 			}
 			tmp := int64(v2)
 			obj.RouteTag = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("sla"); ok {
@@ -1811,6 +1823,7 @@ func getObjectSystemSdwanService(d *schema.ResourceData, sv string) (*models.Sys
 			}
 			tmp := int64(v2)
 			obj.StartPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("status"); ok {

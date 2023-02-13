@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -407,6 +407,7 @@ func getObjectSwitchControllerSystem(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.DataSyncInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("dynamic_periodic_interval"); ok {
@@ -417,6 +418,7 @@ func getObjectSwitchControllerSystem(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.DynamicPeriodicInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("iot_holdoff"); ok {
@@ -427,6 +429,7 @@ func getObjectSwitchControllerSystem(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.IotHoldoff = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("iot_mac_idle"); ok {
@@ -437,6 +440,7 @@ func getObjectSwitchControllerSystem(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.IotMacIdle = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("iot_scan_interval"); ok {
@@ -447,6 +451,7 @@ func getObjectSwitchControllerSystem(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.IotScanInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("iot_weight_threshold"); ok {
@@ -457,6 +462,7 @@ func getObjectSwitchControllerSystem(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.IotWeightThreshold = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("nac_periodic_interval"); ok {
@@ -467,6 +473,7 @@ func getObjectSwitchControllerSystem(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.NacPeriodicInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("parallel_process"); ok {
@@ -477,6 +484,7 @@ func getObjectSwitchControllerSystem(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.ParallelProcess = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("parallel_process_override"); ok {

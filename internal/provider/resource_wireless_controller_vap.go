@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/validators"
@@ -2378,13 +2378,8 @@ func refreshObjectWirelessControllerVap(d *schema.ResourceData, o *models.Wirele
 
 	if o.Ip != nil {
 		v := *o.Ip
-		if current, ok := d.GetOk("ip"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("ip", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("ip", v2); err != nil {
 			return diag.Errorf("error reading ip: %v", err)
 		}
 	}
@@ -3571,6 +3566,7 @@ func getObjectWirelessControllerVap(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.AcctInterimInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("additional_akms"); ok {
@@ -3617,6 +3613,7 @@ func getObjectWirelessControllerVap(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.AtfWeight = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("auth"); ok {
@@ -3699,6 +3696,7 @@ func getObjectWirelessControllerVap(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.BstmLoadBalancingDisassocTimer = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("bstm_rssi_disassoc_timer"); ok {
@@ -3709,6 +3707,7 @@ func getObjectWirelessControllerVap(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.BstmRssiDisassocTimer = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("captive_portal_ac_name"); ok {
@@ -3728,6 +3727,7 @@ func getObjectWirelessControllerVap(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.CaptivePortalAuthTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("captive_portal_macauth_radius_secret"); ok {
@@ -3774,6 +3774,7 @@ func getObjectWirelessControllerVap(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.CaptivePortalSessionTimeoutInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("dhcp_address_enforcement"); ok {
@@ -3793,6 +3794,7 @@ func getObjectWirelessControllerVap(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.DhcpLeaseTime = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("dhcp_option43_insertion"); ok {
@@ -3857,6 +3859,7 @@ func getObjectWirelessControllerVap(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.EapReauthIntv = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("eapol_key_retries"); ok {
@@ -3939,6 +3942,7 @@ func getObjectWirelessControllerVap(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.FtMobilityDomain = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ft_over_ds"); ok {
@@ -3958,6 +3962,7 @@ func getObjectWirelessControllerVap(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.FtR0KeyLifetime = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("gas_comeback_delay"); ok {
@@ -3968,6 +3973,7 @@ func getObjectWirelessControllerVap(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.GasComebackDelay = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("gas_fragmentation_limit"); ok {
@@ -3978,6 +3984,7 @@ func getObjectWirelessControllerVap(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.GasFragmentationLimit = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("gtk_rekey"); ok {
@@ -3997,6 +4004,7 @@ func getObjectWirelessControllerVap(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.GtkRekeyIntv = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("high_efficiency"); ok {
@@ -4041,7 +4049,9 @@ func getObjectWirelessControllerVap(d *schema.ResourceData, sv string) (*models.
 				e := utils.AttributeVersionWarning("ip", sv)
 				diags = append(diags, e)
 			}
-			obj.Ip = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.Ip = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ips_sensor"); ok {
@@ -4079,6 +4089,7 @@ func getObjectWirelessControllerVap(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.Keyindex = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ldpc"); ok {
@@ -4250,6 +4261,7 @@ func getObjectWirelessControllerVap(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.MaxClients = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("max_clients_ap"); ok {
@@ -4260,6 +4272,7 @@ func getObjectWirelessControllerVap(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.MaxClientsAp = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("mbo"); ok {
@@ -4288,6 +4301,7 @@ func getObjectWirelessControllerVap(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.MeDisableThresh = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("mesh_backhaul"); ok {
@@ -4316,6 +4330,7 @@ func getObjectWirelessControllerVap(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.MpskConcurrentClients = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("mpsk_key"); ok {
@@ -4478,6 +4493,7 @@ func getObjectWirelessControllerVap(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.PmfAssocComebackTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("pmf_sa_query_retry_timeout"); ok {
@@ -4488,6 +4504,7 @@ func getObjectWirelessControllerVap(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.PmfSaQueryRetryTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("port_macauth"); ok {
@@ -4507,6 +4524,7 @@ func getObjectWirelessControllerVap(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.PortMacauthReauthTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("port_macauth_timeout"); ok {
@@ -4517,6 +4535,7 @@ func getObjectWirelessControllerVap(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.PortMacauthTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("portal_message_override_group"); ok {
@@ -4598,6 +4617,7 @@ func getObjectWirelessControllerVap(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.PtkRekeyIntv = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("qos_profile"); ok {
@@ -4697,6 +4717,7 @@ func getObjectWirelessControllerVap(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.RadiusMacMpskTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("radius_server"); ok {
@@ -4948,6 +4969,7 @@ func getObjectWirelessControllerVap(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.TunnelEchoInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("tunnel_fallback_interval"); ok {
@@ -4958,6 +4980,7 @@ func getObjectWirelessControllerVap(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.TunnelFallbackInterval = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("usergroup"); ok {
@@ -5064,6 +5087,7 @@ func getObjectWirelessControllerVap(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.Vlanid = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("voice_enterprise"); ok {

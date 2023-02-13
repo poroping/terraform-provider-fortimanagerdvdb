@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/validators"
@@ -1421,6 +1421,7 @@ func getObjectRouterRipng(d *schema.ResourceData, sv string) (*models.RouterRipn
 			}
 			tmp := int64(v2)
 			obj.DefaultMetric = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("distance"); ok {
@@ -1465,6 +1466,7 @@ func getObjectRouterRipng(d *schema.ResourceData, sv string) (*models.RouterRipn
 			}
 			tmp := int64(v2)
 			obj.GarbageTimer = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("interface"); ok {
@@ -1492,6 +1494,7 @@ func getObjectRouterRipng(d *schema.ResourceData, sv string) (*models.RouterRipn
 			}
 			tmp := int64(v2)
 			obj.MaxOutMetric = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("neighbor"); ok {
@@ -1587,6 +1590,7 @@ func getObjectRouterRipng(d *schema.ResourceData, sv string) (*models.RouterRipn
 			}
 			tmp := int64(v2)
 			obj.TimeoutTimer = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("update_timer"); ok {
@@ -1597,6 +1601,7 @@ func getObjectRouterRipng(d *schema.ResourceData, sv string) (*models.RouterRipn
 			}
 			tmp := int64(v2)
 			obj.UpdateTimer = &tmp
+
 		}
 	}
 	return &obj, diags

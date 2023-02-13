@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -279,6 +279,7 @@ func getObjectWebfilterIpsUrlfilterCacheSetting(d *schema.ResourceData, sv strin
 			}
 			tmp := int64(v2)
 			obj.DnsRetryInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("extended_ttl"); ok {
@@ -289,6 +290,7 @@ func getObjectWebfilterIpsUrlfilterCacheSetting(d *schema.ResourceData, sv strin
 			}
 			tmp := int64(v2)
 			obj.ExtendedTtl = &tmp
+
 		}
 	}
 	return &obj, diags

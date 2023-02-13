@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/validators"
@@ -1768,7 +1768,8 @@ func expandSystemHaHaMgmtInterfaces(d *schema.ResourceData, v interface{}, pre s
 		pre_append = fmt.Sprintf("%s.%d.dst", pre, i)
 		if v1, ok := d.GetOk(pre_append); ok {
 			if v2, ok := v1.(string); ok {
-				tmp.Dst = &v2
+				v3 := utils.Ipv4Split(v2)
+				tmp.Dst = &v3
 			}
 		}
 
@@ -1941,6 +1942,7 @@ func getObjectSystemHa(d *schema.ResourceData, sv string) (*models.SystemHa, dia
 			}
 			tmp := int64(v2)
 			obj.Arps = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("arps_interval"); ok {
@@ -1951,6 +1953,7 @@ func getObjectSystemHa(d *schema.ResourceData, sv string) (*models.SystemHa, dia
 			}
 			tmp := int64(v2)
 			obj.ArpsInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("authentication"); ok {
@@ -1988,6 +1991,7 @@ func getObjectSystemHa(d *schema.ResourceData, sv string) (*models.SystemHa, dia
 			}
 			tmp := int64(v2)
 			obj.FailoverHoldTime = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ftp_proxy_threshold"); ok {
@@ -2016,6 +2020,7 @@ func getObjectSystemHa(d *schema.ResourceData, sv string) (*models.SystemHa, dia
 			}
 			tmp := int64(v2)
 			obj.GroupId = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("group_name"); ok {
@@ -2079,6 +2084,7 @@ func getObjectSystemHa(d *schema.ResourceData, sv string) (*models.SystemHa, dia
 			}
 			tmp := int64(v2)
 			obj.HaUptimeDiffMargin = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("hb_interval"); ok {
@@ -2089,6 +2095,7 @@ func getObjectSystemHa(d *schema.ResourceData, sv string) (*models.SystemHa, dia
 			}
 			tmp := int64(v2)
 			obj.HbInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("hb_interval_in_milliseconds"); ok {
@@ -2108,6 +2115,7 @@ func getObjectSystemHa(d *schema.ResourceData, sv string) (*models.SystemHa, dia
 			}
 			tmp := int64(v2)
 			obj.HbLostThreshold = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("hbdev"); ok {
@@ -2136,6 +2144,7 @@ func getObjectSystemHa(d *schema.ResourceData, sv string) (*models.SystemHa, dia
 			}
 			tmp := int64(v2)
 			obj.HelloHolddown = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("http_proxy_threshold"); ok {
@@ -2236,6 +2245,7 @@ func getObjectSystemHa(d *schema.ResourceData, sv string) (*models.SystemHa, dia
 			}
 			tmp := int64(v2)
 			obj.MemoryFailoverFlipTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("memory_failover_monitor_period"); ok {
@@ -2246,6 +2256,7 @@ func getObjectSystemHa(d *schema.ResourceData, sv string) (*models.SystemHa, dia
 			}
 			tmp := int64(v2)
 			obj.MemoryFailoverMonitorPeriod = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("memory_failover_sample_rate"); ok {
@@ -2256,6 +2267,7 @@ func getObjectSystemHa(d *schema.ResourceData, sv string) (*models.SystemHa, dia
 			}
 			tmp := int64(v2)
 			obj.MemoryFailoverSampleRate = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("memory_failover_threshold"); ok {
@@ -2266,6 +2278,7 @@ func getObjectSystemHa(d *schema.ResourceData, sv string) (*models.SystemHa, dia
 			}
 			tmp := int64(v2)
 			obj.MemoryFailoverThreshold = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("memory_threshold"); ok {
@@ -2303,6 +2316,7 @@ func getObjectSystemHa(d *schema.ResourceData, sv string) (*models.SystemHa, dia
 			}
 			tmp := int64(v2)
 			obj.MulticastTtl = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("nntp_proxy_threshold"); ok {
@@ -2331,6 +2345,7 @@ func getObjectSystemHa(d *schema.ResourceData, sv string) (*models.SystemHa, dia
 			}
 			tmp := int64(v2)
 			obj.OverrideWaitTime = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("password"); ok {
@@ -2350,6 +2365,7 @@ func getObjectSystemHa(d *schema.ResourceData, sv string) (*models.SystemHa, dia
 			}
 			tmp := int64(v2)
 			obj.PingserverFailoverThreshold = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("pingserver_flip_timeout"); ok {
@@ -2360,6 +2376,7 @@ func getObjectSystemHa(d *schema.ResourceData, sv string) (*models.SystemHa, dia
 			}
 			tmp := int64(v2)
 			obj.PingserverFlipTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("pingserver_monitor_interface"); ok {
@@ -2406,6 +2423,7 @@ func getObjectSystemHa(d *schema.ResourceData, sv string) (*models.SystemHa, dia
 			}
 			tmp := int64(v2)
 			obj.Priority = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("route_hold"); ok {
@@ -2416,6 +2434,7 @@ func getObjectSystemHa(d *schema.ResourceData, sv string) (*models.SystemHa, dia
 			}
 			tmp := int64(v2)
 			obj.RouteHold = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("route_ttl"); ok {
@@ -2426,6 +2445,7 @@ func getObjectSystemHa(d *schema.ResourceData, sv string) (*models.SystemHa, dia
 			}
 			tmp := int64(v2)
 			obj.RouteTtl = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("route_wait"); ok {
@@ -2436,6 +2456,7 @@ func getObjectSystemHa(d *schema.ResourceData, sv string) (*models.SystemHa, dia
 			}
 			tmp := int64(v2)
 			obj.RouteWait = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("schedule"); ok {
@@ -2642,6 +2663,7 @@ func getObjectSystemHa(d *schema.ResourceData, sv string) (*models.SystemHa, dia
 			}
 			tmp := int64(v2)
 			obj.UninterruptiblePrimaryWait = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("uninterruptible_upgrade"); ok {
@@ -2661,6 +2683,7 @@ func getObjectSystemHa(d *schema.ResourceData, sv string) (*models.SystemHa, dia
 			}
 			tmp := int64(v2)
 			obj.VclusterId = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("vcluster2"); ok {

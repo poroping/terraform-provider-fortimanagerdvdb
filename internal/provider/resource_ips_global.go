@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
@@ -707,6 +707,7 @@ func getObjectIpsGlobal(d *schema.ResourceData, sv string) (*models.IpsGlobal, d
 			}
 			tmp := int64(v2)
 			obj.DeepAppInspDbLimit = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("deep_app_insp_timeout"); ok {
@@ -717,6 +718,7 @@ func getObjectIpsGlobal(d *schema.ResourceData, sv string) (*models.IpsGlobal, d
 			}
 			tmp := int64(v2)
 			obj.DeepAppInspTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("engine_count"); ok {
@@ -727,6 +729,7 @@ func getObjectIpsGlobal(d *schema.ResourceData, sv string) (*models.IpsGlobal, d
 			}
 			tmp := int64(v2)
 			obj.EngineCount = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("exclude_signatures"); ok {
@@ -773,6 +776,7 @@ func getObjectIpsGlobal(d *schema.ResourceData, sv string) (*models.IpsGlobal, d
 			}
 			tmp := int64(v2)
 			obj.NgfwMaxScanRange = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("np_accel_mode"); ok {
@@ -792,6 +796,7 @@ func getObjectIpsGlobal(d *schema.ResourceData, sv string) (*models.IpsGlobal, d
 			}
 			tmp := int64(v2)
 			obj.PacketLogQueueDepth = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("session_limit_mode"); ok {
@@ -820,6 +825,7 @@ func getObjectIpsGlobal(d *schema.ResourceData, sv string) (*models.IpsGlobal, d
 			}
 			tmp := int64(v2)
 			obj.SocketSize = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("sync_session_ttl"); ok {

@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -3355,6 +3355,7 @@ func getObjectFirewallConsolidatedPolicy(d *schema.ResourceData, sv string) (*mo
 			}
 			tmp := int64(v2)
 			obj.Policyid = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("poolname4"); ok {
@@ -3461,6 +3462,7 @@ func getObjectFirewallConsolidatedPolicy(d *schema.ResourceData, sv string) (*mo
 			}
 			tmp := int64(v2)
 			obj.SessionTtl = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("srcaddr_negate"); ok {
@@ -3567,6 +3569,7 @@ func getObjectFirewallConsolidatedPolicy(d *schema.ResourceData, sv string) (*mo
 			}
 			tmp := int64(v2)
 			obj.TcpMssReceiver = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("tcp_mss_sender"); ok {
@@ -3577,6 +3580,7 @@ func getObjectFirewallConsolidatedPolicy(d *schema.ResourceData, sv string) (*mo
 			}
 			tmp := int64(v2)
 			obj.TcpMssSender = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("traffic_shaper"); ok {

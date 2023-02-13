@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -821,6 +821,7 @@ func getObjectSystemDdns(d *schema.ResourceData, sv string) (*models.SystemDdns,
 			}
 			tmp := int64(v2)
 			obj.DdnsTtl = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ddns_username"); ok {
@@ -849,6 +850,7 @@ func getObjectSystemDdns(d *schema.ResourceData, sv string) (*models.SystemDdns,
 			}
 			tmp := int64(v2)
 			obj.Ddnsid = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("monitor_interface"); ok {
@@ -894,6 +896,7 @@ func getObjectSystemDdns(d *schema.ResourceData, sv string) (*models.SystemDdns,
 			}
 			tmp := int64(v2)
 			obj.UpdateInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("use_public_ip"); ok {

@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -5334,6 +5334,7 @@ func getObjectSystemNpu(d *schema.ResourceData, sv string) (*models.SystemNpu, d
 			}
 			tmp := int64(v2)
 			obj.DseTimeout = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("dsw_dts_profile"); ok {
@@ -5439,6 +5440,7 @@ func getObjectSystemNpu(d *schema.ResourceData, sv string) (*models.SystemNpu, d
 			}
 			tmp := int64(v2)
 			obj.HtabDediQueueNr = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("htab_msg_queue"); ok {
@@ -5492,6 +5494,7 @@ func getObjectSystemNpu(d *schema.ResourceData, sv string) (*models.SystemNpu, d
 			}
 			tmp := int64(v2)
 			obj.IppoolOverloadHigh = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ippool_overload_low"); ok {
@@ -5502,6 +5505,7 @@ func getObjectSystemNpu(d *schema.ResourceData, sv string) (*models.SystemNpu, d
 			}
 			tmp := int64(v2)
 			obj.IppoolOverloadLow = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ipsec_dec_subengine_mask"); ok {
@@ -5583,6 +5587,7 @@ func getObjectSystemNpu(d *schema.ResourceData, sv string) (*models.SystemNpu, d
 			}
 			tmp := int64(v2)
 			obj.MaxSessionTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("mcast_session_accounting"); ok {
@@ -5602,6 +5607,7 @@ func getObjectSystemNpu(d *schema.ResourceData, sv string) (*models.SystemNpu, d
 			}
 			tmp := int64(v2)
 			obj.NapiBreakInterval = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("np_queues"); ok {
@@ -5743,6 +5749,7 @@ func getObjectSystemNpu(d *schema.ResourceData, sv string) (*models.SystemNpu, d
 			}
 			tmp := int64(v2)
 			obj.SessionAcctInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("sse_backpressure"); ok {
@@ -5789,6 +5796,7 @@ func getObjectSystemNpu(d *schema.ResourceData, sv string) (*models.SystemNpu, d
 			}
 			tmp := int64(v2)
 			obj.TcpRstTimeout = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("tcp_timeout_profile"); ok {

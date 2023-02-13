@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/validators"
@@ -1998,13 +1998,8 @@ func refreshObjectSystemSettings(d *schema.ResourceData, o *models.SystemSetting
 
 	if o.Ip != nil {
 		v := *o.Ip
-		if current, ok := d.GetOk("ip"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("ip", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("ip", v2); err != nil {
 			return diag.Errorf("error reading ip: %v", err)
 		}
 	}
@@ -2377,6 +2372,7 @@ func getObjectSystemSettings(d *schema.ResourceData, sv string) (*models.SystemS
 			}
 			tmp := int64(v2)
 			obj.BfdDesiredMinTx = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("bfd_detect_mult"); ok {
@@ -2387,6 +2383,7 @@ func getObjectSystemSettings(d *schema.ResourceData, sv string) (*models.SystemS
 			}
 			tmp := int64(v2)
 			obj.BfdDetectMult = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("bfd_dont_enforce_src_port"); ok {
@@ -2406,6 +2403,7 @@ func getObjectSystemSettings(d *schema.ResourceData, sv string) (*models.SystemS
 			}
 			tmp := int64(v2)
 			obj.BfdRequiredMinRx = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("block_land_attack"); ok {
@@ -2524,6 +2522,7 @@ func getObjectSystemSettings(d *schema.ResourceData, sv string) (*models.SystemS
 			}
 			tmp := int64(v2)
 			obj.DiscoveredDeviceTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ecmp_max_paths"); ok {
@@ -2534,6 +2533,7 @@ func getObjectSystemSettings(d *schema.ResourceData, sv string) (*models.SystemS
 			}
 			tmp := int64(v2)
 			obj.EcmpMaxPaths = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("email_portal_check_dns"); ok {
@@ -3101,6 +3101,7 @@ func getObjectSystemSettings(d *schema.ResourceData, sv string) (*models.SystemS
 			}
 			tmp := int64(v2)
 			obj.IkePort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ike_quick_crash_detect"); ok {
@@ -3136,7 +3137,9 @@ func getObjectSystemSettings(d *schema.ResourceData, sv string) (*models.SystemS
 				e := utils.AttributeVersionWarning("ip", sv)
 				diags = append(diags, e)
 			}
-			obj.Ip = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.Ip = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ip6"); ok {
@@ -3192,6 +3195,7 @@ func getObjectSystemSettings(d *schema.ResourceData, sv string) (*models.SystemS
 			}
 			tmp := int64(v2)
 			obj.MacTtl = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("manageip"); ok {
@@ -3274,6 +3278,7 @@ func getObjectSystemSettings(d *schema.ResourceData, sv string) (*models.SystemS
 			}
 			tmp := int64(v2)
 			obj.SccpPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("sctp_session_without_init"); ok {
@@ -3320,6 +3325,7 @@ func getObjectSystemSettings(d *schema.ResourceData, sv string) (*models.SystemS
 			}
 			tmp := int64(v2)
 			obj.SipSslPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("sip_tcp_port"); ok {
@@ -3330,6 +3336,7 @@ func getObjectSystemSettings(d *schema.ResourceData, sv string) (*models.SystemS
 			}
 			tmp := int64(v2)
 			obj.SipTcpPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("sip_udp_port"); ok {
@@ -3340,6 +3347,7 @@ func getObjectSystemSettings(d *schema.ResourceData, sv string) (*models.SystemS
 			}
 			tmp := int64(v2)
 			obj.SipUdpPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("snat_hairpin_traffic"); ok {
@@ -3413,6 +3421,7 @@ func getObjectSystemSettings(d *schema.ResourceData, sv string) (*models.SystemS
 			}
 			tmp := int64(v2)
 			obj.VpnStatsPeriod = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("wccp_cache_engine"); ok {

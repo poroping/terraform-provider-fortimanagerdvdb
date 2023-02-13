@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -428,6 +428,7 @@ func getObjectWirelessControllerWagProfile(d *schema.ResourceData, sv string) (*
 			}
 			tmp := int64(v2)
 			obj.PingInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ping_number"); ok {
@@ -438,6 +439,7 @@ func getObjectWirelessControllerWagProfile(d *schema.ResourceData, sv string) (*
 			}
 			tmp := int64(v2)
 			obj.PingNumber = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("return_packet_timeout"); ok {
@@ -448,6 +450,7 @@ func getObjectWirelessControllerWagProfile(d *schema.ResourceData, sv string) (*
 			}
 			tmp := int64(v2)
 			obj.ReturnPacketTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("tunnel_type"); ok {
@@ -476,6 +479,7 @@ func getObjectWirelessControllerWagProfile(d *schema.ResourceData, sv string) (*
 			}
 			tmp := int64(v2)
 			obj.WagPort = &tmp
+
 		}
 	}
 	return &obj, diags

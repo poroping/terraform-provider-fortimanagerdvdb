@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
@@ -569,6 +569,7 @@ func getObjectWirelessControllerGlobal(d *schema.ResourceData, sv string) (*mode
 			}
 			tmp := int64(v2)
 			obj.ApLogServerPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("control_message_offload"); ok {
@@ -606,6 +607,7 @@ func getObjectWirelessControllerGlobal(d *schema.ResourceData, sv string) (*mode
 			}
 			tmp := int64(v2)
 			obj.FiappEthType = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("image_download"); ok {
@@ -652,6 +654,7 @@ func getObjectWirelessControllerGlobal(d *schema.ResourceData, sv string) (*mode
 			}
 			tmp := int64(v2)
 			obj.MaxClients = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("max_retransmit"); ok {
@@ -662,6 +665,7 @@ func getObjectWirelessControllerGlobal(d *schema.ResourceData, sv string) (*mode
 			}
 			tmp := int64(v2)
 			obj.MaxRetransmit = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("mesh_eth_type"); ok {
@@ -672,6 +676,7 @@ func getObjectWirelessControllerGlobal(d *schema.ResourceData, sv string) (*mode
 			}
 			tmp := int64(v2)
 			obj.MeshEthType = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("nac_interval"); ok {
@@ -682,6 +687,7 @@ func getObjectWirelessControllerGlobal(d *schema.ResourceData, sv string) (*mode
 			}
 			tmp := int64(v2)
 			obj.NacInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("name"); ok {
@@ -701,6 +707,7 @@ func getObjectWirelessControllerGlobal(d *schema.ResourceData, sv string) (*mode
 			}
 			tmp := int64(v2)
 			obj.RogueScanMacAdjacency = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("tunnel_mode"); ok {

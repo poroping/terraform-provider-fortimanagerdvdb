@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/validators"
@@ -4314,13 +4314,8 @@ func refreshObjectSystemInterface(d *schema.ResourceData, o *models.SystemInterf
 
 	if o.Ip != nil {
 		v := *o.Ip
-		if current, ok := d.GetOk("ip"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("ip", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("ip", v2); err != nil {
 			return diag.Errorf("error reading ip: %v", err)
 		}
 	}
@@ -4463,13 +4458,8 @@ func refreshObjectSystemInterface(d *schema.ResourceData, o *models.SystemInterf
 
 	if o.ManagementIp != nil {
 		v := *o.ManagementIp
-		if current, ok := d.GetOk("management_ip"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("management_ip", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("management_ip", v2); err != nil {
 			return diag.Errorf("error reading management_ip: %v", err)
 		}
 	}
@@ -4732,13 +4722,8 @@ func refreshObjectSystemInterface(d *schema.ResourceData, o *models.SystemInterf
 
 	if o.RemoteIp != nil {
 		v := *o.RemoteIp
-		if current, ok := d.GetOk("remote_ip"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("remote_ip", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("remote_ip", v2); err != nil {
 			return diag.Errorf("error reading remote_ip: %v", err)
 		}
 	}
@@ -5139,39 +5124,24 @@ func refreshObjectSystemInterface(d *schema.ResourceData, o *models.SystemInterf
 
 	if o.TrustIp1 != nil {
 		v := *o.TrustIp1
-		if current, ok := d.GetOk("trust_ip_1"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("trust_ip_1", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("trust_ip_1", v2); err != nil {
 			return diag.Errorf("error reading trust_ip_1: %v", err)
 		}
 	}
 
 	if o.TrustIp2 != nil {
 		v := *o.TrustIp2
-		if current, ok := d.GetOk("trust_ip_2"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("trust_ip_2", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("trust_ip_2", v2); err != nil {
 			return diag.Errorf("error reading trust_ip_2: %v", err)
 		}
 	}
 
 	if o.TrustIp3 != nil {
 		v := *o.TrustIp3
-		if current, ok := d.GetOk("trust_ip_3"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("trust_ip_3", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("trust_ip_3", v2); err != nil {
 			return diag.Errorf("error reading trust_ip_3: %v", err)
 		}
 	}
@@ -6272,7 +6242,8 @@ func expandSystemInterfaceSecondaryip(d *schema.ResourceData, v interface{}, pre
 		pre_append = fmt.Sprintf("%s.%d.ip", pre, i)
 		if v1, ok := d.GetOk(pre_append); ok {
 			if v2, ok := v1.(string); ok {
-				tmp.Ip = &v2
+				v3 := utils.Ipv4Split(v2)
+				tmp.Ip = &v3
 			}
 		}
 
@@ -6645,6 +6616,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.BandwidthMeasureTime = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("bfd"); ok {
@@ -6664,6 +6636,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.BfdDesiredMinTx = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("bfd_detect_mult"); ok {
@@ -6674,6 +6647,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.BfdDetectMult = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("bfd_required_min_rx"); ok {
@@ -6684,6 +6658,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.BfdRequiredMinRx = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("broadcast_forticlient_discovery"); ok {
@@ -6712,6 +6687,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.CliConnStatus = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("client_options"); ok {
@@ -6739,6 +6715,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.Color = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("dedicated_to"); ok {
@@ -6776,6 +6753,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.DetectedPeerMtu = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("detectprotocol"); ok {
@@ -6822,6 +6800,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.Devindex = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("dhcp_classless_route_addition"); ok {
@@ -6922,6 +6901,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.DhcpRenewTime = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("dhcp_snooping_server_list"); ok {
@@ -6949,6 +6929,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.DiscRetryTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("disconnect_threshold"); ok {
@@ -6959,6 +6940,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.DisconnectThreshold = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("distance"); ok {
@@ -6969,6 +6951,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.Distance = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("dns_server_override"); ok {
@@ -7059,6 +7042,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.EstimatedDownstreamBandwidth = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("estimated_upstream_bandwidth"); ok {
@@ -7069,6 +7053,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.EstimatedUpstreamBandwidth = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("explicit_ftp_proxy"); ok {
@@ -7168,6 +7153,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.FortilinkBackupLink = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("fortilink_neighbor_detect"); ok {
@@ -7205,6 +7191,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.ForwardDomain = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("gwdetect"); ok {
@@ -7224,6 +7211,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.HaPriority = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("icmp_accept_redirect"); ok {
@@ -7261,6 +7249,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.IdleTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("inbandwidth"); ok {
@@ -7271,6 +7260,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.Inbandwidth = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ingress_cos"); ok {
@@ -7299,6 +7289,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.IngressSpilloverThreshold = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("interface"); ok {
@@ -7318,6 +7309,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.Internal = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ip"); ok {
@@ -7326,7 +7318,9 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 				e := utils.AttributeVersionWarning("ip", sv)
 				diags = append(diags, e)
 			}
-			obj.Ip = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.Ip = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ip_managed_by_fortiipam"); ok {
@@ -7426,6 +7420,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.LcpEchoInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("lcp_max_echo_fails"); ok {
@@ -7436,6 +7431,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.LcpMaxEchoFails = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("link_up_delay"); ok {
@@ -7446,6 +7442,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.LinkUpDelay = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("lldp_network_policy"); ok {
@@ -7499,7 +7496,9 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 				e := utils.AttributeVersionWarning("management_ip", sv)
 				diags = append(diags, e)
 			}
-			obj.ManagementIp = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.ManagementIp = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("measured_downstream_bandwidth"); ok {
@@ -7510,6 +7509,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.MeasuredDownstreamBandwidth = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("measured_upstream_bandwidth"); ok {
@@ -7520,6 +7520,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.MeasuredUpstreamBandwidth = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("mediatype"); ok {
@@ -7556,6 +7557,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.MinLinks = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("min_links_down"); ok {
@@ -7593,6 +7595,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.Mtu = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("mtu_override"); ok {
@@ -7648,6 +7651,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.Outbandwidth = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("padt_retry_timeout"); ok {
@@ -7658,6 +7662,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.PadtRetryTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("password"); ok {
@@ -7677,6 +7682,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.PingServStatus = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("polling_interval"); ok {
@@ -7687,6 +7693,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.PollingInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("pppoe_unnumbered_negotiate"); ok {
@@ -7742,6 +7749,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.PptpTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("pptp_user"); ok {
@@ -7770,6 +7778,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.Priority = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("priority_override"); ok {
@@ -7798,6 +7807,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.ReachableTime = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("redundant_interface"); ok {
@@ -7815,7 +7825,9 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 				e := utils.AttributeVersionWarning("remote_ip", sv)
 				diags = append(diags, e)
 			}
-			obj.RemoteIp = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.RemoteIp = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("replacemsg_override_group"); ok {
@@ -7835,6 +7847,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.RingRx = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ring_tx"); ok {
@@ -7845,6 +7858,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.RingTx = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("role"); ok {
@@ -7873,6 +7887,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.SampleRate = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("secondary_ip"); ok {
@@ -7998,6 +8013,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.SnmpIndex = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("speed"); ok {
@@ -8017,6 +8033,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.SpilloverThreshold = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("src_check"); ok {
@@ -8081,6 +8098,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.SwcFirstCreate = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("swc_vlan"); ok {
@@ -8091,6 +8109,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.SwcVlan = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("switch"); ok {
@@ -8209,6 +8228,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.SwitchControllerLearningLimit = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("switch_controller_mgmt_vlan"); ok {
@@ -8219,6 +8239,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.SwitchControllerMgmtVlan = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("switch_controller_nac"); ok {
@@ -8300,6 +8321,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.TcpMss = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("trust_ip_1"); ok {
@@ -8308,7 +8330,9 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 				e := utils.AttributeVersionWarning("trust_ip_1", sv)
 				diags = append(diags, e)
 			}
-			obj.TrustIp1 = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.TrustIp1 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("trust_ip_2"); ok {
@@ -8317,7 +8341,9 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 				e := utils.AttributeVersionWarning("trust_ip_2", sv)
 				diags = append(diags, e)
 			}
-			obj.TrustIp2 = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.TrustIp2 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("trust_ip_3"); ok {
@@ -8326,7 +8352,9 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 				e := utils.AttributeVersionWarning("trust_ip_3", sv)
 				diags = append(diags, e)
 			}
-			obj.TrustIp3 = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.TrustIp3 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("trust_ip6_1"); ok {
@@ -8391,6 +8419,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.Vindex = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("vlan_protocol"); ok {
@@ -8419,6 +8448,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.Vlanid = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("vrf"); ok {
@@ -8429,6 +8459,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.Vrf = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("vrrp"); ok {
@@ -8474,6 +8505,7 @@ func getObjectSystemInterface(d *schema.ResourceData, sv string) (*models.System
 			}
 			tmp := int64(v2)
 			obj.Weight = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("wins_ip"); ok {

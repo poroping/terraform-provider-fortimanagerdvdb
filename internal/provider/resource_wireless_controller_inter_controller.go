@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -462,6 +462,7 @@ func getObjectWirelessControllerInterController(d *schema.ResourceData, sv strin
 			}
 			tmp := int64(v2)
 			obj.FastFailoverMax = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("fast_failover_wait"); ok {
@@ -472,6 +473,7 @@ func getObjectWirelessControllerInterController(d *schema.ResourceData, sv strin
 			}
 			tmp := int64(v2)
 			obj.FastFailoverWait = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("inter_controller_key"); ok {

@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/validators"
@@ -533,7 +533,8 @@ func expandSystemApiUserTrusthost(d *schema.ResourceData, v interface{}, pre str
 		pre_append = fmt.Sprintf("%s.%d.ipv4_trusthost", pre, i)
 		if v1, ok := d.GetOk(pre_append); ok {
 			if v2, ok := v1.(string); ok {
-				tmp.Ipv4Trusthost = &v2
+				v3 := utils.Ipv4Split(v2)
+				tmp.Ipv4Trusthost = &v3
 			}
 		}
 

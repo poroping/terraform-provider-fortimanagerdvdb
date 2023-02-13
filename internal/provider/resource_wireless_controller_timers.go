@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -455,6 +455,7 @@ func getObjectWirelessControllerTimers(d *schema.ResourceData, sv string) (*mode
 			}
 			tmp := int64(v2)
 			obj.BleScanReportIntv = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("client_idle_timeout"); ok {
@@ -465,6 +466,7 @@ func getObjectWirelessControllerTimers(d *schema.ResourceData, sv string) (*mode
 			}
 			tmp := int64(v2)
 			obj.ClientIdleTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("discovery_interval"); ok {
@@ -475,6 +477,7 @@ func getObjectWirelessControllerTimers(d *schema.ResourceData, sv string) (*mode
 			}
 			tmp := int64(v2)
 			obj.DiscoveryInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("drma_interval"); ok {
@@ -485,6 +488,7 @@ func getObjectWirelessControllerTimers(d *schema.ResourceData, sv string) (*mode
 			}
 			tmp := int64(v2)
 			obj.DrmaInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("echo_interval"); ok {
@@ -495,6 +499,7 @@ func getObjectWirelessControllerTimers(d *schema.ResourceData, sv string) (*mode
 			}
 			tmp := int64(v2)
 			obj.EchoInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("fake_ap_log"); ok {
@@ -505,6 +510,7 @@ func getObjectWirelessControllerTimers(d *schema.ResourceData, sv string) (*mode
 			}
 			tmp := int64(v2)
 			obj.FakeApLog = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ipsec_intf_cleanup"); ok {
@@ -515,6 +521,7 @@ func getObjectWirelessControllerTimers(d *schema.ResourceData, sv string) (*mode
 			}
 			tmp := int64(v2)
 			obj.IpsecIntfCleanup = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("radio_stats_interval"); ok {
@@ -525,6 +532,7 @@ func getObjectWirelessControllerTimers(d *schema.ResourceData, sv string) (*mode
 			}
 			tmp := int64(v2)
 			obj.RadioStatsInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("rogue_ap_log"); ok {
@@ -535,6 +543,7 @@ func getObjectWirelessControllerTimers(d *schema.ResourceData, sv string) (*mode
 			}
 			tmp := int64(v2)
 			obj.RogueApLog = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("sta_capability_interval"); ok {
@@ -545,6 +554,7 @@ func getObjectWirelessControllerTimers(d *schema.ResourceData, sv string) (*mode
 			}
 			tmp := int64(v2)
 			obj.StaCapabilityInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("sta_locate_timer"); ok {
@@ -555,6 +565,7 @@ func getObjectWirelessControllerTimers(d *schema.ResourceData, sv string) (*mode
 			}
 			tmp := int64(v2)
 			obj.StaLocateTimer = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("sta_stats_interval"); ok {
@@ -565,6 +576,7 @@ func getObjectWirelessControllerTimers(d *schema.ResourceData, sv string) (*mode
 			}
 			tmp := int64(v2)
 			obj.StaStatsInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("vap_stats_interval"); ok {
@@ -575,6 +587,7 @@ func getObjectWirelessControllerTimers(d *schema.ResourceData, sv string) (*mode
 			}
 			tmp := int64(v2)
 			obj.VapStatsInterval = &tmp
+
 		}
 	}
 	return &obj, diags

@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -423,6 +423,7 @@ func getObjectWebfilterFortiguard(d *schema.ResourceData, sv string) (*models.We
 			}
 			tmp := int64(v2)
 			obj.CacheMemPercent = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("cache_mode"); ok {
@@ -469,6 +470,7 @@ func getObjectWebfilterFortiguard(d *schema.ResourceData, sv string) (*models.We
 			}
 			tmp := int64(v2)
 			obj.OvrdAuthPortHttp = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ovrd_auth_port_https"); ok {
@@ -479,6 +481,7 @@ func getObjectWebfilterFortiguard(d *schema.ResourceData, sv string) (*models.We
 			}
 			tmp := int64(v2)
 			obj.OvrdAuthPortHttps = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ovrd_auth_port_https_flow"); ok {
@@ -489,6 +492,7 @@ func getObjectWebfilterFortiguard(d *schema.ResourceData, sv string) (*models.We
 			}
 			tmp := int64(v2)
 			obj.OvrdAuthPortHttpsFlow = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ovrd_auth_port_warning"); ok {
@@ -499,6 +503,7 @@ func getObjectWebfilterFortiguard(d *schema.ResourceData, sv string) (*models.We
 			}
 			tmp := int64(v2)
 			obj.OvrdAuthPortWarning = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("request_packet_size_limit"); ok {
@@ -509,6 +514,7 @@ func getObjectWebfilterFortiguard(d *schema.ResourceData, sv string) (*models.We
 			}
 			tmp := int64(v2)
 			obj.RequestPacketSizeLimit = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("warn_auth_https"); ok {

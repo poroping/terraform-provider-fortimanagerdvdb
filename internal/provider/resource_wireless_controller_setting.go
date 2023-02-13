@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
@@ -642,6 +642,7 @@ func getObjectWirelessControllerSetting(d *schema.ResourceData, sv string) (*mod
 			}
 			tmp := int64(v2)
 			obj.DarrpOptimize = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("darrp_optimize_schedules"); ok {
@@ -669,6 +670,7 @@ func getObjectWirelessControllerSetting(d *schema.ResourceData, sv string) (*mod
 			}
 			tmp := int64(v2)
 			obj.DeviceHoldoff = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("device_idle"); ok {
@@ -679,6 +681,7 @@ func getObjectWirelessControllerSetting(d *schema.ResourceData, sv string) (*mod
 			}
 			tmp := int64(v2)
 			obj.DeviceIdle = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("device_weight"); ok {
@@ -689,6 +692,7 @@ func getObjectWirelessControllerSetting(d *schema.ResourceData, sv string) (*mod
 			}
 			tmp := int64(v2)
 			obj.DeviceWeight = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("duplicate_ssid"); ok {

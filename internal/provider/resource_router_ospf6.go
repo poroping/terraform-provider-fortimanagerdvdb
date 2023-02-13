@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/validators"
@@ -2348,6 +2348,7 @@ func getObjectRouterOspf6(d *schema.ResourceData, sv string) (*models.RouterOspf
 			}
 			tmp := int64(v2)
 			obj.AutoCostRefBandwidth = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("bfd"); ok {
@@ -2367,6 +2368,7 @@ func getObjectRouterOspf6(d *schema.ResourceData, sv string) (*models.RouterOspf
 			}
 			tmp := int64(v2)
 			obj.DefaultInformationMetric = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("default_information_metric_type"); ok {
@@ -2404,6 +2406,7 @@ func getObjectRouterOspf6(d *schema.ResourceData, sv string) (*models.RouterOspf
 			}
 			tmp := int64(v2)
 			obj.DefaultMetric = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("log_neighbour_changes"); ok {

@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/validators"
@@ -489,7 +489,8 @@ func expandEmailfilterBlockAllowListEntries(d *schema.ResourceData, v interface{
 		pre_append = fmt.Sprintf("%s.%d.ip4_subnet", pre, i)
 		if v1, ok := d.GetOk(pre_append); ok {
 			if v2, ok := v1.(string); ok {
-				tmp.Ip4Subnet = &v2
+				v3 := utils.Ipv4Split(v2)
+				tmp.Ip4Subnet = &v3
 			}
 		}
 
@@ -564,6 +565,7 @@ func getObjectEmailfilterBlockAllowList(d *schema.ResourceData, sv string) (*mod
 			}
 			tmp := int64(v2)
 			obj.Id = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("name"); ok {

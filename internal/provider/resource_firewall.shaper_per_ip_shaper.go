@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -460,6 +460,7 @@ func getObjectFirewallShaperPerIpShaper(d *schema.ResourceData, sv string) (*mod
 			}
 			tmp := int64(v2)
 			obj.MaxBandwidth = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("max_concurrent_session"); ok {
@@ -470,6 +471,7 @@ func getObjectFirewallShaperPerIpShaper(d *schema.ResourceData, sv string) (*mod
 			}
 			tmp := int64(v2)
 			obj.MaxConcurrentSession = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("max_concurrent_tcp_session"); ok {
@@ -480,6 +482,7 @@ func getObjectFirewallShaperPerIpShaper(d *schema.ResourceData, sv string) (*mod
 			}
 			tmp := int64(v2)
 			obj.MaxConcurrentTcpSession = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("max_concurrent_udp_session"); ok {
@@ -490,6 +493,7 @@ func getObjectFirewallShaperPerIpShaper(d *schema.ResourceData, sv string) (*mod
 			}
 			tmp := int64(v2)
 			obj.MaxConcurrentUdpSession = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("name"); ok {

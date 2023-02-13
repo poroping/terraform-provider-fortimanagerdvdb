@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -1111,6 +1111,7 @@ func getObjectWirelessControllerWidsProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.ApBgscanDuration = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ap_bgscan_idle"); ok {
@@ -1121,6 +1122,7 @@ func getObjectWirelessControllerWidsProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.ApBgscanIdle = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ap_bgscan_intv"); ok {
@@ -1131,6 +1133,7 @@ func getObjectWirelessControllerWidsProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.ApBgscanIntv = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ap_bgscan_period"); ok {
@@ -1141,6 +1144,7 @@ func getObjectWirelessControllerWidsProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.ApBgscanPeriod = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ap_bgscan_report_intv"); ok {
@@ -1151,6 +1155,7 @@ func getObjectWirelessControllerWidsProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.ApBgscanReportIntv = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ap_fgscan_report_intv"); ok {
@@ -1161,6 +1166,7 @@ func getObjectWirelessControllerWidsProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.ApFgscanReportIntv = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ap_scan"); ok {
@@ -1207,6 +1213,7 @@ func getObjectWirelessControllerWidsProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.AssocFloodThresh = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("assoc_flood_time"); ok {
@@ -1217,6 +1224,7 @@ func getObjectWirelessControllerWidsProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.AssocFloodTime = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("assoc_frame_flood"); ok {
@@ -1236,6 +1244,7 @@ func getObjectWirelessControllerWidsProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.AuthFloodThresh = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("auth_flood_time"); ok {
@@ -1246,6 +1255,7 @@ func getObjectWirelessControllerWidsProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.AuthFloodTime = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("auth_frame_flood"); ok {
@@ -1283,6 +1293,7 @@ func getObjectWirelessControllerWidsProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.DeauthUnknownSrcThresh = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("eapol_fail_flood"); ok {
@@ -1302,6 +1313,7 @@ func getObjectWirelessControllerWidsProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.EapolFailIntv = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("eapol_fail_thresh"); ok {
@@ -1312,6 +1324,7 @@ func getObjectWirelessControllerWidsProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.EapolFailThresh = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("eapol_logoff_flood"); ok {
@@ -1331,6 +1344,7 @@ func getObjectWirelessControllerWidsProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.EapolLogoffIntv = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("eapol_logoff_thresh"); ok {
@@ -1341,6 +1355,7 @@ func getObjectWirelessControllerWidsProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.EapolLogoffThresh = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("eapol_pre_fail_flood"); ok {
@@ -1360,6 +1375,7 @@ func getObjectWirelessControllerWidsProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.EapolPreFailIntv = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("eapol_pre_fail_thresh"); ok {
@@ -1370,6 +1386,7 @@ func getObjectWirelessControllerWidsProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.EapolPreFailThresh = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("eapol_pre_succ_flood"); ok {
@@ -1389,6 +1406,7 @@ func getObjectWirelessControllerWidsProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.EapolPreSuccIntv = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("eapol_pre_succ_thresh"); ok {
@@ -1399,6 +1417,7 @@ func getObjectWirelessControllerWidsProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.EapolPreSuccThresh = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("eapol_start_flood"); ok {
@@ -1418,6 +1437,7 @@ func getObjectWirelessControllerWidsProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.EapolStartIntv = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("eapol_start_thresh"); ok {
@@ -1428,6 +1448,7 @@ func getObjectWirelessControllerWidsProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.EapolStartThresh = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("eapol_succ_flood"); ok {
@@ -1447,6 +1468,7 @@ func getObjectWirelessControllerWidsProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.EapolSuccIntv = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("eapol_succ_thresh"); ok {
@@ -1457,6 +1479,7 @@ func getObjectWirelessControllerWidsProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.EapolSuccThresh = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("invalid_mac_oui"); ok {
@@ -1485,6 +1508,7 @@ func getObjectWirelessControllerWidsProfile(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.LongDurationThresh = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("name"); ok {

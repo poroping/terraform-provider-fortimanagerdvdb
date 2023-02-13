@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
@@ -524,6 +524,7 @@ func getObjectSystemSdwanMembers(d *schema.ResourceData, sv string) (*models.Sys
 			}
 			tmp := int64(v2)
 			obj.Cost = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("gateway"); ok {
@@ -552,6 +553,7 @@ func getObjectSystemSdwanMembers(d *schema.ResourceData, sv string) (*models.Sys
 			}
 			tmp := int64(v2)
 			obj.IngressSpilloverThreshold = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("interface"); ok {
@@ -571,6 +573,7 @@ func getObjectSystemSdwanMembers(d *schema.ResourceData, sv string) (*models.Sys
 			}
 			tmp := int64(v2)
 			obj.Priority = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("priority6"); ok {
@@ -581,6 +584,7 @@ func getObjectSystemSdwanMembers(d *schema.ResourceData, sv string) (*models.Sys
 			}
 			tmp := int64(v2)
 			obj.Priority6 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("seq_num"); ok {
@@ -591,6 +595,7 @@ func getObjectSystemSdwanMembers(d *schema.ResourceData, sv string) (*models.Sys
 			}
 			tmp := int64(v2)
 			obj.SeqNum = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("source"); ok {
@@ -619,6 +624,7 @@ func getObjectSystemSdwanMembers(d *schema.ResourceData, sv string) (*models.Sys
 			}
 			tmp := int64(v2)
 			obj.SpilloverThreshold = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("status"); ok {
@@ -638,6 +644,7 @@ func getObjectSystemSdwanMembers(d *schema.ResourceData, sv string) (*models.Sys
 			}
 			tmp := int64(v2)
 			obj.VolumeRatio = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("weight"); ok {
@@ -648,6 +655,7 @@ func getObjectSystemSdwanMembers(d *schema.ResourceData, sv string) (*models.Sys
 			}
 			tmp := int64(v2)
 			obj.Weight = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("zone"); ok {

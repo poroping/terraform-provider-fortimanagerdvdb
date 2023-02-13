@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
@@ -2243,6 +2243,7 @@ func getObjectExtenderControllerExtender(d *schema.ResourceData, sv string) (*mo
 			}
 			tmp := int64(v2)
 			obj.BandwidthLimit = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("billing_start_day"); ok {
@@ -2253,6 +2254,7 @@ func getObjectExtenderControllerExtender(d *schema.ResourceData, sv string) (*mo
 			}
 			tmp := int64(v2)
 			obj.BillingStartDay = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("cdma_aaa_spi"); ok {
@@ -2290,6 +2292,7 @@ func getObjectExtenderControllerExtender(d *schema.ResourceData, sv string) (*mo
 			}
 			tmp := int64(v2)
 			obj.ConnStatus = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("controller_report"); ok {
@@ -2326,6 +2329,7 @@ func getObjectExtenderControllerExtender(d *schema.ResourceData, sv string) (*mo
 			}
 			tmp := int64(v2)
 			obj.DeviceId = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("dial_mode"); ok {
@@ -2345,6 +2349,7 @@ func getObjectExtenderControllerExtender(d *schema.ResourceData, sv string) (*mo
 			}
 			tmp := int64(v2)
 			obj.DialStatus = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("enforce_bandwidth"); ok {
@@ -2596,6 +2601,7 @@ func getObjectExtenderControllerExtender(d *schema.ResourceData, sv string) (*mo
 			}
 			tmp := int64(v2)
 			obj.QuotaLimitMb = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("redial"); ok {
@@ -2660,6 +2666,7 @@ func getObjectExtenderControllerExtender(d *schema.ResourceData, sv string) (*mo
 			}
 			tmp := int64(v2)
 			obj.Vdom = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("wan_extension"); ok {

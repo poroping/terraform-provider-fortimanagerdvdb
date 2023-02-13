@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
@@ -5537,6 +5537,7 @@ func getObjectSwitchControllerManagedSwitch(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.DelayedRestartTrigger = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("description"); ok {
@@ -5565,6 +5566,7 @@ func getObjectSwitchControllerManagedSwitch(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.DirectlyConnected = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("dynamic_capability"); ok {
@@ -5584,6 +5586,7 @@ func getObjectSwitchControllerManagedSwitch(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.DynamicallyDiscovered = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("firmware_provision"); ok {
@@ -5682,6 +5685,7 @@ func getObjectSwitchControllerManagedSwitch(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.L3Discovered = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("max_allowed_trunk_members"); ok {
@@ -5692,6 +5696,7 @@ func getObjectSwitchControllerManagedSwitch(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.MaxAllowedTrunkMembers = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("mclag_igmp_snooping_aware"); ok {
@@ -5782,6 +5787,7 @@ func getObjectSwitchControllerManagedSwitch(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.PoeDetectionType = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("poe_lldp_detection"); ok {
@@ -5827,6 +5833,7 @@ func getObjectSwitchControllerManagedSwitch(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.PreProvisioned = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("qos_drop_policy"); ok {
@@ -5846,6 +5853,7 @@ func getObjectSwitchControllerManagedSwitch(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.QosRedProbability = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("remote_log"); ok {
@@ -6089,6 +6097,7 @@ func getObjectSwitchControllerManagedSwitch(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.Version = &tmp
+
 		}
 	}
 	return &obj, diags

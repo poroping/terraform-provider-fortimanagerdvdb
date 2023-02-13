@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/validators"
 )
@@ -2189,14 +2189,16 @@ func expandRouterOspfAreaRange(d *schema.ResourceData, v interface{}, pre string
 		pre_append = fmt.Sprintf("%s.%d.prefix", pre, i)
 		if v1, ok := d.GetOk(pre_append); ok {
 			if v2, ok := v1.(string); ok {
-				tmp.Prefix = &v2
+				v3 := utils.Ipv4Split(v2)
+				tmp.Prefix = &v3
 			}
 		}
 
 		pre_append = fmt.Sprintf("%s.%d.substitute", pre, i)
 		if v1, ok := d.GetOk(pre_append); ok {
 			if v2, ok := v1.(string); ok {
-				tmp.Substitute = &v2
+				v3 := utils.Ipv4Split(v2)
+				tmp.Substitute = &v3
 			}
 		}
 
@@ -2477,7 +2479,8 @@ func expandRouterOspfNetwork(d *schema.ResourceData, v interface{}, pre string, 
 		pre_append = fmt.Sprintf("%s.%d.prefix", pre, i)
 		if v1, ok := d.GetOk(pre_append); ok {
 			if v2, ok := v1.(string); ok {
-				tmp.Prefix = &v2
+				v3 := utils.Ipv4Split(v2)
+				tmp.Prefix = &v3
 			}
 		}
 
@@ -2831,7 +2834,8 @@ func expandRouterOspfSummaryAddress(d *schema.ResourceData, v interface{}, pre s
 		pre_append = fmt.Sprintf("%s.%d.prefix", pre, i)
 		if v1, ok := d.GetOk(pre_append); ok {
 			if v2, ok := v1.(string); ok {
-				tmp.Prefix = &v2
+				v3 := utils.Ipv4Split(v2)
+				tmp.Prefix = &v3
 			}
 		}
 
@@ -2886,6 +2890,7 @@ func getObjectRouterOspf(d *schema.ResourceData, sv string) (*models.RouterOspf,
 			}
 			tmp := int64(v2)
 			obj.AutoCostRefBandwidth = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("bfd"); ok {
@@ -2914,6 +2919,7 @@ func getObjectRouterOspf(d *schema.ResourceData, sv string) (*models.RouterOspf,
 			}
 			tmp := int64(v2)
 			obj.DatabaseOverflowMaxLsas = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("database_overflow_time_to_recover"); ok {
@@ -2924,6 +2930,7 @@ func getObjectRouterOspf(d *schema.ResourceData, sv string) (*models.RouterOspf,
 			}
 			tmp := int64(v2)
 			obj.DatabaseOverflowTimeToRecover = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("default_information_metric"); ok {
@@ -2934,6 +2941,7 @@ func getObjectRouterOspf(d *schema.ResourceData, sv string) (*models.RouterOspf,
 			}
 			tmp := int64(v2)
 			obj.DefaultInformationMetric = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("default_information_metric_type"); ok {
@@ -2971,6 +2979,7 @@ func getObjectRouterOspf(d *schema.ResourceData, sv string) (*models.RouterOspf,
 			}
 			tmp := int64(v2)
 			obj.DefaultMetric = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("distance"); ok {
@@ -2981,6 +2990,7 @@ func getObjectRouterOspf(d *schema.ResourceData, sv string) (*models.RouterOspf,
 			}
 			tmp := int64(v2)
 			obj.Distance = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("distance_external"); ok {
@@ -2991,6 +3001,7 @@ func getObjectRouterOspf(d *schema.ResourceData, sv string) (*models.RouterOspf,
 			}
 			tmp := int64(v2)
 			obj.DistanceExternal = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("distance_inter_area"); ok {
@@ -3001,6 +3012,7 @@ func getObjectRouterOspf(d *schema.ResourceData, sv string) (*models.RouterOspf,
 			}
 			tmp := int64(v2)
 			obj.DistanceInterArea = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("distance_intra_area"); ok {
@@ -3011,6 +3023,7 @@ func getObjectRouterOspf(d *schema.ResourceData, sv string) (*models.RouterOspf,
 			}
 			tmp := int64(v2)
 			obj.DistanceIntraArea = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("distribute_list"); ok {
@@ -3159,6 +3172,7 @@ func getObjectRouterOspf(d *schema.ResourceData, sv string) (*models.RouterOspf,
 			}
 			tmp := int64(v2)
 			obj.RestartPeriod = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("rfc1583_compatible"); ok {

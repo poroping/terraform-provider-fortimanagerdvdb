@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/validators"
@@ -4409,7 +4409,8 @@ func expandRouterBgpAdminDistance(d *schema.ResourceData, v interface{}, pre str
 		pre_append = fmt.Sprintf("%s.%d.neighbour_prefix", pre, i)
 		if v1, ok := d.GetOk(pre_append); ok {
 			if v2, ok := v1.(string); ok {
-				tmp.NeighbourPrefix = &v2
+				v3 := utils.Ipv4Split(v2)
+				tmp.NeighbourPrefix = &v3
 			}
 		}
 
@@ -4455,7 +4456,8 @@ func expandRouterBgpAggregateAddress(d *schema.ResourceData, v interface{}, pre 
 		pre_append = fmt.Sprintf("%s.%d.prefix", pre, i)
 		if v1, ok := d.GetOk(pre_append); ok {
 			if v2, ok := v1.(string); ok {
-				tmp.Prefix = &v2
+				v3 := utils.Ipv4Split(v2)
+				tmp.Prefix = &v3
 			}
 		}
 
@@ -6052,7 +6054,8 @@ func expandRouterBgpNeighborRange(d *schema.ResourceData, v interface{}, pre str
 		pre_append = fmt.Sprintf("%s.%d.prefix", pre, i)
 		if v1, ok := d.GetOk(pre_append); ok {
 			if v2, ok := v1.(string); ok {
-				tmp.Prefix = &v2
+				v3 := utils.Ipv4Split(v2)
+				tmp.Prefix = &v3
 			}
 		}
 
@@ -6145,7 +6148,8 @@ func expandRouterBgpNetwork(d *schema.ResourceData, v interface{}, pre string, s
 		pre_append = fmt.Sprintf("%s.%d.prefix", pre, i)
 		if v1, ok := d.GetOk(pre_append); ok {
 			if v2, ok := v1.(string); ok {
-				tmp.Prefix = &v2
+				v3 := utils.Ipv4Split(v2)
+				tmp.Prefix = &v3
 			}
 		}
 
@@ -6455,6 +6459,7 @@ func getObjectRouterBgp(d *schema.ResourceData, sv string) (*models.RouterBgp, d
 			}
 			tmp := int64(v2)
 			obj.AdditionalPathSelect = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("additional_path_select6"); ok {
@@ -6465,6 +6470,7 @@ func getObjectRouterBgp(d *schema.ResourceData, sv string) (*models.RouterBgp, d
 			}
 			tmp := int64(v2)
 			obj.AdditionalPathSelect6 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("additional_path6"); ok {
@@ -6544,6 +6550,7 @@ func getObjectRouterBgp(d *schema.ResourceData, sv string) (*models.RouterBgp, d
 			}
 			tmp := int64(v2)
 			obj.As = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("bestpath_as_path_ignore"); ok {
@@ -6617,6 +6624,7 @@ func getObjectRouterBgp(d *schema.ResourceData, sv string) (*models.RouterBgp, d
 			}
 			tmp := int64(v2)
 			obj.ConfederationIdentifier = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("confederation_peers"); ok {
@@ -6653,6 +6661,7 @@ func getObjectRouterBgp(d *schema.ResourceData, sv string) (*models.RouterBgp, d
 			}
 			tmp := int64(v2)
 			obj.DampeningMaxSuppressTime = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("dampening_reachability_half_life"); ok {
@@ -6663,6 +6672,7 @@ func getObjectRouterBgp(d *schema.ResourceData, sv string) (*models.RouterBgp, d
 			}
 			tmp := int64(v2)
 			obj.DampeningReachabilityHalfLife = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("dampening_reuse"); ok {
@@ -6673,6 +6683,7 @@ func getObjectRouterBgp(d *schema.ResourceData, sv string) (*models.RouterBgp, d
 			}
 			tmp := int64(v2)
 			obj.DampeningReuse = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("dampening_route_map"); ok {
@@ -6692,6 +6703,7 @@ func getObjectRouterBgp(d *schema.ResourceData, sv string) (*models.RouterBgp, d
 			}
 			tmp := int64(v2)
 			obj.DampeningSuppress = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("dampening_unreachability_half_life"); ok {
@@ -6702,6 +6714,7 @@ func getObjectRouterBgp(d *schema.ResourceData, sv string) (*models.RouterBgp, d
 			}
 			tmp := int64(v2)
 			obj.DampeningUnreachabilityHalfLife = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("default_local_preference"); ok {
@@ -6712,6 +6725,7 @@ func getObjectRouterBgp(d *schema.ResourceData, sv string) (*models.RouterBgp, d
 			}
 			tmp := int64(v2)
 			obj.DefaultLocalPreference = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("deterministic_med"); ok {
@@ -6731,6 +6745,7 @@ func getObjectRouterBgp(d *schema.ResourceData, sv string) (*models.RouterBgp, d
 			}
 			tmp := int64(v2)
 			obj.DistanceExternal = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("distance_internal"); ok {
@@ -6741,6 +6756,7 @@ func getObjectRouterBgp(d *schema.ResourceData, sv string) (*models.RouterBgp, d
 			}
 			tmp := int64(v2)
 			obj.DistanceInternal = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("distance_local"); ok {
@@ -6751,6 +6767,7 @@ func getObjectRouterBgp(d *schema.ResourceData, sv string) (*models.RouterBgp, d
 			}
 			tmp := int64(v2)
 			obj.DistanceLocal = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ebgp_multipath"); ok {
@@ -6806,6 +6823,7 @@ func getObjectRouterBgp(d *schema.ResourceData, sv string) (*models.RouterBgp, d
 			}
 			tmp := int64(v2)
 			obj.GracefulRestartTime = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("graceful_stalepath_time"); ok {
@@ -6816,6 +6834,7 @@ func getObjectRouterBgp(d *schema.ResourceData, sv string) (*models.RouterBgp, d
 			}
 			tmp := int64(v2)
 			obj.GracefulStalepathTime = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("graceful_update_delay"); ok {
@@ -6826,6 +6845,7 @@ func getObjectRouterBgp(d *schema.ResourceData, sv string) (*models.RouterBgp, d
 			}
 			tmp := int64(v2)
 			obj.GracefulUpdateDelay = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("holdtime_timer"); ok {
@@ -6836,6 +6856,7 @@ func getObjectRouterBgp(d *schema.ResourceData, sv string) (*models.RouterBgp, d
 			}
 			tmp := int64(v2)
 			obj.HoldtimeTimer = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ibgp_multipath"); ok {
@@ -6864,6 +6885,7 @@ func getObjectRouterBgp(d *schema.ResourceData, sv string) (*models.RouterBgp, d
 			}
 			tmp := int64(v2)
 			obj.KeepaliveTimer = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("log_neighbour_changes"); ok {
@@ -7055,6 +7077,7 @@ func getObjectRouterBgp(d *schema.ResourceData, sv string) (*models.RouterBgp, d
 			}
 			tmp := int64(v2)
 			obj.ScanTime = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("synchronization"); ok {

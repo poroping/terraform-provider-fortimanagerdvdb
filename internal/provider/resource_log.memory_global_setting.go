@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -310,6 +310,7 @@ func getObjectLogMemoryGlobalSetting(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.FullFinalWarningThreshold = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("full_first_warning_threshold"); ok {
@@ -320,6 +321,7 @@ func getObjectLogMemoryGlobalSetting(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.FullFirstWarningThreshold = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("full_second_warning_threshold"); ok {
@@ -330,6 +332,7 @@ func getObjectLogMemoryGlobalSetting(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.FullSecondWarningThreshold = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("max_size"); ok {
@@ -340,6 +343,7 @@ func getObjectLogMemoryGlobalSetting(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.MaxSize = &tmp
+
 		}
 	}
 	return &obj, diags

@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -462,6 +462,7 @@ func getObjectFirewallInternetService(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.ExtraIpRangeNumber = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("icon_id"); ok {
@@ -472,6 +473,7 @@ func getObjectFirewallInternetService(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.IconId = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("fosid"); ok {
@@ -482,6 +484,7 @@ func getObjectFirewallInternetService(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.Id = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ip_number"); ok {
@@ -492,6 +495,7 @@ func getObjectFirewallInternetService(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.IpNumber = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ip_range_number"); ok {
@@ -502,6 +506,7 @@ func getObjectFirewallInternetService(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.IpRangeNumber = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("name"); ok {
@@ -521,6 +526,7 @@ func getObjectFirewallInternetService(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.Obsolete = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("reputation"); ok {
@@ -531,6 +537,7 @@ func getObjectFirewallInternetService(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.Reputation = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("singularity"); ok {
@@ -541,6 +548,7 @@ func getObjectFirewallInternetService(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.Singularity = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("sld_id"); ok {
@@ -551,6 +559,7 @@ func getObjectFirewallInternetService(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.SldId = &tmp
+
 		}
 	}
 	return &obj, diags

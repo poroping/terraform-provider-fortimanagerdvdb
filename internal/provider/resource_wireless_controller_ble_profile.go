@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
@@ -459,6 +459,7 @@ func getObjectWirelessControllerBleProfile(d *schema.ResourceData, sv string) (*
 			}
 			tmp := int64(v2)
 			obj.BeaconInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ble_scanning"); ok {
@@ -523,6 +524,7 @@ func getObjectWirelessControllerBleProfile(d *schema.ResourceData, sv string) (*
 			}
 			tmp := int64(v2)
 			obj.MajorId = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("minor_id"); ok {
@@ -533,6 +535,7 @@ func getObjectWirelessControllerBleProfile(d *schema.ResourceData, sv string) (*
 			}
 			tmp := int64(v2)
 			obj.MinorId = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("name"); ok {

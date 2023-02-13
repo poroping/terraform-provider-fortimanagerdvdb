@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
@@ -1101,6 +1101,7 @@ func getObjectIcapProfile(d *schema.ResourceData, sv string) (*models.IcapProfil
 			}
 			tmp := int64(v2)
 			obj.PreviewDataLength = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("replacemsg_group"); ok {
@@ -1227,6 +1228,7 @@ func getObjectIcapProfile(d *schema.ResourceData, sv string) (*models.IcapProfil
 			}
 			tmp := int64(v2)
 			obj.ScanProgressInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("streaming_content_bypass"); ok {

@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/validators"
@@ -2485,13 +2485,8 @@ func refreshObjectSystemGlobal(d *schema.ResourceData, o *models.SystemGlobal, s
 
 	if o.ExtenderControllerReservedNetwork != nil {
 		v := *o.ExtenderControllerReservedNetwork
-		if current, ok := d.GetOk("extender_controller_reserved_network"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("extender_controller_reserved_network", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("extender_controller_reserved_network", v2); err != nil {
 			return diag.Errorf("error reading extender_controller_reserved_network: %v", err)
 		}
 	}
@@ -3498,13 +3493,8 @@ func refreshObjectSystemGlobal(d *schema.ResourceData, o *models.SystemGlobal, s
 
 	if o.SwitchControllerReservedNetwork != nil {
 		v := *o.SwitchControllerReservedNetwork
-		if current, ok := d.GetOk("switch_controller_reserved_network"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("switch_controller_reserved_network", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("switch_controller_reserved_network", v2); err != nil {
 			return diag.Errorf("error reading switch_controller_reserved_network: %v", err)
 		}
 	}
@@ -3813,6 +3803,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.AdminConsoleTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("admin_forticloud_sso_login"); ok {
@@ -3832,6 +3823,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.AdminHstsMaxAge = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("admin_https_pki_required"); ok {
@@ -3887,6 +3879,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.AdminLockoutDuration = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("admin_lockout_threshold"); ok {
@@ -3897,6 +3890,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.AdminLockoutThreshold = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("admin_login_max"); ok {
@@ -3907,6 +3901,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.AdminLoginMax = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("admin_maintainer"); ok {
@@ -3926,6 +3921,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.AdminPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("admin_restrict_local"); ok {
@@ -3963,6 +3959,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.AdminSport = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("admin_ssh_grace_time"); ok {
@@ -3973,6 +3970,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.AdminSshGraceTime = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("admin_ssh_password"); ok {
@@ -3992,6 +3990,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.AdminSshPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("admin_ssh_v1"); ok {
@@ -4020,6 +4019,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.AdminTelnetPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("admintimeout"); ok {
@@ -4030,6 +4030,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.Admintimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("alias"); ok {
@@ -4067,6 +4068,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.ArpMaxEntry = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("auth_cert"); ok {
@@ -4086,6 +4088,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.AuthHttpPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("auth_https_port"); ok {
@@ -4096,6 +4099,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.AuthHttpsPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("auth_keepalive"); ok {
@@ -4178,6 +4182,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.BlockSessionTimer = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("br_fdb_max_entry"); ok {
@@ -4188,6 +4193,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.BrFdbMaxEntry = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("cert_chain_max"); ok {
@@ -4198,6 +4204,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.CertChainMax = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("cfg_revert_timeout"); ok {
@@ -4208,6 +4215,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.CfgRevertTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("cfg_save"); ok {
@@ -4281,6 +4289,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.CpuUseThreshold = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("csr_ca_attribute"); ok {
@@ -4318,6 +4327,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.DeviceIdentificationActiveScanDelay = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("device_idle_timeout"); ok {
@@ -4328,6 +4338,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.DeviceIdleTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("dh_params"); ok {
@@ -4347,6 +4358,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.DnsproxyWorkerCount = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("dst"); ok {
@@ -4364,7 +4376,9 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 				e := utils.AttributeVersionWarning("extender_controller_reserved_network", sv)
 				diags = append(diags, e)
 			}
-			obj.ExtenderControllerReservedNetwork = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.ExtenderControllerReservedNetwork = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("failtime"); ok {
@@ -4375,6 +4389,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.Failtime = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("faz_disk_buffer_size"); ok {
@@ -4385,6 +4400,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.FazDiskBufferSize = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("fds_statistics"); ok {
@@ -4404,6 +4420,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.FdsStatisticsPeriod = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("fec_port"); ok {
@@ -4414,6 +4431,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.FecPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("fgd_alert_subscription"); ok {
@@ -4442,6 +4460,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.FortiextenderDataPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("fortiextender_discovery_lockdown"); ok {
@@ -4479,6 +4498,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.FortiservicePort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("fortitoken_cloud"); ok {
@@ -4633,6 +4653,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.GuiLinesPerPage = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("gui_local_out"); ok {
@@ -4715,6 +4736,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.IgmpStateLimit = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("internet_service_database"); ok {
@@ -4734,6 +4756,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.Interval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ip_src_port_range"); ok {
@@ -4771,6 +4794,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.IpsecHaSeqjumpRate = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ipsec_hmac_offload"); ok {
@@ -4799,6 +4823,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.Ipv6AcceptDad = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ipv6_allow_anycast_probe"); ok {
@@ -4845,6 +4870,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.Ldapconntimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("lldp_reception"); ok {
@@ -4927,6 +4953,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.ManagementPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("management_port_use_admin_sport"); ok {
@@ -4955,6 +4982,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.MaxDlpstatMemory = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("max_route_cache_size"); ok {
@@ -4965,6 +4993,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.MaxRouteCacheSize = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("memory_use_threshold_extreme"); ok {
@@ -4975,6 +5004,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.MemoryUseThresholdExtreme = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("memory_use_threshold_green"); ok {
@@ -4985,6 +5015,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.MemoryUseThresholdGreen = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("memory_use_threshold_red"); ok {
@@ -4995,6 +5026,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.MemoryUseThresholdRed = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("miglog_affinity"); ok {
@@ -5014,6 +5046,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.MiglogdChildren = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("multi_factor_authentication"); ok {
@@ -5033,6 +5066,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.NdpMaxEntry = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("per_user_bal"); ok {
@@ -5070,6 +5104,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.PolicyAuthConcurrent = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("post_login_banner"); ok {
@@ -5116,6 +5151,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.ProxyAuthLifetimeTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("proxy_auth_timeout"); ok {
@@ -5126,6 +5162,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.ProxyAuthTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("proxy_cert_use_mgmt_vdom"); ok {
@@ -5181,6 +5218,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.ProxyWorkerCount = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("radius_port"); ok {
@@ -5191,6 +5229,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.RadiusPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("reboot_upon_config_restore"); ok {
@@ -5210,6 +5249,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.Refresh = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("remoteauthtimeout"); ok {
@@ -5220,6 +5260,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.Remoteauthtimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("reset_sessionless_tcp"); ok {
@@ -5266,6 +5307,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.ScanunitCount = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("security_rating_result_submission"); ok {
@@ -5330,6 +5372,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.SsdTrimDate = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ssd_trim_freq"); ok {
@@ -5349,6 +5392,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.SsdTrimHour = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ssd_trim_min"); ok {
@@ -5359,6 +5403,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.SsdTrimMin = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ssd_trim_weekday"); ok {
@@ -5486,6 +5531,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.SslvpnMaxWorkerCount = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("sslvpn_plugin_version_check"); ok {
@@ -5530,7 +5576,9 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 				e := utils.AttributeVersionWarning("switch_controller_reserved_network", sv)
 				diags = append(diags, e)
 			}
-			obj.SwitchControllerReservedNetwork = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.SwitchControllerReservedNetwork = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("sys_perf_log_interval"); ok {
@@ -5541,6 +5589,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.SysPerfLogInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("tcp_halfclose_timer"); ok {
@@ -5551,6 +5600,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.TcpHalfcloseTimer = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("tcp_halfopen_timer"); ok {
@@ -5561,6 +5611,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.TcpHalfopenTimer = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("tcp_option"); ok {
@@ -5580,6 +5631,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.TcpRstTimer = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("tcp_timewait_timer"); ok {
@@ -5590,6 +5642,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.TcpTimewaitTimer = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("tftp"); ok {
@@ -5636,6 +5689,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.TwoFactorEmailExpiry = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("two_factor_fac_expiry"); ok {
@@ -5646,6 +5700,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.TwoFactorFacExpiry = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("two_factor_ftk_expiry"); ok {
@@ -5656,6 +5711,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.TwoFactorFtkExpiry = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("two_factor_ftm_expiry"); ok {
@@ -5666,6 +5722,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.TwoFactorFtmExpiry = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("two_factor_sms_expiry"); ok {
@@ -5676,6 +5733,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.TwoFactorSmsExpiry = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("udp_idle_timer"); ok {
@@ -5686,6 +5744,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.UdpIdleTimer = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("url_filter_affinity"); ok {
@@ -5705,6 +5764,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.UrlFilterCount = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("user_device_store_max_devices"); ok {
@@ -5715,6 +5775,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.UserDeviceStoreMaxDevices = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("user_device_store_max_unified_mem"); ok {
@@ -5725,6 +5786,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.UserDeviceStoreMaxUnifiedMem = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("user_device_store_max_users"); ok {
@@ -5735,6 +5797,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.UserDeviceStoreMaxUsers = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("user_server_cert"); ok {
@@ -5781,6 +5844,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.WadCsvcCsCount = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("wad_csvc_db_count"); ok {
@@ -5791,6 +5855,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.WadCsvcDbCount = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("wad_memory_change_granularity"); ok {
@@ -5801,6 +5866,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.WadMemoryChangeGranularity = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("wad_source_affinity"); ok {
@@ -5820,6 +5886,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.WadWorkerCount = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("wifi_ca_certificate"); ok {
@@ -5866,6 +5933,7 @@ func getObjectSystemGlobal(d *schema.ResourceData, sv string) (*models.SystemGlo
 			}
 			tmp := int64(v2)
 			obj.WirelessControllerPort = &tmp
+
 		}
 	}
 	return &obj, diags

@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -378,6 +378,7 @@ func getObjectWebProxyWisp(d *schema.ResourceData, sv string) (*models.WebProxyW
 			}
 			tmp := int64(v2)
 			obj.MaxConnections = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("name"); ok {
@@ -415,6 +416,7 @@ func getObjectWebProxyWisp(d *schema.ResourceData, sv string) (*models.WebProxyW
 			}
 			tmp := int64(v2)
 			obj.ServerPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("timeout"); ok {
@@ -425,6 +427,7 @@ func getObjectWebProxyWisp(d *schema.ResourceData, sv string) (*models.WebProxyW
 			}
 			tmp := int64(v2)
 			obj.Timeout = &tmp
+
 		}
 	}
 	return &obj, diags

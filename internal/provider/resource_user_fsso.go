@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
@@ -759,6 +759,7 @@ func getObjectUserFsso(d *schema.ResourceData, sv string) (*models.UserFsso, dia
 			}
 			tmp := int64(v2)
 			obj.GroupPollInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("interface"); ok {
@@ -805,6 +806,7 @@ func getObjectUserFsso(d *schema.ResourceData, sv string) (*models.UserFsso, dia
 			}
 			tmp := int64(v2)
 			obj.LdapPollInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ldap_server"); ok {
@@ -824,6 +826,7 @@ func getObjectUserFsso(d *schema.ResourceData, sv string) (*models.UserFsso, dia
 			}
 			tmp := int64(v2)
 			obj.LogonTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("name"); ok {
@@ -888,6 +891,7 @@ func getObjectUserFsso(d *schema.ResourceData, sv string) (*models.UserFsso, dia
 			}
 			tmp := int64(v2)
 			obj.Port = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("port2"); ok {
@@ -898,6 +902,7 @@ func getObjectUserFsso(d *schema.ResourceData, sv string) (*models.UserFsso, dia
 			}
 			tmp := int64(v2)
 			obj.Port2 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("port3"); ok {
@@ -908,6 +913,7 @@ func getObjectUserFsso(d *schema.ResourceData, sv string) (*models.UserFsso, dia
 			}
 			tmp := int64(v2)
 			obj.Port3 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("port4"); ok {
@@ -918,6 +924,7 @@ func getObjectUserFsso(d *schema.ResourceData, sv string) (*models.UserFsso, dia
 			}
 			tmp := int64(v2)
 			obj.Port4 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("port5"); ok {
@@ -928,6 +935,7 @@ func getObjectUserFsso(d *schema.ResourceData, sv string) (*models.UserFsso, dia
 			}
 			tmp := int64(v2)
 			obj.Port5 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("server"); ok {

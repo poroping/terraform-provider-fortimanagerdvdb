@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -1024,6 +1024,7 @@ func getObjectUserGroup(d *schema.ResourceData, sv string) (*models.UserGroup, d
 			}
 			tmp := int64(v2)
 			obj.AuthConcurrentValue = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("authtimeout"); ok {
@@ -1034,6 +1035,7 @@ func getObjectUserGroup(d *schema.ResourceData, sv string) (*models.UserGroup, d
 			}
 			tmp := int64(v2)
 			obj.Authtimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("company"); ok {
@@ -1062,6 +1064,7 @@ func getObjectUserGroup(d *schema.ResourceData, sv string) (*models.UserGroup, d
 			}
 			tmp := int64(v2)
 			obj.Expire = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("expire_type"); ok {
@@ -1116,6 +1119,7 @@ func getObjectUserGroup(d *schema.ResourceData, sv string) (*models.UserGroup, d
 			}
 			tmp := int64(v2)
 			obj.Id = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("match"); ok {
@@ -1143,6 +1147,7 @@ func getObjectUserGroup(d *schema.ResourceData, sv string) (*models.UserGroup, d
 			}
 			tmp := int64(v2)
 			obj.MaxAccounts = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("member"); ok {

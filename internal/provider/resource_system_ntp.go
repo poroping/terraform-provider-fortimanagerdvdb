@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
@@ -721,6 +721,7 @@ func getObjectSystemNtp(d *schema.ResourceData, sv string) (*models.SystemNtp, d
 			}
 			tmp := int64(v2)
 			obj.KeyId = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("key_type"); ok {
@@ -793,6 +794,7 @@ func getObjectSystemNtp(d *schema.ResourceData, sv string) (*models.SystemNtp, d
 			}
 			tmp := int64(v2)
 			obj.Syncinterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("type"); ok {

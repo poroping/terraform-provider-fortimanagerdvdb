@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
@@ -723,6 +723,7 @@ func getObjectSystemDns(d *schema.ResourceData, sv string) (*models.SystemDns, d
 			}
 			tmp := int64(v2)
 			obj.DnsCacheLimit = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("dns_cache_ttl"); ok {
@@ -733,6 +734,7 @@ func getObjectSystemDns(d *schema.ResourceData, sv string) (*models.SystemDns, d
 			}
 			tmp := int64(v2)
 			obj.DnsCacheTtl = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("dns_over_tls"); ok {
@@ -832,6 +834,7 @@ func getObjectSystemDns(d *schema.ResourceData, sv string) (*models.SystemDns, d
 			}
 			tmp := int64(v2)
 			obj.Retry = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("secondary"); ok {
@@ -895,6 +898,7 @@ func getObjectSystemDns(d *schema.ResourceData, sv string) (*models.SystemDns, d
 			}
 			tmp := int64(v2)
 			obj.Timeout = &tmp
+
 		}
 	}
 	return &obj, diags

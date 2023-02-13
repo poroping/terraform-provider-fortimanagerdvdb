@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/validators"
@@ -3367,7 +3367,8 @@ func expandWirelessControllerWtpSplitTunnelingAcl(d *schema.ResourceData, v inte
 		pre_append = fmt.Sprintf("%s.%d.dest_ip", pre, i)
 		if v1, ok := d.GetOk(pre_append); ok {
 			if v2, ok := v1.(string); ok {
-				tmp.DestIp = &v2
+				v3 := utils.Ipv4Split(v2)
+				tmp.DestIp = &v3
 			}
 		}
 
@@ -3477,6 +3478,7 @@ func getObjectWirelessControllerWtp(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.Index = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ip_fragment_preventing"); ok {
@@ -3760,6 +3762,7 @@ func getObjectWirelessControllerWtp(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.TunMtuDownlink = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("tun_mtu_uplink"); ok {
@@ -3770,6 +3773,7 @@ func getObjectWirelessControllerWtp(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.TunMtuUplink = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("uuid"); ok {

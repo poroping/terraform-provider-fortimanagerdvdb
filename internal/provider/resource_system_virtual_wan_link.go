@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
@@ -3918,6 +3918,7 @@ func getObjectSystemVirtualWanLink(d *schema.ResourceData, sv string) (*models.S
 			}
 			tmp := int64(v2)
 			obj.NeighborHoldBootTime = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("neighbor_hold_down"); ok {
@@ -3937,6 +3938,7 @@ func getObjectSystemVirtualWanLink(d *schema.ResourceData, sv string) (*models.S
 			}
 			tmp := int64(v2)
 			obj.NeighborHoldDownTime = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("service"); ok {

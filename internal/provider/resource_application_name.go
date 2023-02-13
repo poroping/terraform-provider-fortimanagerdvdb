@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -655,6 +655,7 @@ func getObjectApplicationName(d *schema.ResourceData, sv string) (*models.Applic
 			}
 			tmp := int64(v2)
 			obj.Category = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("fosid"); ok {
@@ -665,6 +666,7 @@ func getObjectApplicationName(d *schema.ResourceData, sv string) (*models.Applic
 			}
 			tmp := int64(v2)
 			obj.Id = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("metadata"); ok {
@@ -727,6 +729,7 @@ func getObjectApplicationName(d *schema.ResourceData, sv string) (*models.Applic
 			}
 			tmp := int64(v2)
 			obj.Popularity = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("protocol"); ok {
@@ -746,6 +749,7 @@ func getObjectApplicationName(d *schema.ResourceData, sv string) (*models.Applic
 			}
 			tmp := int64(v2)
 			obj.Risk = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("sub_category"); ok {
@@ -756,6 +760,7 @@ func getObjectApplicationName(d *schema.ResourceData, sv string) (*models.Applic
 			}
 			tmp := int64(v2)
 			obj.SubCategory = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("technology"); ok {
@@ -784,6 +789,7 @@ func getObjectApplicationName(d *schema.ResourceData, sv string) (*models.Applic
 			}
 			tmp := int64(v2)
 			obj.Weight = &tmp
+
 		}
 	}
 	return &obj, diags

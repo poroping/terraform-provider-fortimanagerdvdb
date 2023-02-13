@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/validators"
 )
@@ -575,7 +575,8 @@ func expandSystemMobileTunnelNetwork(d *schema.ResourceData, v interface{}, pre 
 		pre_append = fmt.Sprintf("%s.%d.prefix", pre, i)
 		if v1, ok := d.GetOk(pre_append); ok {
 			if v2, ok := v1.(string); ok {
-				tmp.Prefix = &v2
+				v3 := utils.Ipv4Split(v2)
+				tmp.Prefix = &v3
 			}
 		}
 
@@ -623,6 +624,7 @@ func getObjectSystemMobileTunnel(d *schema.ResourceData, sv string) (*models.Sys
 			}
 			tmp := int64(v2)
 			obj.Lifetime = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("n_mhae_key"); ok {
@@ -651,6 +653,7 @@ func getObjectSystemMobileTunnel(d *schema.ResourceData, sv string) (*models.Sys
 			}
 			tmp := int64(v2)
 			obj.NMhaeSpi = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("name"); ok {
@@ -687,6 +690,7 @@ func getObjectSystemMobileTunnel(d *schema.ResourceData, sv string) (*models.Sys
 			}
 			tmp := int64(v2)
 			obj.RegInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("reg_retry"); ok {
@@ -697,6 +701,7 @@ func getObjectSystemMobileTunnel(d *schema.ResourceData, sv string) (*models.Sys
 			}
 			tmp := int64(v2)
 			obj.RegRetry = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("renew_interval"); ok {
@@ -707,6 +712,7 @@ func getObjectSystemMobileTunnel(d *schema.ResourceData, sv string) (*models.Sys
 			}
 			tmp := int64(v2)
 			obj.RenewInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("roaming_interface"); ok {

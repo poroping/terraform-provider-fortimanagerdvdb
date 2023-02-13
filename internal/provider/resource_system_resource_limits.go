@@ -13,7 +13,7 @@ import (
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -516,6 +516,7 @@ func getObjectSystemResourceLimits(d *schema.ResourceData, sv string) (*models.S
 			}
 			tmp := int64(v2)
 			obj.CustomService = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("dialup_tunnel"); ok {
@@ -526,6 +527,7 @@ func getObjectSystemResourceLimits(d *schema.ResourceData, sv string) (*models.S
 			}
 			tmp := int64(v2)
 			obj.DialupTunnel = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("firewall_address"); ok {
@@ -536,6 +538,7 @@ func getObjectSystemResourceLimits(d *schema.ResourceData, sv string) (*models.S
 			}
 			tmp := int64(v2)
 			obj.FirewallAddress = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("firewall_addrgrp"); ok {
@@ -546,6 +549,7 @@ func getObjectSystemResourceLimits(d *schema.ResourceData, sv string) (*models.S
 			}
 			tmp := int64(v2)
 			obj.FirewallAddrgrp = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("firewall_policy"); ok {
@@ -556,6 +560,7 @@ func getObjectSystemResourceLimits(d *schema.ResourceData, sv string) (*models.S
 			}
 			tmp := int64(v2)
 			obj.FirewallPolicy = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ipsec_phase1"); ok {
@@ -566,6 +571,7 @@ func getObjectSystemResourceLimits(d *schema.ResourceData, sv string) (*models.S
 			}
 			tmp := int64(v2)
 			obj.IpsecPhase1 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ipsec_phase1_interface"); ok {
@@ -576,6 +582,7 @@ func getObjectSystemResourceLimits(d *schema.ResourceData, sv string) (*models.S
 			}
 			tmp := int64(v2)
 			obj.IpsecPhase1Interface = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ipsec_phase2"); ok {
@@ -586,6 +593,7 @@ func getObjectSystemResourceLimits(d *schema.ResourceData, sv string) (*models.S
 			}
 			tmp := int64(v2)
 			obj.IpsecPhase2 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ipsec_phase2_interface"); ok {
@@ -596,6 +604,7 @@ func getObjectSystemResourceLimits(d *schema.ResourceData, sv string) (*models.S
 			}
 			tmp := int64(v2)
 			obj.IpsecPhase2Interface = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("log_disk_quota"); ok {
@@ -606,6 +615,7 @@ func getObjectSystemResourceLimits(d *schema.ResourceData, sv string) (*models.S
 			}
 			tmp := int64(v2)
 			obj.LogDiskQuota = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("onetime_schedule"); ok {
@@ -616,6 +626,7 @@ func getObjectSystemResourceLimits(d *schema.ResourceData, sv string) (*models.S
 			}
 			tmp := int64(v2)
 			obj.OnetimeSchedule = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("proxy"); ok {
@@ -626,6 +637,7 @@ func getObjectSystemResourceLimits(d *schema.ResourceData, sv string) (*models.S
 			}
 			tmp := int64(v2)
 			obj.Proxy = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("recurring_schedule"); ok {
@@ -636,6 +648,7 @@ func getObjectSystemResourceLimits(d *schema.ResourceData, sv string) (*models.S
 			}
 			tmp := int64(v2)
 			obj.RecurringSchedule = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("service_group"); ok {
@@ -646,6 +659,7 @@ func getObjectSystemResourceLimits(d *schema.ResourceData, sv string) (*models.S
 			}
 			tmp := int64(v2)
 			obj.ServiceGroup = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("session"); ok {
@@ -656,6 +670,7 @@ func getObjectSystemResourceLimits(d *schema.ResourceData, sv string) (*models.S
 			}
 			tmp := int64(v2)
 			obj.Session = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("sslvpn"); ok {
@@ -666,6 +681,7 @@ func getObjectSystemResourceLimits(d *schema.ResourceData, sv string) (*models.S
 			}
 			tmp := int64(v2)
 			obj.Sslvpn = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("user"); ok {
@@ -676,6 +692,7 @@ func getObjectSystemResourceLimits(d *schema.ResourceData, sv string) (*models.S
 			}
 			tmp := int64(v2)
 			obj.User = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("user_group"); ok {
@@ -686,6 +703,7 @@ func getObjectSystemResourceLimits(d *schema.ResourceData, sv string) (*models.S
 			}
 			tmp := int64(v2)
 			obj.UserGroup = &tmp
+
 		}
 	}
 	return &obj, diags

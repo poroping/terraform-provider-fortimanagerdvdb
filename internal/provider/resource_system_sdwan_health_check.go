@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
@@ -974,6 +974,7 @@ func getObjectSystemSdwanHealthCheck(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.Failtime = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ftp_file"); ok {
@@ -1002,6 +1003,7 @@ func getObjectSystemSdwanHealthCheck(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.HaPriority = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("http_agent"); ok {
@@ -1039,6 +1041,7 @@ func getObjectSystemSdwanHealthCheck(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.Interval = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("members"); ok {
@@ -1075,6 +1078,7 @@ func getObjectSystemSdwanHealthCheck(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.PacketSize = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("password"); ok {
@@ -1094,6 +1098,7 @@ func getObjectSystemSdwanHealthCheck(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.Port = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("probe_count"); ok {
@@ -1104,6 +1109,7 @@ func getObjectSystemSdwanHealthCheck(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.ProbeCount = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("probe_packets"); ok {
@@ -1123,6 +1129,7 @@ func getObjectSystemSdwanHealthCheck(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.ProbeTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("protocol"); ok {
@@ -1151,6 +1158,7 @@ func getObjectSystemSdwanHealthCheck(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.Recoverytime = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("security_mode"); ok {
@@ -1196,6 +1204,7 @@ func getObjectSystemSdwanHealthCheck(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.SlaFailLogPeriod = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("sla_pass_log_period"); ok {
@@ -1206,6 +1215,7 @@ func getObjectSystemSdwanHealthCheck(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.SlaPassLogPeriod = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("system_dns"); ok {
@@ -1225,6 +1235,7 @@ func getObjectSystemSdwanHealthCheck(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.ThresholdAlertJitter = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("threshold_alert_latency"); ok {
@@ -1235,6 +1246,7 @@ func getObjectSystemSdwanHealthCheck(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.ThresholdAlertLatency = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("threshold_alert_packetloss"); ok {
@@ -1245,6 +1257,7 @@ func getObjectSystemSdwanHealthCheck(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.ThresholdAlertPacketloss = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("threshold_warning_jitter"); ok {
@@ -1255,6 +1268,7 @@ func getObjectSystemSdwanHealthCheck(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.ThresholdWarningJitter = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("threshold_warning_latency"); ok {
@@ -1265,6 +1279,7 @@ func getObjectSystemSdwanHealthCheck(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.ThresholdWarningLatency = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("threshold_warning_packetloss"); ok {
@@ -1275,6 +1290,7 @@ func getObjectSystemSdwanHealthCheck(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.ThresholdWarningPacketloss = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("update_cascade_interface"); ok {

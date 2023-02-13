@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
@@ -2244,6 +2244,7 @@ func getObjectVpnSslSettings(d *schema.ResourceData, sv string) (*models.VpnSslS
 			}
 			tmp := int64(v2)
 			obj.AuthTimeout = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("authentication_rule"); ok {
@@ -2325,6 +2326,7 @@ func getObjectVpnSslSettings(d *schema.ResourceData, sv string) (*models.VpnSslS
 			}
 			tmp := int64(v2)
 			obj.DeflateCompressionLevel = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("deflate_min_data_size"); ok {
@@ -2335,6 +2337,7 @@ func getObjectVpnSslSettings(d *schema.ResourceData, sv string) (*models.VpnSslS
 			}
 			tmp := int64(v2)
 			obj.DeflateMinDataSize = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("dns_server1"); ok {
@@ -2372,6 +2375,7 @@ func getObjectVpnSslSettings(d *schema.ResourceData, sv string) (*models.VpnSslS
 			}
 			tmp := int64(v2)
 			obj.DtlsHelloTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("dtls_max_proto_ver"); ok {
@@ -2481,6 +2485,7 @@ func getObjectVpnSslSettings(d *schema.ResourceData, sv string) (*models.VpnSslS
 			}
 			tmp := int64(v2)
 			obj.HttpRequestBodyTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("http_request_header_timeout"); ok {
@@ -2491,6 +2496,7 @@ func getObjectVpnSslSettings(d *schema.ResourceData, sv string) (*models.VpnSslS
 			}
 			tmp := int64(v2)
 			obj.HttpRequestHeaderTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("https_redirect"); ok {
@@ -2510,6 +2516,7 @@ func getObjectVpnSslSettings(d *schema.ResourceData, sv string) (*models.VpnSslS
 			}
 			tmp := int64(v2)
 			obj.IdleTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ipv6_dns_server1"); ok {
@@ -2556,6 +2563,7 @@ func getObjectVpnSslSettings(d *schema.ResourceData, sv string) (*models.VpnSslS
 			}
 			tmp := int64(v2)
 			obj.LoginAttemptLimit = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("login_block_time"); ok {
@@ -2566,6 +2574,7 @@ func getObjectVpnSslSettings(d *schema.ResourceData, sv string) (*models.VpnSslS
 			}
 			tmp := int64(v2)
 			obj.LoginBlockTime = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("login_timeout"); ok {
@@ -2576,6 +2585,7 @@ func getObjectVpnSslSettings(d *schema.ResourceData, sv string) (*models.VpnSslS
 			}
 			tmp := int64(v2)
 			obj.LoginTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("port"); ok {
@@ -2586,6 +2596,7 @@ func getObjectVpnSslSettings(d *schema.ResourceData, sv string) (*models.VpnSslS
 			}
 			tmp := int64(v2)
 			obj.Port = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("port_precedence"); ok {
@@ -2623,6 +2634,7 @@ func getObjectVpnSslSettings(d *schema.ResourceData, sv string) (*models.VpnSslS
 			}
 			tmp := int64(v2)
 			obj.SamlRedirectPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("servercert"); ok {
@@ -2853,6 +2865,7 @@ func getObjectVpnSslSettings(d *schema.ResourceData, sv string) (*models.VpnSslS
 			}
 			tmp := int64(v2)
 			obj.TunnelUserSessionTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("unsafe_legacy_renegotiation"); ok {

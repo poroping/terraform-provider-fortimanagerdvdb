@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -948,6 +948,7 @@ func getObjectFirewallVip64(d *schema.ResourceData, sv string) (*models.Firewall
 			}
 			tmp := int64(v2)
 			obj.Color = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("comment"); ok {
@@ -985,6 +986,7 @@ func getObjectFirewallVip64(d *schema.ResourceData, sv string) (*models.Firewall
 			}
 			tmp := int64(v2)
 			obj.Id = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ldb_method"); ok {

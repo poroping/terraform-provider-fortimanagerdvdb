@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
@@ -2446,6 +2446,7 @@ func getObjectFirewallVip(d *schema.ResourceData, sv string) (*models.FirewallVi
 			}
 			tmp := int64(v2)
 			obj.Color = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("comment"); ok {
@@ -2465,6 +2466,7 @@ func getObjectFirewallVip(d *schema.ResourceData, sv string) (*models.FirewallVi
 			}
 			tmp := int64(v2)
 			obj.DnsMappingTtl = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("extaddr"); ok {
@@ -2519,6 +2521,7 @@ func getObjectFirewallVip(d *schema.ResourceData, sv string) (*models.FirewallVi
 			}
 			tmp := int64(v2)
 			obj.GratuitousArpInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("http_cookie_age"); ok {
@@ -2529,6 +2532,7 @@ func getObjectFirewallVip(d *schema.ResourceData, sv string) (*models.FirewallVi
 			}
 			tmp := int64(v2)
 			obj.HttpCookieAge = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("http_cookie_domain"); ok {
@@ -2557,6 +2561,7 @@ func getObjectFirewallVip(d *schema.ResourceData, sv string) (*models.FirewallVi
 			}
 			tmp := int64(v2)
 			obj.HttpCookieGeneration = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("http_cookie_path"); ok {
@@ -2630,6 +2635,7 @@ func getObjectFirewallVip(d *schema.ResourceData, sv string) (*models.FirewallVi
 			}
 			tmp := int64(v2)
 			obj.Id = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ipv6_mappedip"); ok {
@@ -2702,6 +2708,7 @@ func getObjectFirewallVip(d *schema.ResourceData, sv string) (*models.FirewallVi
 			}
 			tmp := int64(v2)
 			obj.MaxEmbryonicConnections = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("monitor"); ok {
@@ -2940,6 +2947,7 @@ func getObjectFirewallVip(d *schema.ResourceData, sv string) (*models.FirewallVi
 			}
 			tmp := int64(v2)
 			obj.SslClientRekeyCount = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ssl_client_renegotiation"); ok {
@@ -2959,6 +2967,7 @@ func getObjectFirewallVip(d *schema.ResourceData, sv string) (*models.FirewallVi
 			}
 			tmp := int64(v2)
 			obj.SslClientSessionStateMax = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ssl_client_session_state_timeout"); ok {
@@ -2969,6 +2978,7 @@ func getObjectFirewallVip(d *schema.ResourceData, sv string) (*models.FirewallVi
 			}
 			tmp := int64(v2)
 			obj.SslClientSessionStateTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ssl_client_session_state_type"); ok {
@@ -3006,6 +3016,7 @@ func getObjectFirewallVip(d *schema.ResourceData, sv string) (*models.FirewallVi
 			}
 			tmp := int64(v2)
 			obj.SslHpkpAge = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ssl_hpkp_backup"); ok {
@@ -3061,6 +3072,7 @@ func getObjectFirewallVip(d *schema.ResourceData, sv string) (*models.FirewallVi
 			}
 			tmp := int64(v2)
 			obj.SslHstsAge = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ssl_hsts_include_subdomains"); ok {
@@ -3187,6 +3199,7 @@ func getObjectFirewallVip(d *schema.ResourceData, sv string) (*models.FirewallVi
 			}
 			tmp := int64(v2)
 			obj.SslServerSessionStateMax = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ssl_server_session_state_timeout"); ok {
@@ -3197,6 +3210,7 @@ func getObjectFirewallVip(d *schema.ResourceData, sv string) (*models.FirewallVi
 			}
 			tmp := int64(v2)
 			obj.SslServerSessionStateTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ssl_server_session_state_type"); ok {

@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
@@ -1833,6 +1833,7 @@ func getObjectRouterBgpNeighbor(d *schema.ResourceData, sv string) (*models.Rout
 			}
 			tmp := int64(v2)
 			obj.AdvAdditionalPath = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("adv_additional_path6"); ok {
@@ -1843,6 +1844,7 @@ func getObjectRouterBgpNeighbor(d *schema.ResourceData, sv string) (*models.Rout
 			}
 			tmp := int64(v2)
 			obj.AdvAdditionalPath6 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("advertisement_interval"); ok {
@@ -1853,6 +1855,7 @@ func getObjectRouterBgpNeighbor(d *schema.ResourceData, sv string) (*models.Rout
 			}
 			tmp := int64(v2)
 			obj.AdvertisementInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("allowas_in"); ok {
@@ -1863,6 +1866,7 @@ func getObjectRouterBgpNeighbor(d *schema.ResourceData, sv string) (*models.Rout
 			}
 			tmp := int64(v2)
 			obj.AllowasIn = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("allowas_in_enable"); ok {
@@ -1891,6 +1895,7 @@ func getObjectRouterBgpNeighbor(d *schema.ResourceData, sv string) (*models.Rout
 			}
 			tmp := int64(v2)
 			obj.AllowasIn6 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("as_override"); ok {
@@ -2052,6 +2057,7 @@ func getObjectRouterBgpNeighbor(d *schema.ResourceData, sv string) (*models.Rout
 			}
 			tmp := int64(v2)
 			obj.ConnectTimer = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("default_originate_routemap"); ok {
@@ -2143,6 +2149,7 @@ func getObjectRouterBgpNeighbor(d *schema.ResourceData, sv string) (*models.Rout
 			}
 			tmp := int64(v2)
 			obj.EbgpMultihopTtl = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("filter_list_in"); ok {
@@ -2189,6 +2196,7 @@ func getObjectRouterBgpNeighbor(d *schema.ResourceData, sv string) (*models.Rout
 			}
 			tmp := int64(v2)
 			obj.HoldtimeTimer = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("interface"); ok {
@@ -2217,6 +2225,7 @@ func getObjectRouterBgpNeighbor(d *schema.ResourceData, sv string) (*models.Rout
 			}
 			tmp := int64(v2)
 			obj.KeepAliveTimer = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("link_down_failover"); ok {
@@ -2236,6 +2245,7 @@ func getObjectRouterBgpNeighbor(d *schema.ResourceData, sv string) (*models.Rout
 			}
 			tmp := int64(v2)
 			obj.LocalAs = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("local_as_no_prepend"); ok {
@@ -2264,6 +2274,7 @@ func getObjectRouterBgpNeighbor(d *schema.ResourceData, sv string) (*models.Rout
 			}
 			tmp := int64(v2)
 			obj.MaximumPrefix = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("maximum_prefix_threshold"); ok {
@@ -2274,6 +2285,7 @@ func getObjectRouterBgpNeighbor(d *schema.ResourceData, sv string) (*models.Rout
 			}
 			tmp := int64(v2)
 			obj.MaximumPrefixThreshold = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("maximum_prefix_threshold6"); ok {
@@ -2284,6 +2296,7 @@ func getObjectRouterBgpNeighbor(d *schema.ResourceData, sv string) (*models.Rout
 			}
 			tmp := int64(v2)
 			obj.MaximumPrefixThreshold6 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("maximum_prefix_warning_only"); ok {
@@ -2312,6 +2325,7 @@ func getObjectRouterBgpNeighbor(d *schema.ResourceData, sv string) (*models.Rout
 			}
 			tmp := int64(v2)
 			obj.MaximumPrefix6 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("next_hop_self"); ok {
@@ -2421,6 +2435,7 @@ func getObjectRouterBgpNeighbor(d *schema.ResourceData, sv string) (*models.Rout
 			}
 			tmp := int64(v2)
 			obj.RemoteAs = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("remove_private_as"); ok {
@@ -2449,6 +2464,7 @@ func getObjectRouterBgpNeighbor(d *schema.ResourceData, sv string) (*models.Rout
 			}
 			tmp := int64(v2)
 			obj.RestartTime = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("retain_stale_time"); ok {
@@ -2459,6 +2475,7 @@ func getObjectRouterBgpNeighbor(d *schema.ResourceData, sv string) (*models.Rout
 			}
 			tmp := int64(v2)
 			obj.RetainStaleTime = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("route_map_in"); ok {
@@ -2649,6 +2666,7 @@ func getObjectRouterBgpNeighbor(d *schema.ResourceData, sv string) (*models.Rout
 			}
 			tmp := int64(v2)
 			obj.Weight = &tmp
+
 		}
 	}
 	return &obj, diags

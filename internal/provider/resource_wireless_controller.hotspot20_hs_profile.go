@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -987,6 +987,7 @@ func getObjectWirelessControllerHotspot20HsProfile(d *schema.ResourceData, sv st
 			}
 			tmp := int64(v2)
 			obj.AnqpDomainId = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("bss_transition"); ok {
@@ -1015,6 +1016,7 @@ func getObjectWirelessControllerHotspot20HsProfile(d *schema.ResourceData, sv st
 			}
 			tmp := int64(v2)
 			obj.DeauthRequestTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("dgaf"); ok {
@@ -1043,6 +1045,7 @@ func getObjectWirelessControllerHotspot20HsProfile(d *schema.ResourceData, sv st
 			}
 			tmp := int64(v2)
 			obj.GasComebackDelay = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("gas_fragmentation_limit"); ok {
@@ -1053,6 +1056,7 @@ func getObjectWirelessControllerHotspot20HsProfile(d *schema.ResourceData, sv st
 			}
 			tmp := int64(v2)
 			obj.GasFragmentationLimit = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("hessid"); ok {
@@ -1197,6 +1201,7 @@ func getObjectWirelessControllerHotspot20HsProfile(d *schema.ResourceData, sv st
 			}
 			tmp := int64(v2)
 			obj.Release = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("roaming_consortium"); ok {

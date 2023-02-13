@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -857,6 +857,7 @@ func getObjectFirewallServiceCustom(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.Color = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("comment"); ok {
@@ -903,6 +904,7 @@ func getObjectFirewallServiceCustom(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.Icmpcode = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("icmptype"); ok {
@@ -913,6 +915,7 @@ func getObjectFirewallServiceCustom(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.Icmptype = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("iprange"); ok {
@@ -950,6 +953,7 @@ func getObjectFirewallServiceCustom(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.ProtocolNumber = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("proxy"); ok {
@@ -987,6 +991,7 @@ func getObjectFirewallServiceCustom(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.TcpHalfcloseTimer = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("tcp_halfopen_timer"); ok {
@@ -997,6 +1002,7 @@ func getObjectFirewallServiceCustom(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.TcpHalfopenTimer = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("tcp_portrange"); ok {
@@ -1016,6 +1022,7 @@ func getObjectFirewallServiceCustom(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.TcpRstTimer = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("tcp_timewait_timer"); ok {
@@ -1026,6 +1033,7 @@ func getObjectFirewallServiceCustom(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.TcpTimewaitTimer = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("udp_idle_timer"); ok {
@@ -1036,6 +1044,7 @@ func getObjectFirewallServiceCustom(d *schema.ResourceData, sv string) (*models.
 			}
 			tmp := int64(v2)
 			obj.UdpIdleTimer = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("udp_portrange"); ok {

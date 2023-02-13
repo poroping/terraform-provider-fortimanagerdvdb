@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -432,6 +432,7 @@ func getObjectFirewallSslSetting(d *schema.ResourceData, sv string) (*models.Fir
 			}
 			tmp := int64(v2)
 			obj.CertCacheCapacity = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("cert_cache_timeout"); ok {
@@ -442,6 +443,7 @@ func getObjectFirewallSslSetting(d *schema.ResourceData, sv string) (*models.Fir
 			}
 			tmp := int64(v2)
 			obj.CertCacheTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("kxp_queue_threshold"); ok {
@@ -452,6 +454,7 @@ func getObjectFirewallSslSetting(d *schema.ResourceData, sv string) (*models.Fir
 			}
 			tmp := int64(v2)
 			obj.KxpQueueThreshold = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("no_matching_cipher_action"); ok {
@@ -471,6 +474,7 @@ func getObjectFirewallSslSetting(d *schema.ResourceData, sv string) (*models.Fir
 			}
 			tmp := int64(v2)
 			obj.ProxyConnectTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("session_cache_capacity"); ok {
@@ -481,6 +485,7 @@ func getObjectFirewallSslSetting(d *schema.ResourceData, sv string) (*models.Fir
 			}
 			tmp := int64(v2)
 			obj.SessionCacheCapacity = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("session_cache_timeout"); ok {
@@ -491,6 +496,7 @@ func getObjectFirewallSslSetting(d *schema.ResourceData, sv string) (*models.Fir
 			}
 			tmp := int64(v2)
 			obj.SessionCacheTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ssl_dh_bits"); ok {
@@ -510,6 +516,7 @@ func getObjectFirewallSslSetting(d *schema.ResourceData, sv string) (*models.Fir
 			}
 			tmp := int64(v2)
 			obj.SslQueueThreshold = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ssl_send_empty_frags"); ok {

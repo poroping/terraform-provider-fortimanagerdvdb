@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/validators"
@@ -2669,6 +2669,7 @@ func getObjectVpnIpsecPhase1(d *schema.ResourceData, sv string) (*models.VpnIpse
 			}
 			tmp := int64(v2)
 			obj.Distance = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("dns_mode"); ok {
@@ -2706,6 +2707,7 @@ func getObjectVpnIpsecPhase1(d *schema.ResourceData, sv string) (*models.VpnIpse
 			}
 			tmp := int64(v2)
 			obj.DpdRetrycount = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("dpd_retryinterval"); ok {
@@ -2770,6 +2772,7 @@ func getObjectVpnIpsecPhase1(d *schema.ResourceData, sv string) (*models.VpnIpse
 			}
 			tmp := int64(v2)
 			obj.FecBase = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("fec_codec"); ok {
@@ -2825,6 +2828,7 @@ func getObjectVpnIpsecPhase1(d *schema.ResourceData, sv string) (*models.VpnIpse
 			}
 			tmp := int64(v2)
 			obj.FecReceiveTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("fec_redundant"); ok {
@@ -2835,6 +2839,7 @@ func getObjectVpnIpsecPhase1(d *schema.ResourceData, sv string) (*models.VpnIpse
 			}
 			tmp := int64(v2)
 			obj.FecRedundant = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("fec_send_timeout"); ok {
@@ -2845,6 +2850,7 @@ func getObjectVpnIpsecPhase1(d *schema.ResourceData, sv string) (*models.VpnIpse
 			}
 			tmp := int64(v2)
 			obj.FecSendTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("forticlient_enforcement"); ok {
@@ -2873,6 +2879,7 @@ func getObjectVpnIpsecPhase1(d *schema.ResourceData, sv string) (*models.VpnIpse
 			}
 			tmp := int64(v2)
 			obj.FragmentationMtu = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("group_authentication"); ok {
@@ -2919,6 +2926,7 @@ func getObjectVpnIpsecPhase1(d *schema.ResourceData, sv string) (*models.VpnIpse
 			}
 			tmp := int64(v2)
 			obj.IdleTimeoutinterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ike_version"); ok {
@@ -2956,6 +2964,7 @@ func getObjectVpnIpsecPhase1(d *schema.ResourceData, sv string) (*models.VpnIpse
 			}
 			tmp := int64(v2)
 			obj.IpDelayInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ipv4_dns_server1"); ok {
@@ -3144,6 +3153,7 @@ func getObjectVpnIpsecPhase1(d *schema.ResourceData, sv string) (*models.VpnIpse
 			}
 			tmp := int64(v2)
 			obj.Ipv6Prefix = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ipv6_split_exclude"); ok {
@@ -3181,6 +3191,7 @@ func getObjectVpnIpsecPhase1(d *schema.ResourceData, sv string) (*models.VpnIpse
 			}
 			tmp := int64(v2)
 			obj.Keepalive = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("keylife"); ok {
@@ -3191,6 +3202,7 @@ func getObjectVpnIpsecPhase1(d *schema.ResourceData, sv string) (*models.VpnIpse
 			}
 			tmp := int64(v2)
 			obj.Keylife = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("local_gw"); ok {
@@ -3282,6 +3294,7 @@ func getObjectVpnIpsecPhase1(d *schema.ResourceData, sv string) (*models.VpnIpse
 			}
 			tmp := int64(v2)
 			obj.NegotiateTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("network_id"); ok {
@@ -3292,6 +3305,7 @@ func getObjectVpnIpsecPhase1(d *schema.ResourceData, sv string) (*models.VpnIpse
 			}
 			tmp := int64(v2)
 			obj.NetworkId = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("network_overlay"); ok {
@@ -3383,6 +3397,7 @@ func getObjectVpnIpsecPhase1(d *schema.ResourceData, sv string) (*models.VpnIpse
 			}
 			tmp := int64(v2)
 			obj.Priority = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("proposal"); ok {

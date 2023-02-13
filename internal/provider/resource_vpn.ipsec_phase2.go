@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/validators"
@@ -724,13 +724,8 @@ func refreshObjectVpnIpsecPhase2(d *schema.ResourceData, o *models.VpnIpsecPhase
 
 	if o.DstSubnet != nil {
 		v := *o.DstSubnet
-		if current, ok := d.GetOk("dst_subnet"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("dst_subnet", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("dst_subnet", v2); err != nil {
 			return diag.Errorf("error reading dst_subnet: %v", err)
 		}
 	}
@@ -945,13 +940,8 @@ func refreshObjectVpnIpsecPhase2(d *schema.ResourceData, o *models.VpnIpsecPhase
 
 	if o.SrcSubnet != nil {
 		v := *o.SrcSubnet
-		if current, ok := d.GetOk("src_subnet"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("src_subnet", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("src_subnet", v2); err != nil {
 			return diag.Errorf("error reading src_subnet: %v", err)
 		}
 	}
@@ -1095,6 +1085,7 @@ func getObjectVpnIpsecPhase2(d *schema.ResourceData, sv string) (*models.VpnIpse
 			}
 			tmp := int64(v2)
 			obj.DstPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("dst_start_ip"); ok {
@@ -1121,7 +1112,9 @@ func getObjectVpnIpsecPhase2(d *schema.ResourceData, sv string) (*models.VpnIpse
 				e := utils.AttributeVersionWarning("dst_subnet", sv)
 				diags = append(diags, e)
 			}
-			obj.DstSubnet = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.DstSubnet = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("dst_subnet6"); ok {
@@ -1186,6 +1179,7 @@ func getObjectVpnIpsecPhase2(d *schema.ResourceData, sv string) (*models.VpnIpse
 			}
 			tmp := int64(v2)
 			obj.Keylifekbs = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("keylifeseconds"); ok {
@@ -1196,6 +1190,7 @@ func getObjectVpnIpsecPhase2(d *schema.ResourceData, sv string) (*models.VpnIpse
 			}
 			tmp := int64(v2)
 			obj.Keylifeseconds = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("l2tp"); ok {
@@ -1251,6 +1246,7 @@ func getObjectVpnIpsecPhase2(d *schema.ResourceData, sv string) (*models.VpnIpse
 			}
 			tmp := int64(v2)
 			obj.Protocol = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("replay"); ok {
@@ -1342,6 +1338,7 @@ func getObjectVpnIpsecPhase2(d *schema.ResourceData, sv string) (*models.VpnIpse
 			}
 			tmp := int64(v2)
 			obj.SrcPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("src_start_ip"); ok {
@@ -1368,7 +1365,9 @@ func getObjectVpnIpsecPhase2(d *schema.ResourceData, sv string) (*models.VpnIpse
 				e := utils.AttributeVersionWarning("src_subnet", sv)
 				diags = append(diags, e)
 			}
-			obj.SrcSubnet = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.SrcSubnet = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("src_subnet6"); ok {

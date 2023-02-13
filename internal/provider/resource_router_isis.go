@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/validators"
@@ -2020,7 +2020,8 @@ func expandRouterIsisSummaryAddress(d *schema.ResourceData, v interface{}, pre s
 		pre_append = fmt.Sprintf("%s.%d.prefix", pre, i)
 		if v1, ok := d.GetOk(pre_append); ok {
 			if v2, ok := v1.(string); ok {
-				tmp.Prefix = &v2
+				v3 := utils.Ipv4Split(v2)
+				tmp.Prefix = &v3
 			}
 		}
 
@@ -2267,6 +2268,7 @@ func getObjectRouterIsis(d *schema.ResourceData, sv string) (*models.RouterIsis,
 			}
 			tmp := int64(v2)
 			obj.LspGenIntervalL1 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("lsp_gen_interval_l2"); ok {
@@ -2277,6 +2279,7 @@ func getObjectRouterIsis(d *schema.ResourceData, sv string) (*models.RouterIsis,
 			}
 			tmp := int64(v2)
 			obj.LspGenIntervalL2 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("lsp_refresh_interval"); ok {
@@ -2287,6 +2290,7 @@ func getObjectRouterIsis(d *schema.ResourceData, sv string) (*models.RouterIsis,
 			}
 			tmp := int64(v2)
 			obj.LspRefreshInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("max_lsp_lifetime"); ok {
@@ -2297,6 +2301,7 @@ func getObjectRouterIsis(d *schema.ResourceData, sv string) (*models.RouterIsis,
 			}
 			tmp := int64(v2)
 			obj.MaxLspLifetime = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("metric_style"); ok {
@@ -2325,6 +2330,7 @@ func getObjectRouterIsis(d *schema.ResourceData, sv string) (*models.RouterIsis,
 			}
 			tmp := int64(v2)
 			obj.OverloadBitOnStartup = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("overload_bit_suppress"); ok {

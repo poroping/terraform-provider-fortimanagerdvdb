@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -327,6 +327,7 @@ func getObjectSystemStp(d *schema.ResourceData, sv string) (*models.SystemStp, d
 			}
 			tmp := int64(v2)
 			obj.ForwardDelay = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("hello_time"); ok {
@@ -337,6 +338,7 @@ func getObjectSystemStp(d *schema.ResourceData, sv string) (*models.SystemStp, d
 			}
 			tmp := int64(v2)
 			obj.HelloTime = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("max_age"); ok {
@@ -347,6 +349,7 @@ func getObjectSystemStp(d *schema.ResourceData, sv string) (*models.SystemStp, d
 			}
 			tmp := int64(v2)
 			obj.MaxAge = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("max_hops"); ok {
@@ -357,6 +360,7 @@ func getObjectSystemStp(d *schema.ResourceData, sv string) (*models.SystemStp, d
 			}
 			tmp := int64(v2)
 			obj.MaxHops = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("switch_priority"); ok {

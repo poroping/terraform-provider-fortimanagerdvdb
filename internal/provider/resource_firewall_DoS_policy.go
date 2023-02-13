@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -834,6 +834,7 @@ func getObjectFirewallDoSPolicy(d *schema.ResourceData, sv string) (*models.Fire
 			}
 			tmp := int64(v2)
 			obj.Policyid = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("service"); ok {

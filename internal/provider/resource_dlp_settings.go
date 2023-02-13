@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -326,6 +326,7 @@ func getObjectDlpSettings(d *schema.ResourceData, sv string) (*models.DlpSetting
 			}
 			tmp := int64(v2)
 			obj.CacheMemPercent = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("chunk_size"); ok {
@@ -336,6 +337,7 @@ func getObjectDlpSettings(d *schema.ResourceData, sv string) (*models.DlpSetting
 			}
 			tmp := int64(v2)
 			obj.ChunkSize = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("db_mode"); ok {
@@ -355,6 +357,7 @@ func getObjectDlpSettings(d *schema.ResourceData, sv string) (*models.DlpSetting
 			}
 			tmp := int64(v2)
 			obj.Size = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("storage_device"); ok {

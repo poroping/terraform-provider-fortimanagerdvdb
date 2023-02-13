@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -579,6 +579,7 @@ func getObjectSystemSpeedTestSchedule(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.UpdateInbandwidthMaximum = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("update_inbandwidth_minimum"); ok {
@@ -589,6 +590,7 @@ func getObjectSystemSpeedTestSchedule(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.UpdateInbandwidthMinimum = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("update_outbandwidth"); ok {
@@ -608,6 +610,7 @@ func getObjectSystemSpeedTestSchedule(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.UpdateOutbandwidthMaximum = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("update_outbandwidth_minimum"); ok {
@@ -618,6 +621,7 @@ func getObjectSystemSpeedTestSchedule(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.UpdateOutbandwidthMinimum = &tmp
+
 		}
 	}
 	return &obj, diags

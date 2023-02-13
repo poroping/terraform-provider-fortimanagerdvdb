@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -321,6 +321,7 @@ func getObjectFirewallVendorMac(d *schema.ResourceData, sv string) (*models.Fire
 			}
 			tmp := int64(v2)
 			obj.Id = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("mac_number"); ok {
@@ -331,6 +332,7 @@ func getObjectFirewallVendorMac(d *schema.ResourceData, sv string) (*models.Fire
 			}
 			tmp := int64(v2)
 			obj.MacNumber = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("name"); ok {
@@ -350,6 +352,7 @@ func getObjectFirewallVendorMac(d *schema.ResourceData, sv string) (*models.Fire
 			}
 			tmp := int64(v2)
 			obj.Obsolete = &tmp
+
 		}
 	}
 	return &obj, diags

@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/validators"
 )
@@ -3078,13 +3078,8 @@ func refreshObjectFirewallPolicy(d *schema.ResourceData, o *models.FirewallPolic
 
 	if o.Natip != nil {
 		v := *o.Natip
-		if current, ok := d.GetOk("natip"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("natip", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("natip", v2); err != nil {
 			return diag.Errorf("error reading natip: %v", err)
 		}
 	}
@@ -5345,7 +5340,9 @@ func getObjectFirewallPolicy(d *schema.ResourceData, sv string) (*models.Firewal
 				e := utils.AttributeVersionWarning("natip", sv)
 				diags = append(diags, e)
 			}
-			obj.Natip = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.Natip = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("natoutbound"); ok {
@@ -5454,6 +5451,7 @@ func getObjectFirewallPolicy(d *schema.ResourceData, sv string) (*models.Firewal
 			}
 			tmp := int64(v2)
 			obj.Policyid = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("poolname"); ok {
@@ -5561,6 +5559,7 @@ func getObjectFirewallPolicy(d *schema.ResourceData, sv string) (*models.Firewal
 			}
 			tmp := int64(v2)
 			obj.ReputationMinimum = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("rsso"); ok {
@@ -5842,6 +5841,7 @@ func getObjectFirewallPolicy(d *schema.ResourceData, sv string) (*models.Firewal
 			}
 			tmp := int64(v2)
 			obj.TcpMssReceiver = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("tcp_mss_sender"); ok {
@@ -5852,6 +5852,7 @@ func getObjectFirewallPolicy(d *schema.ResourceData, sv string) (*models.Firewal
 			}
 			tmp := int64(v2)
 			obj.TcpMssSender = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("tcp_session_without_syn"); ok {
@@ -5986,6 +5987,7 @@ func getObjectFirewallPolicy(d *schema.ResourceData, sv string) (*models.Firewal
 			}
 			tmp := int64(v2)
 			obj.VlanCosFwd = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("vlan_cos_rev"); ok {
@@ -5996,6 +5998,7 @@ func getObjectFirewallPolicy(d *schema.ResourceData, sv string) (*models.Firewal
 			}
 			tmp := int64(v2)
 			obj.VlanCosRev = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("vlan_filter"); ok {

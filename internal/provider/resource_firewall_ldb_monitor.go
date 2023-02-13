@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -510,6 +510,7 @@ func getObjectFirewallLdbMonitor(d *schema.ResourceData, sv string) (*models.Fir
 			}
 			tmp := int64(v2)
 			obj.HttpMaxRedirects = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("interval"); ok {
@@ -520,6 +521,7 @@ func getObjectFirewallLdbMonitor(d *schema.ResourceData, sv string) (*models.Fir
 			}
 			tmp := int64(v2)
 			obj.Interval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("name"); ok {
@@ -539,6 +541,7 @@ func getObjectFirewallLdbMonitor(d *schema.ResourceData, sv string) (*models.Fir
 			}
 			tmp := int64(v2)
 			obj.Port = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("retry"); ok {
@@ -549,6 +552,7 @@ func getObjectFirewallLdbMonitor(d *schema.ResourceData, sv string) (*models.Fir
 			}
 			tmp := int64(v2)
 			obj.Retry = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("src_ip"); ok {
@@ -568,6 +572,7 @@ func getObjectFirewallLdbMonitor(d *schema.ResourceData, sv string) (*models.Fir
 			}
 			tmp := int64(v2)
 			obj.Timeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("type"); ok {

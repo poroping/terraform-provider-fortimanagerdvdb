@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -728,6 +728,7 @@ func getObjectVpnCertificateLocal(d *schema.ResourceData, sv string) (*models.Vp
 			}
 			tmp := int64(v2)
 			obj.AcmeRenewWindow = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("acme_rsa_key_size"); ok {
@@ -738,6 +739,7 @@ func getObjectVpnCertificateLocal(d *schema.ResourceData, sv string) (*models.Vp
 			}
 			tmp := int64(v2)
 			obj.AcmeRsaKeySize = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("auto_regenerate_days"); ok {
@@ -748,6 +750,7 @@ func getObjectVpnCertificateLocal(d *schema.ResourceData, sv string) (*models.Vp
 			}
 			tmp := int64(v2)
 			obj.AutoRegenerateDays = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("auto_regenerate_days_warning"); ok {
@@ -758,6 +761,7 @@ func getObjectVpnCertificateLocal(d *schema.ResourceData, sv string) (*models.Vp
 			}
 			tmp := int64(v2)
 			obj.AutoRegenerateDaysWarning = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ca_identifier"); ok {

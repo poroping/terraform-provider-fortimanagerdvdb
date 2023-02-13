@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -1064,6 +1064,7 @@ func getObjectRouterPolicy(d *schema.ResourceData, sv string) (*models.RouterPol
 			}
 			tmp := int64(v2)
 			obj.EndPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("end_source_port"); ok {
@@ -1074,6 +1075,7 @@ func getObjectRouterPolicy(d *schema.ResourceData, sv string) (*models.RouterPol
 			}
 			tmp := int64(v2)
 			obj.EndSourcePort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("gateway"); ok {
@@ -1162,6 +1164,7 @@ func getObjectRouterPolicy(d *schema.ResourceData, sv string) (*models.RouterPol
 			}
 			tmp := int64(v2)
 			obj.Protocol = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("seq_num"); ok {
@@ -1172,6 +1175,7 @@ func getObjectRouterPolicy(d *schema.ResourceData, sv string) (*models.RouterPol
 			}
 			tmp := int64(v2)
 			obj.SeqNum = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("src"); ok {
@@ -1225,6 +1229,7 @@ func getObjectRouterPolicy(d *schema.ResourceData, sv string) (*models.RouterPol
 			}
 			tmp := int64(v2)
 			obj.StartPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("start_source_port"); ok {
@@ -1235,6 +1240,7 @@ func getObjectRouterPolicy(d *schema.ResourceData, sv string) (*models.RouterPol
 			}
 			tmp := int64(v2)
 			obj.StartSourcePort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("status"); ok {

@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -823,6 +823,7 @@ func getObjectAlertemailSetting(d *schema.ResourceData, sv string) (*models.Aler
 			}
 			tmp := int64(v2)
 			obj.FDSLicenseExpiringDays = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("fds_license_expiring_warning"); ok {
@@ -914,6 +915,7 @@ func getObjectAlertemailSetting(d *schema.ResourceData, sv string) (*models.Aler
 			}
 			tmp := int64(v2)
 			obj.AlertInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("amc_interface_bypass_mode"); ok {
@@ -951,6 +953,7 @@ func getObjectAlertemailSetting(d *schema.ResourceData, sv string) (*models.Aler
 			}
 			tmp := int64(v2)
 			obj.CriticalInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("debug_interval"); ok {
@@ -961,6 +964,7 @@ func getObjectAlertemailSetting(d *schema.ResourceData, sv string) (*models.Aler
 			}
 			tmp := int64(v2)
 			obj.DebugInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("email_interval"); ok {
@@ -971,6 +975,7 @@ func getObjectAlertemailSetting(d *schema.ResourceData, sv string) (*models.Aler
 			}
 			tmp := int64(v2)
 			obj.EmailInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("emergency_interval"); ok {
@@ -981,6 +986,7 @@ func getObjectAlertemailSetting(d *schema.ResourceData, sv string) (*models.Aler
 			}
 			tmp := int64(v2)
 			obj.EmergencyInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("error_interval"); ok {
@@ -991,6 +997,7 @@ func getObjectAlertemailSetting(d *schema.ResourceData, sv string) (*models.Aler
 			}
 			tmp := int64(v2)
 			obj.ErrorInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("filter_mode"); ok {
@@ -1028,6 +1035,7 @@ func getObjectAlertemailSetting(d *schema.ResourceData, sv string) (*models.Aler
 			}
 			tmp := int64(v2)
 			obj.InformationInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("local_disk_usage"); ok {
@@ -1038,6 +1046,7 @@ func getObjectAlertemailSetting(d *schema.ResourceData, sv string) (*models.Aler
 			}
 			tmp := int64(v2)
 			obj.LocalDiskUsage = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("log_disk_usage_warning"); ok {
@@ -1084,6 +1093,7 @@ func getObjectAlertemailSetting(d *schema.ResourceData, sv string) (*models.Aler
 			}
 			tmp := int64(v2)
 			obj.NotificationInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("severity"); ok {
@@ -1139,6 +1149,7 @@ func getObjectAlertemailSetting(d *schema.ResourceData, sv string) (*models.Aler
 			}
 			tmp := int64(v2)
 			obj.WarningInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("webfilter_logs"); ok {

@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -445,6 +445,7 @@ func getObjectSystemSnmpSysinfo(d *schema.ResourceData, sv string) (*models.Syst
 			}
 			tmp := int64(v2)
 			obj.TrapHighCpuThreshold = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("trap_log_full_threshold"); ok {
@@ -455,6 +456,7 @@ func getObjectSystemSnmpSysinfo(d *schema.ResourceData, sv string) (*models.Syst
 			}
 			tmp := int64(v2)
 			obj.TrapLogFullThreshold = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("trap_low_memory_threshold"); ok {
@@ -465,6 +467,7 @@ func getObjectSystemSnmpSysinfo(d *schema.ResourceData, sv string) (*models.Syst
 			}
 			tmp := int64(v2)
 			obj.TrapLowMemoryThreshold = &tmp
+
 		}
 	}
 	return &obj, diags

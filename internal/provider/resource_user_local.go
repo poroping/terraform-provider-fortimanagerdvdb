@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -699,6 +699,7 @@ func getObjectUserLocal(d *schema.ResourceData, sv string) (*models.UserLocal, d
 			}
 			tmp := int64(v2)
 			obj.AuthConcurrentValue = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("authtimeout"); ok {
@@ -709,6 +710,7 @@ func getObjectUserLocal(d *schema.ResourceData, sv string) (*models.UserLocal, d
 			}
 			tmp := int64(v2)
 			obj.Authtimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("email_to"); ok {
@@ -737,6 +739,7 @@ func getObjectUserLocal(d *schema.ResourceData, sv string) (*models.UserLocal, d
 			}
 			tmp := int64(v2)
 			obj.Id = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ldap_server"); ok {

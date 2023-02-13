@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
@@ -1039,6 +1039,7 @@ func getObjectSystemLinkMonitor(d *schema.ResourceData, sv string) (*models.Syst
 			}
 			tmp := int64(v2)
 			obj.ClassId = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("diffservcode"); ok {
@@ -1058,6 +1059,7 @@ func getObjectSystemLinkMonitor(d *schema.ResourceData, sv string) (*models.Syst
 			}
 			tmp := int64(v2)
 			obj.FailWeight = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("failtime"); ok {
@@ -1068,6 +1070,7 @@ func getObjectSystemLinkMonitor(d *schema.ResourceData, sv string) (*models.Syst
 			}
 			tmp := int64(v2)
 			obj.Failtime = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("gateway_ip"); ok {
@@ -1096,6 +1099,7 @@ func getObjectSystemLinkMonitor(d *schema.ResourceData, sv string) (*models.Syst
 			}
 			tmp := int64(v2)
 			obj.HaPriority = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("http_agent"); ok {
@@ -1133,6 +1137,7 @@ func getObjectSystemLinkMonitor(d *schema.ResourceData, sv string) (*models.Syst
 			}
 			tmp := int64(v2)
 			obj.Interval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("name"); ok {
@@ -1152,6 +1157,7 @@ func getObjectSystemLinkMonitor(d *schema.ResourceData, sv string) (*models.Syst
 			}
 			tmp := int64(v2)
 			obj.PacketSize = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("password"); ok {
@@ -1171,6 +1177,7 @@ func getObjectSystemLinkMonitor(d *schema.ResourceData, sv string) (*models.Syst
 			}
 			tmp := int64(v2)
 			obj.Port = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("probe_count"); ok {
@@ -1181,6 +1188,7 @@ func getObjectSystemLinkMonitor(d *schema.ResourceData, sv string) (*models.Syst
 			}
 			tmp := int64(v2)
 			obj.ProbeCount = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("probe_timeout"); ok {
@@ -1191,6 +1199,7 @@ func getObjectSystemLinkMonitor(d *schema.ResourceData, sv string) (*models.Syst
 			}
 			tmp := int64(v2)
 			obj.ProbeTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("protocol"); ok {
@@ -1210,6 +1219,7 @@ func getObjectSystemLinkMonitor(d *schema.ResourceData, sv string) (*models.Syst
 			}
 			tmp := int64(v2)
 			obj.Recoverytime = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("route"); ok {

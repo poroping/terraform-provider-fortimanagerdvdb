@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/validators"
 )
@@ -990,13 +990,8 @@ func refreshObjectFirewallAddress(d *schema.ResourceData, o *models.FirewallAddr
 
 	if o.Subnet != nil {
 		v := *o.Subnet
-		if current, ok := d.GetOk("subnet"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("subnet", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("subnet", v2); err != nil {
 			return diag.Errorf("error reading subnet: %v", err)
 		}
 	}
@@ -1065,13 +1060,8 @@ func refreshObjectFirewallAddress(d *schema.ResourceData, o *models.FirewallAddr
 
 	if o.Wildcard != nil {
 		v := *o.Wildcard
-		if current, ok := d.GetOk("wildcard"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("wildcard", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("wildcard", v2); err != nil {
 			return diag.Errorf("error reading wildcard: %v", err)
 		}
 	}
@@ -1254,6 +1244,7 @@ func getObjectFirewallAddress(d *schema.ResourceData, sv string) (*models.Firewa
 			}
 			tmp := int64(v2)
 			obj.CacheTtl = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("clearpass_spt"); ok {
@@ -1273,6 +1264,7 @@ func getObjectFirewallAddress(d *schema.ResourceData, sv string) (*models.Firewa
 			}
 			tmp := int64(v2)
 			obj.Color = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("comment"); ok {
@@ -1530,7 +1522,9 @@ func getObjectFirewallAddress(d *schema.ResourceData, sv string) (*models.Firewa
 				e := utils.AttributeVersionWarning("subnet", sv)
 				diags = append(diags, e)
 			}
-			obj.Subnet = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.Subnet = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("subnet_name"); ok {
@@ -1619,7 +1613,9 @@ func getObjectFirewallAddress(d *schema.ResourceData, sv string) (*models.Firewa
 				e := utils.AttributeVersionWarning("wildcard", sv)
 				diags = append(diags, e)
 			}
-			obj.Wildcard = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.Wildcard = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("wildcard_fqdn"); ok {

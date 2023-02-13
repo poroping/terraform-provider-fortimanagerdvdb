@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/validators"
 )
@@ -310,13 +310,8 @@ func refreshObjectRouterBgpNetwork(d *schema.ResourceData, o *models.RouterBgpNe
 
 	if o.Prefix != nil {
 		v := *o.Prefix
-		if current, ok := d.GetOk("prefix"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("prefix", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("prefix", v2); err != nil {
 			return diag.Errorf("error reading prefix: %v", err)
 		}
 	}
@@ -353,6 +348,7 @@ func getObjectRouterBgpNetwork(d *schema.ResourceData, sv string) (*models.Route
 			}
 			tmp := int64(v2)
 			obj.Id = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("network_import_check"); ok {
@@ -370,7 +366,9 @@ func getObjectRouterBgpNetwork(d *schema.ResourceData, sv string) (*models.Route
 				e := utils.AttributeVersionWarning("prefix", sv)
 				diags = append(diags, e)
 			}
-			obj.Prefix = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.Prefix = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("route_map"); ok {

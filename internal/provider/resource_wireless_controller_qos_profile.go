@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -857,6 +857,7 @@ func getObjectWirelessControllerQosProfile(d *schema.ResourceData, sv string) (*
 			}
 			tmp := int64(v2)
 			obj.BandwidthCapacity = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("burst"); ok {
@@ -885,6 +886,7 @@ func getObjectWirelessControllerQosProfile(d *schema.ResourceData, sv string) (*
 			}
 			tmp := int64(v2)
 			obj.CallCapacity = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("comment"); ok {
@@ -904,6 +906,7 @@ func getObjectWirelessControllerQosProfile(d *schema.ResourceData, sv string) (*
 			}
 			tmp := int64(v2)
 			obj.Downlink = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("downlink_sta"); ok {
@@ -914,6 +917,7 @@ func getObjectWirelessControllerQosProfile(d *schema.ResourceData, sv string) (*
 			}
 			tmp := int64(v2)
 			obj.DownlinkSta = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("dscp_wmm_be"); ok {
@@ -1010,6 +1014,7 @@ func getObjectWirelessControllerQosProfile(d *schema.ResourceData, sv string) (*
 			}
 			tmp := int64(v2)
 			obj.Uplink = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("uplink_sta"); ok {
@@ -1020,6 +1025,7 @@ func getObjectWirelessControllerQosProfile(d *schema.ResourceData, sv string) (*
 			}
 			tmp := int64(v2)
 			obj.UplinkSta = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("wmm"); ok {
@@ -1039,6 +1045,7 @@ func getObjectWirelessControllerQosProfile(d *schema.ResourceData, sv string) (*
 			}
 			tmp := int64(v2)
 			obj.WmmBeDscp = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("wmm_bk_dscp"); ok {
@@ -1049,6 +1056,7 @@ func getObjectWirelessControllerQosProfile(d *schema.ResourceData, sv string) (*
 			}
 			tmp := int64(v2)
 			obj.WmmBkDscp = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("wmm_dscp_marking"); ok {
@@ -1077,6 +1085,7 @@ func getObjectWirelessControllerQosProfile(d *schema.ResourceData, sv string) (*
 			}
 			tmp := int64(v2)
 			obj.WmmViDscp = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("wmm_vo_dscp"); ok {
@@ -1087,6 +1096,7 @@ func getObjectWirelessControllerQosProfile(d *schema.ResourceData, sv string) (*
 			}
 			tmp := int64(v2)
 			obj.WmmVoDscp = &tmp
+
 		}
 	}
 	return &obj, diags

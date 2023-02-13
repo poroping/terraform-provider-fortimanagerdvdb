@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -335,6 +335,7 @@ func getObjectIpsViewMap(d *schema.ResourceData, sv string) (*models.IpsViewMap,
 			}
 			tmp := int64(v2)
 			obj.Id = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("id_policy_id"); ok {
@@ -345,6 +346,7 @@ func getObjectIpsViewMap(d *schema.ResourceData, sv string) (*models.IpsViewMap,
 			}
 			tmp := int64(v2)
 			obj.IdPolicyId = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("policy_id"); ok {
@@ -355,6 +357,7 @@ func getObjectIpsViewMap(d *schema.ResourceData, sv string) (*models.IpsViewMap,
 			}
 			tmp := int64(v2)
 			obj.PolicyId = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("vdom_id"); ok {
@@ -365,6 +368,7 @@ func getObjectIpsViewMap(d *schema.ResourceData, sv string) (*models.IpsViewMap,
 			}
 			tmp := int64(v2)
 			obj.VdomId = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("which"); ok {

@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -399,6 +399,7 @@ func getObjectWirelessControllerHotspot20H2qpWanMetric(d *schema.ResourceData, s
 			}
 			tmp := int64(v2)
 			obj.DownlinkLoad = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("downlink_speed"); ok {
@@ -409,6 +410,7 @@ func getObjectWirelessControllerHotspot20H2qpWanMetric(d *schema.ResourceData, s
 			}
 			tmp := int64(v2)
 			obj.DownlinkSpeed = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("link_at_capacity"); ok {
@@ -437,6 +439,7 @@ func getObjectWirelessControllerHotspot20H2qpWanMetric(d *schema.ResourceData, s
 			}
 			tmp := int64(v2)
 			obj.LoadMeasurementDuration = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("name"); ok {
@@ -465,6 +468,7 @@ func getObjectWirelessControllerHotspot20H2qpWanMetric(d *schema.ResourceData, s
 			}
 			tmp := int64(v2)
 			obj.UplinkLoad = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("uplink_speed"); ok {
@@ -475,6 +479,7 @@ func getObjectWirelessControllerHotspot20H2qpWanMetric(d *schema.ResourceData, s
 			}
 			tmp := int64(v2)
 			obj.UplinkSpeed = &tmp
+
 		}
 	}
 	return &obj, diags

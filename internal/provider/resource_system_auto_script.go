@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -369,6 +369,7 @@ func getObjectSystemAutoScript(d *schema.ResourceData, sv string) (*models.Syste
 			}
 			tmp := int64(v2)
 			obj.Interval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("name"); ok {
@@ -388,6 +389,7 @@ func getObjectSystemAutoScript(d *schema.ResourceData, sv string) (*models.Syste
 			}
 			tmp := int64(v2)
 			obj.OutputSize = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("repeat"); ok {
@@ -398,6 +400,7 @@ func getObjectSystemAutoScript(d *schema.ResourceData, sv string) (*models.Syste
 			}
 			tmp := int64(v2)
 			obj.Repeat = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("script"); ok {
@@ -426,6 +429,7 @@ func getObjectSystemAutoScript(d *schema.ResourceData, sv string) (*models.Syste
 			}
 			tmp := int64(v2)
 			obj.Timeout = &tmp
+
 		}
 	}
 	return &obj, diags

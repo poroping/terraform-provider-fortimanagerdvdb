@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/validators"
@@ -1006,130 +1006,80 @@ func refreshObjectSystemAdmin(d *schema.ResourceData, o *models.SystemAdmin, sv 
 
 	if o.Trusthost1 != nil {
 		v := *o.Trusthost1
-		if current, ok := d.GetOk("trusthost1"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("trusthost1", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("trusthost1", v2); err != nil {
 			return diag.Errorf("error reading trusthost1: %v", err)
 		}
 	}
 
 	if o.Trusthost10 != nil {
 		v := *o.Trusthost10
-		if current, ok := d.GetOk("trusthost10"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("trusthost10", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("trusthost10", v2); err != nil {
 			return diag.Errorf("error reading trusthost10: %v", err)
 		}
 	}
 
 	if o.Trusthost2 != nil {
 		v := *o.Trusthost2
-		if current, ok := d.GetOk("trusthost2"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("trusthost2", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("trusthost2", v2); err != nil {
 			return diag.Errorf("error reading trusthost2: %v", err)
 		}
 	}
 
 	if o.Trusthost3 != nil {
 		v := *o.Trusthost3
-		if current, ok := d.GetOk("trusthost3"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("trusthost3", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("trusthost3", v2); err != nil {
 			return diag.Errorf("error reading trusthost3: %v", err)
 		}
 	}
 
 	if o.Trusthost4 != nil {
 		v := *o.Trusthost4
-		if current, ok := d.GetOk("trusthost4"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("trusthost4", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("trusthost4", v2); err != nil {
 			return diag.Errorf("error reading trusthost4: %v", err)
 		}
 	}
 
 	if o.Trusthost5 != nil {
 		v := *o.Trusthost5
-		if current, ok := d.GetOk("trusthost5"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("trusthost5", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("trusthost5", v2); err != nil {
 			return diag.Errorf("error reading trusthost5: %v", err)
 		}
 	}
 
 	if o.Trusthost6 != nil {
 		v := *o.Trusthost6
-		if current, ok := d.GetOk("trusthost6"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("trusthost6", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("trusthost6", v2); err != nil {
 			return diag.Errorf("error reading trusthost6: %v", err)
 		}
 	}
 
 	if o.Trusthost7 != nil {
 		v := *o.Trusthost7
-		if current, ok := d.GetOk("trusthost7"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("trusthost7", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("trusthost7", v2); err != nil {
 			return diag.Errorf("error reading trusthost7: %v", err)
 		}
 	}
 
 	if o.Trusthost8 != nil {
 		v := *o.Trusthost8
-		if current, ok := d.GetOk("trusthost8"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("trusthost8", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("trusthost8", v2); err != nil {
 			return diag.Errorf("error reading trusthost8: %v", err)
 		}
 	}
 
 	if o.Trusthost9 != nil {
 		v := *o.Trusthost9
-		if current, ok := d.GetOk("trusthost9"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("trusthost9", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("trusthost9", v2); err != nil {
 			return diag.Errorf("error reading trusthost9: %v", err)
 		}
 	}
@@ -1565,7 +1515,9 @@ func getObjectSystemAdmin(d *schema.ResourceData, sv string) (*models.SystemAdmi
 				e := utils.AttributeVersionWarning("trusthost1", sv)
 				diags = append(diags, e)
 			}
-			obj.Trusthost1 = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.Trusthost1 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("trusthost10"); ok {
@@ -1574,7 +1526,9 @@ func getObjectSystemAdmin(d *schema.ResourceData, sv string) (*models.SystemAdmi
 				e := utils.AttributeVersionWarning("trusthost10", sv)
 				diags = append(diags, e)
 			}
-			obj.Trusthost10 = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.Trusthost10 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("trusthost2"); ok {
@@ -1583,7 +1537,9 @@ func getObjectSystemAdmin(d *schema.ResourceData, sv string) (*models.SystemAdmi
 				e := utils.AttributeVersionWarning("trusthost2", sv)
 				diags = append(diags, e)
 			}
-			obj.Trusthost2 = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.Trusthost2 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("trusthost3"); ok {
@@ -1592,7 +1548,9 @@ func getObjectSystemAdmin(d *schema.ResourceData, sv string) (*models.SystemAdmi
 				e := utils.AttributeVersionWarning("trusthost3", sv)
 				diags = append(diags, e)
 			}
-			obj.Trusthost3 = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.Trusthost3 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("trusthost4"); ok {
@@ -1601,7 +1559,9 @@ func getObjectSystemAdmin(d *schema.ResourceData, sv string) (*models.SystemAdmi
 				e := utils.AttributeVersionWarning("trusthost4", sv)
 				diags = append(diags, e)
 			}
-			obj.Trusthost4 = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.Trusthost4 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("trusthost5"); ok {
@@ -1610,7 +1570,9 @@ func getObjectSystemAdmin(d *schema.ResourceData, sv string) (*models.SystemAdmi
 				e := utils.AttributeVersionWarning("trusthost5", sv)
 				diags = append(diags, e)
 			}
-			obj.Trusthost5 = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.Trusthost5 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("trusthost6"); ok {
@@ -1619,7 +1581,9 @@ func getObjectSystemAdmin(d *schema.ResourceData, sv string) (*models.SystemAdmi
 				e := utils.AttributeVersionWarning("trusthost6", sv)
 				diags = append(diags, e)
 			}
-			obj.Trusthost6 = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.Trusthost6 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("trusthost7"); ok {
@@ -1628,7 +1592,9 @@ func getObjectSystemAdmin(d *schema.ResourceData, sv string) (*models.SystemAdmi
 				e := utils.AttributeVersionWarning("trusthost7", sv)
 				diags = append(diags, e)
 			}
-			obj.Trusthost7 = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.Trusthost7 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("trusthost8"); ok {
@@ -1637,7 +1603,9 @@ func getObjectSystemAdmin(d *schema.ResourceData, sv string) (*models.SystemAdmi
 				e := utils.AttributeVersionWarning("trusthost8", sv)
 				diags = append(diags, e)
 			}
-			obj.Trusthost8 = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.Trusthost8 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("trusthost9"); ok {
@@ -1646,7 +1614,9 @@ func getObjectSystemAdmin(d *schema.ResourceData, sv string) (*models.SystemAdmi
 				e := utils.AttributeVersionWarning("trusthost9", sv)
 				diags = append(diags, e)
 			}
-			obj.Trusthost9 = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.Trusthost9 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("two_factor"); ok {

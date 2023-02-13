@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -1162,6 +1162,7 @@ func getObjectFirewallCentralSnatMap(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.Policyid = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("protocol"); ok {
@@ -1172,6 +1173,7 @@ func getObjectFirewallCentralSnatMap(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.Protocol = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("srcintf"); ok {

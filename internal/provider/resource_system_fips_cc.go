@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -329,6 +329,7 @@ func getObjectSystemFipsCc(d *schema.ResourceData, sv string) (*models.SystemFip
 			}
 			tmp := int64(v2)
 			obj.SelfTestPeriod = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("status"); ok {

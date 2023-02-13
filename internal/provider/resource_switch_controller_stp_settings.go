@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -359,6 +359,7 @@ func getObjectSwitchControllerStpSettings(d *schema.ResourceData, sv string) (*m
 			}
 			tmp := int64(v2)
 			obj.ForwardTime = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("hello_time"); ok {
@@ -369,6 +370,7 @@ func getObjectSwitchControllerStpSettings(d *schema.ResourceData, sv string) (*m
 			}
 			tmp := int64(v2)
 			obj.HelloTime = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("max_age"); ok {
@@ -379,6 +381,7 @@ func getObjectSwitchControllerStpSettings(d *schema.ResourceData, sv string) (*m
 			}
 			tmp := int64(v2)
 			obj.MaxAge = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("max_hops"); ok {
@@ -389,6 +392,7 @@ func getObjectSwitchControllerStpSettings(d *schema.ResourceData, sv string) (*m
 			}
 			tmp := int64(v2)
 			obj.MaxHops = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("name"); ok {
@@ -408,6 +412,7 @@ func getObjectSwitchControllerStpSettings(d *schema.ResourceData, sv string) (*m
 			}
 			tmp := int64(v2)
 			obj.PendingTimer = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("revision"); ok {
@@ -418,6 +423,7 @@ func getObjectSwitchControllerStpSettings(d *schema.ResourceData, sv string) (*m
 			}
 			tmp := int64(v2)
 			obj.Revision = &tmp
+
 		}
 	}
 	return &obj, diags

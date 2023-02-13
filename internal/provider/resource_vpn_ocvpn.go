@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/validators"
 )
@@ -753,13 +753,8 @@ func refreshObjectVpnOcvpn(d *schema.ResourceData, o *models.VpnOcvpn, sv string
 
 	if o.IpAllocationBlock != nil {
 		v := *o.IpAllocationBlock
-		if current, ok := d.GetOk("ip_allocation_block"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("ip_allocation_block", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("ip_allocation_block", v2); err != nil {
 			return diag.Errorf("error reading ip_allocation_block: %v", err)
 		}
 	}
@@ -1048,7 +1043,8 @@ func expandVpnOcvpnOverlaysSubnets(d *schema.ResourceData, v interface{}, pre st
 		pre_append = fmt.Sprintf("%s.%d.subnet", pre, i)
 		if v1, ok := d.GetOk(pre_append); ok {
 			if v2, ok := v1.(string); ok {
-				tmp.Subnet = &v2
+				v3 := utils.Ipv4Split(v2)
+				tmp.Subnet = &v3
 			}
 		}
 
@@ -1151,7 +1147,9 @@ func getObjectVpnOcvpn(d *schema.ResourceData, sv string) (*models.VpnOcvpn, dia
 				e := utils.AttributeVersionWarning("ip_allocation_block", sv)
 				diags = append(diags, e)
 			}
-			obj.IpAllocationBlock = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.IpAllocationBlock = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("multipath"); ok {
@@ -1197,6 +1195,7 @@ func getObjectVpnOcvpn(d *schema.ResourceData, sv string) (*models.VpnOcvpn, dia
 			}
 			tmp := int64(v2)
 			obj.PollInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("role"); ok {

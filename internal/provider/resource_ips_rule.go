@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
@@ -607,6 +607,7 @@ func getObjectIpsRule(d *schema.ResourceData, sv string) (*models.IpsRule, diag.
 			}
 			tmp := int64(v2)
 			obj.Date = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("group"); ok {
@@ -688,6 +689,7 @@ func getObjectIpsRule(d *schema.ResourceData, sv string) (*models.IpsRule, diag.
 			}
 			tmp := int64(v2)
 			obj.Rev = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("rule_id"); ok {
@@ -698,6 +700,7 @@ func getObjectIpsRule(d *schema.ResourceData, sv string) (*models.IpsRule, diag.
 			}
 			tmp := int64(v2)
 			obj.RuleId = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("service"); ok {

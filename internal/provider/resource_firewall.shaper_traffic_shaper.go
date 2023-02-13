@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -513,6 +513,7 @@ func getObjectFirewallShaperTrafficShaper(d *schema.ResourceData, sv string) (*m
 			}
 			tmp := int64(v2)
 			obj.ExceedBandwidth = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("exceed_class_id"); ok {
@@ -523,6 +524,7 @@ func getObjectFirewallShaperTrafficShaper(d *schema.ResourceData, sv string) (*m
 			}
 			tmp := int64(v2)
 			obj.ExceedClassId = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("exceed_dscp"); ok {
@@ -542,6 +544,7 @@ func getObjectFirewallShaperTrafficShaper(d *schema.ResourceData, sv string) (*m
 			}
 			tmp := int64(v2)
 			obj.GuaranteedBandwidth = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("maximum_bandwidth"); ok {
@@ -552,6 +555,7 @@ func getObjectFirewallShaperTrafficShaper(d *schema.ResourceData, sv string) (*m
 			}
 			tmp := int64(v2)
 			obj.MaximumBandwidth = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("maximum_dscp"); ok {
@@ -580,6 +584,7 @@ func getObjectFirewallShaperTrafficShaper(d *schema.ResourceData, sv string) (*m
 			}
 			tmp := int64(v2)
 			obj.Overhead = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("per_policy"); ok {

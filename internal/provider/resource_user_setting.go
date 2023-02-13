@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
@@ -682,6 +682,7 @@ func getObjectUserSetting(d *schema.ResourceData, sv string) (*models.UserSettin
 			}
 			tmp := int64(v2)
 			obj.AuthBlackoutTime = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("auth_ca_cert"); ok {
@@ -719,6 +720,7 @@ func getObjectUserSetting(d *schema.ResourceData, sv string) (*models.UserSettin
 			}
 			tmp := int64(v2)
 			obj.AuthInvalidMax = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("auth_lockout_duration"); ok {
@@ -729,6 +731,7 @@ func getObjectUserSetting(d *schema.ResourceData, sv string) (*models.UserSettin
 			}
 			tmp := int64(v2)
 			obj.AuthLockoutDuration = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("auth_lockout_threshold"); ok {
@@ -739,6 +742,7 @@ func getObjectUserSetting(d *schema.ResourceData, sv string) (*models.UserSettin
 			}
 			tmp := int64(v2)
 			obj.AuthLockoutThreshold = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("auth_on_demand"); ok {
@@ -758,6 +762,7 @@ func getObjectUserSetting(d *schema.ResourceData, sv string) (*models.UserSettin
 			}
 			tmp := int64(v2)
 			obj.AuthPortalTimeout = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("auth_ports"); ok {
@@ -839,6 +844,7 @@ func getObjectUserSetting(d *schema.ResourceData, sv string) (*models.UserSettin
 			}
 			tmp := int64(v2)
 			obj.AuthTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("auth_timeout_type"); ok {

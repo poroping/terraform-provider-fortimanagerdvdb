@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
@@ -789,6 +789,7 @@ func getObjectSwitchControllerGlobal(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.MacAgingInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("mac_event_logging"); ok {
@@ -808,6 +809,7 @@ func getObjectSwitchControllerGlobal(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.MacRetentionPeriod = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("mac_violation_timer"); ok {
@@ -818,6 +820,7 @@ func getObjectSwitchControllerGlobal(d *schema.ResourceData, sv string) (*models
 			}
 			tmp := int64(v2)
 			obj.MacViolationTimer = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("quarantine_mode"); ok {

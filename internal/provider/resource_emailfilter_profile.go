@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
@@ -1940,6 +1940,7 @@ func getObjectEmailfilterProfile(d *schema.ResourceData, sv string) (*models.Ema
 			}
 			tmp := int64(v2)
 			obj.SpamBalTable = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("spam_bwl_table"); ok {
@@ -1950,6 +1951,7 @@ func getObjectEmailfilterProfile(d *schema.ResourceData, sv string) (*models.Ema
 			}
 			tmp := int64(v2)
 			obj.SpamBwlTable = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("spam_bword_table"); ok {
@@ -1960,6 +1962,7 @@ func getObjectEmailfilterProfile(d *schema.ResourceData, sv string) (*models.Ema
 			}
 			tmp := int64(v2)
 			obj.SpamBwordTable = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("spam_bword_threshold"); ok {
@@ -1970,6 +1973,7 @@ func getObjectEmailfilterProfile(d *schema.ResourceData, sv string) (*models.Ema
 			}
 			tmp := int64(v2)
 			obj.SpamBwordThreshold = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("spam_filtering"); ok {
@@ -1989,6 +1993,7 @@ func getObjectEmailfilterProfile(d *schema.ResourceData, sv string) (*models.Ema
 			}
 			tmp := int64(v2)
 			obj.SpamIptrustTable = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("spam_log"); ok {
@@ -2017,6 +2022,7 @@ func getObjectEmailfilterProfile(d *schema.ResourceData, sv string) (*models.Ema
 			}
 			tmp := int64(v2)
 			obj.SpamMheaderTable = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("spam_rbl_table"); ok {
@@ -2027,6 +2033,7 @@ func getObjectEmailfilterProfile(d *schema.ResourceData, sv string) (*models.Ema
 			}
 			tmp := int64(v2)
 			obj.SpamRblTable = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("yahoo_mail"); ok {

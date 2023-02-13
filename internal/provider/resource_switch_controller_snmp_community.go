@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
@@ -603,6 +603,7 @@ func getObjectSwitchControllerSnmpCommunity(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.Id = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("name"); ok {
@@ -622,6 +623,7 @@ func getObjectSwitchControllerSnmpCommunity(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.QueryV1Port = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("query_v1_status"); ok {
@@ -641,6 +643,7 @@ func getObjectSwitchControllerSnmpCommunity(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.QueryV2cPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("query_v2c_status"); ok {
@@ -669,6 +672,7 @@ func getObjectSwitchControllerSnmpCommunity(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.TrapV1Lport = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("trap_v1_rport"); ok {
@@ -679,6 +683,7 @@ func getObjectSwitchControllerSnmpCommunity(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.TrapV1Rport = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("trap_v1_status"); ok {
@@ -698,6 +703,7 @@ func getObjectSwitchControllerSnmpCommunity(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.TrapV2cLport = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("trap_v2c_rport"); ok {
@@ -708,6 +714,7 @@ func getObjectSwitchControllerSnmpCommunity(d *schema.ResourceData, sv string) (
 			}
 			tmp := int64(v2)
 			obj.TrapV2cRport = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("trap_v2c_status"); ok {

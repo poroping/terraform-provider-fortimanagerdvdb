@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
@@ -3416,6 +3416,7 @@ func getObjectAntivirusProfile(d *schema.ResourceData, sv string) (*models.Antiv
 			}
 			tmp := int64(v2)
 			obj.AnalyticsAcceptFiletype = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("analytics_bl_filetype"); ok {
@@ -3426,6 +3427,7 @@ func getObjectAntivirusProfile(d *schema.ResourceData, sv string) (*models.Antiv
 			}
 			tmp := int64(v2)
 			obj.AnalyticsBlFiletype = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("analytics_db"); ok {
@@ -3445,6 +3447,7 @@ func getObjectAntivirusProfile(d *schema.ResourceData, sv string) (*models.Antiv
 			}
 			tmp := int64(v2)
 			obj.AnalyticsIgnoreFiletype = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("analytics_max_upload"); ok {
@@ -3455,6 +3458,7 @@ func getObjectAntivirusProfile(d *schema.ResourceData, sv string) (*models.Antiv
 			}
 			tmp := int64(v2)
 			obj.AnalyticsMaxUpload = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("analytics_wl_filetype"); ok {
@@ -3465,6 +3469,7 @@ func getObjectAntivirusProfile(d *schema.ResourceData, sv string) (*models.Antiv
 			}
 			tmp := int64(v2)
 			obj.AnalyticsWlFiletype = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("av_block_log"); ok {

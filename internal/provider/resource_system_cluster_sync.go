@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/validators"
@@ -756,7 +756,8 @@ func expandSystemClusterSyncSessionSyncFilter(d *schema.ResourceData, v interfac
 		pre_append = fmt.Sprintf("%s.%d.dstaddr", pre, i)
 		if v1, ok := d.GetOk(pre_append); ok {
 			if v2, ok := v1.(string); ok {
-				tmp.Dstaddr = &v2
+				v3 := utils.Ipv4Split(v2)
+				tmp.Dstaddr = &v3
 			}
 		}
 
@@ -777,7 +778,8 @@ func expandSystemClusterSyncSessionSyncFilter(d *schema.ResourceData, v interfac
 		pre_append = fmt.Sprintf("%s.%d.srcaddr", pre, i)
 		if v1, ok := d.GetOk(pre_append); ok {
 			if v2, ok := v1.(string); ok {
-				tmp.Srcaddr = &v2
+				v3 := utils.Ipv4Split(v2)
+				tmp.Srcaddr = &v3
 			}
 		}
 
@@ -892,6 +894,7 @@ func getObjectSystemClusterSync(d *schema.ResourceData, sv string) (*models.Syst
 			}
 			tmp := int64(v2)
 			obj.HbInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("hb_lost_threshold"); ok {
@@ -902,6 +905,7 @@ func getObjectSystemClusterSync(d *schema.ResourceData, sv string) (*models.Syst
 			}
 			tmp := int64(v2)
 			obj.HbLostThreshold = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ike_heartbeat_interval"); ok {
@@ -912,6 +916,7 @@ func getObjectSystemClusterSync(d *schema.ResourceData, sv string) (*models.Syst
 			}
 			tmp := int64(v2)
 			obj.IkeHeartbeatInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ike_monitor"); ok {
@@ -931,6 +936,7 @@ func getObjectSystemClusterSync(d *schema.ResourceData, sv string) (*models.Syst
 			}
 			tmp := int64(v2)
 			obj.IkeMonitorInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ike_seqjump_speed"); ok {
@@ -941,6 +947,7 @@ func getObjectSystemClusterSync(d *schema.ResourceData, sv string) (*models.Syst
 			}
 			tmp := int64(v2)
 			obj.IkeSeqjumpSpeed = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ipsec_tunnel_sync"); ok {
@@ -1013,6 +1020,7 @@ func getObjectSystemClusterSync(d *schema.ResourceData, sv string) (*models.Syst
 			}
 			tmp := int64(v2)
 			obj.SyncId = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("syncvd"); ok {

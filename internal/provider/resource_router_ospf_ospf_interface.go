@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -699,6 +699,7 @@ func getObjectRouterOspfOspfInterface(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.Cost = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("database_filter_out"); ok {
@@ -718,6 +719,7 @@ func getObjectRouterOspfOspfInterface(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.DeadInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("hello_interval"); ok {
@@ -728,6 +730,7 @@ func getObjectRouterOspfOspfInterface(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.HelloInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("hello_multiplier"); ok {
@@ -738,6 +741,7 @@ func getObjectRouterOspfOspfInterface(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.HelloMultiplier = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("interface"); ok {
@@ -801,6 +805,7 @@ func getObjectRouterOspfOspfInterface(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.Mtu = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("mtu_ignore"); ok {
@@ -838,6 +843,7 @@ func getObjectRouterOspfOspfInterface(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.PrefixLength = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("priority"); ok {
@@ -848,6 +854,7 @@ func getObjectRouterOspfOspfInterface(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.Priority = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("resync_timeout"); ok {
@@ -858,6 +865,7 @@ func getObjectRouterOspfOspfInterface(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.ResyncTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("retransmit_interval"); ok {
@@ -868,6 +876,7 @@ func getObjectRouterOspfOspfInterface(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.RetransmitInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("status"); ok {
@@ -887,6 +896,7 @@ func getObjectRouterOspfOspfInterface(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.TransmitDelay = &tmp
+
 		}
 	}
 	return &obj, diags

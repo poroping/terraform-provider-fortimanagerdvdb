@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
@@ -1039,6 +1039,7 @@ func getObjectSystemModem(d *schema.ResourceData, sv string) (*models.SystemMode
 			}
 			tmp := int64(v2)
 			obj.ConnectTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("dial_cmd1"); ok {
@@ -1085,6 +1086,7 @@ func getObjectSystemModem(d *schema.ResourceData, sv string) (*models.SystemMode
 			}
 			tmp := int64(v2)
 			obj.Distance = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("dont_send_cr1"); ok {
@@ -1149,6 +1151,7 @@ func getObjectSystemModem(d *schema.ResourceData, sv string) (*models.SystemMode
 			}
 			tmp := int64(v2)
 			obj.HolddownTimer = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("idle_timer"); ok {
@@ -1159,6 +1162,7 @@ func getObjectSystemModem(d *schema.ResourceData, sv string) (*models.SystemMode
 			}
 			tmp := int64(v2)
 			obj.IdleTimer = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("interface"); ok {
@@ -1322,6 +1326,7 @@ func getObjectSystemModem(d *schema.ResourceData, sv string) (*models.SystemMode
 			}
 			tmp := int64(v2)
 			obj.Priority = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("redial"); ok {
@@ -1341,6 +1346,7 @@ func getObjectSystemModem(d *schema.ResourceData, sv string) (*models.SystemMode
 			}
 			tmp := int64(v2)
 			obj.Reset = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("status"); ok {
@@ -1396,6 +1402,7 @@ func getObjectSystemModem(d *schema.ResourceData, sv string) (*models.SystemMode
 			}
 			tmp := int64(v2)
 			obj.WirelessPort = &tmp
+
 		}
 	}
 	return &obj, diags

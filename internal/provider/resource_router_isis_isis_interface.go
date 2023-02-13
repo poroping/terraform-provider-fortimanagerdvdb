@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -818,6 +818,7 @@ func getObjectRouterIsisIsisInterface(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.CsnpIntervalL1 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("csnp_interval_l2"); ok {
@@ -828,6 +829,7 @@ func getObjectRouterIsisIsisInterface(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.CsnpIntervalL2 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("hello_interval_l1"); ok {
@@ -838,6 +840,7 @@ func getObjectRouterIsisIsisInterface(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.HelloIntervalL1 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("hello_interval_l2"); ok {
@@ -848,6 +851,7 @@ func getObjectRouterIsisIsisInterface(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.HelloIntervalL2 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("hello_multiplier_l1"); ok {
@@ -858,6 +862,7 @@ func getObjectRouterIsisIsisInterface(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.HelloMultiplierL1 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("hello_multiplier_l2"); ok {
@@ -868,6 +873,7 @@ func getObjectRouterIsisIsisInterface(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.HelloMultiplierL2 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("hello_padding"); ok {
@@ -887,6 +893,7 @@ func getObjectRouterIsisIsisInterface(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.LspInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("lsp_retransmit_interval"); ok {
@@ -897,6 +904,7 @@ func getObjectRouterIsisIsisInterface(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.LspRetransmitInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("mesh_group"); ok {
@@ -916,6 +924,7 @@ func getObjectRouterIsisIsisInterface(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.MeshGroupId = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("metric_l1"); ok {
@@ -926,6 +935,7 @@ func getObjectRouterIsisIsisInterface(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.MetricL1 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("metric_l2"); ok {
@@ -936,6 +946,7 @@ func getObjectRouterIsisIsisInterface(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.MetricL2 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("name"); ok {
@@ -964,6 +975,7 @@ func getObjectRouterIsisIsisInterface(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.PriorityL1 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("priority_l2"); ok {
@@ -974,6 +986,7 @@ func getObjectRouterIsisIsisInterface(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.PriorityL2 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("status"); ok {
@@ -1002,6 +1015,7 @@ func getObjectRouterIsisIsisInterface(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.WideMetricL1 = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("wide_metric_l2"); ok {
@@ -1012,6 +1026,7 @@ func getObjectRouterIsisIsisInterface(d *schema.ResourceData, sv string) (*model
 			}
 			tmp := int64(v2)
 			obj.WideMetricL2 = &tmp
+
 		}
 	}
 	return &obj, diags

@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
@@ -732,6 +732,7 @@ func getObjectLogDiskSetting(d *schema.ResourceData, sv string) (*models.LogDisk
 			}
 			tmp := int64(v2)
 			obj.DlpArchiveQuota = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("full_final_warning_threshold"); ok {
@@ -742,6 +743,7 @@ func getObjectLogDiskSetting(d *schema.ResourceData, sv string) (*models.LogDisk
 			}
 			tmp := int64(v2)
 			obj.FullFinalWarningThreshold = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("full_first_warning_threshold"); ok {
@@ -752,6 +754,7 @@ func getObjectLogDiskSetting(d *schema.ResourceData, sv string) (*models.LogDisk
 			}
 			tmp := int64(v2)
 			obj.FullFirstWarningThreshold = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("full_second_warning_threshold"); ok {
@@ -762,6 +765,7 @@ func getObjectLogDiskSetting(d *schema.ResourceData, sv string) (*models.LogDisk
 			}
 			tmp := int64(v2)
 			obj.FullSecondWarningThreshold = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("interface"); ok {
@@ -799,6 +803,7 @@ func getObjectLogDiskSetting(d *schema.ResourceData, sv string) (*models.LogDisk
 			}
 			tmp := int64(v2)
 			obj.LogQuota = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("max_log_file_size"); ok {
@@ -809,6 +814,7 @@ func getObjectLogDiskSetting(d *schema.ResourceData, sv string) (*models.LogDisk
 			}
 			tmp := int64(v2)
 			obj.MaxLogFileSize = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("max_policy_packet_capture_size"); ok {
@@ -819,6 +825,7 @@ func getObjectLogDiskSetting(d *schema.ResourceData, sv string) (*models.LogDisk
 			}
 			tmp := int64(v2)
 			obj.MaxPolicyPacketCaptureSize = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("maximum_log_age"); ok {
@@ -829,6 +836,7 @@ func getObjectLogDiskSetting(d *schema.ResourceData, sv string) (*models.LogDisk
 			}
 			tmp := int64(v2)
 			obj.MaximumLogAge = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("report_quota"); ok {
@@ -839,6 +847,7 @@ func getObjectLogDiskSetting(d *schema.ResourceData, sv string) (*models.LogDisk
 			}
 			tmp := int64(v2)
 			obj.ReportQuota = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("roll_day"); ok {
@@ -957,6 +966,7 @@ func getObjectLogDiskSetting(d *schema.ResourceData, sv string) (*models.LogDisk
 			}
 			tmp := int64(v2)
 			obj.Uploadport = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("uploadsched"); ok {

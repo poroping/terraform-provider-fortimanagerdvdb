@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -391,6 +391,7 @@ func getObjectSystemNetflow(d *schema.ResourceData, sv string) (*models.SystemNe
 			}
 			tmp := int64(v2)
 			obj.ActiveFlowTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("collector_ip"); ok {
@@ -410,6 +411,7 @@ func getObjectSystemNetflow(d *schema.ResourceData, sv string) (*models.SystemNe
 			}
 			tmp := int64(v2)
 			obj.CollectorPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("inactive_flow_timeout"); ok {
@@ -420,6 +422,7 @@ func getObjectSystemNetflow(d *schema.ResourceData, sv string) (*models.SystemNe
 			}
 			tmp := int64(v2)
 			obj.InactiveFlowTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("interface"); ok {
@@ -457,6 +460,7 @@ func getObjectSystemNetflow(d *schema.ResourceData, sv string) (*models.SystemNe
 			}
 			tmp := int64(v2)
 			obj.TemplateTxCounter = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("template_tx_timeout"); ok {
@@ -467,6 +471,7 @@ func getObjectSystemNetflow(d *schema.ResourceData, sv string) (*models.SystemNe
 			}
 			tmp := int64(v2)
 			obj.TemplateTxTimeout = &tmp
+
 		}
 	}
 	return &obj, diags

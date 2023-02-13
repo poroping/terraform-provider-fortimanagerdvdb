@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
@@ -1066,6 +1066,7 @@ func getObjectSystemFortiguard(d *schema.ResourceData, sv string) (*models.Syste
 			}
 			tmp := int64(v2)
 			obj.AntispamCacheMpercent = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("antispam_cache_ttl"); ok {
@@ -1076,6 +1077,7 @@ func getObjectSystemFortiguard(d *schema.ResourceData, sv string) (*models.Syste
 			}
 			tmp := int64(v2)
 			obj.AntispamCacheTtl = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("antispam_expiration"); ok {
@@ -1086,6 +1088,7 @@ func getObjectSystemFortiguard(d *schema.ResourceData, sv string) (*models.Syste
 			}
 			tmp := int64(v2)
 			obj.AntispamExpiration = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("antispam_force_off"); ok {
@@ -1105,6 +1108,7 @@ func getObjectSystemFortiguard(d *schema.ResourceData, sv string) (*models.Syste
 			}
 			tmp := int64(v2)
 			obj.AntispamLicense = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("antispam_timeout"); ok {
@@ -1115,6 +1119,7 @@ func getObjectSystemFortiguard(d *schema.ResourceData, sv string) (*models.Syste
 			}
 			tmp := int64(v2)
 			obj.AntispamTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("anycast_sdns_server_ip"); ok {
@@ -1134,6 +1139,7 @@ func getObjectSystemFortiguard(d *schema.ResourceData, sv string) (*models.Syste
 			}
 			tmp := int64(v2)
 			obj.AnycastSdnsServerPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("auto_join_forticloud"); ok {
@@ -1171,6 +1177,7 @@ func getObjectSystemFortiguard(d *schema.ResourceData, sv string) (*models.Syste
 			}
 			tmp := int64(v2)
 			obj.DdnsServerPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("fortiguard_anycast"); ok {
@@ -1217,6 +1224,7 @@ func getObjectSystemFortiguard(d *schema.ResourceData, sv string) (*models.Syste
 			}
 			tmp := int64(v2)
 			obj.LoadBalanceServers = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("outbreak_prevention_cache"); ok {
@@ -1236,6 +1244,7 @@ func getObjectSystemFortiguard(d *schema.ResourceData, sv string) (*models.Syste
 			}
 			tmp := int64(v2)
 			obj.OutbreakPreventionCacheMpercent = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("outbreak_prevention_cache_ttl"); ok {
@@ -1246,6 +1255,7 @@ func getObjectSystemFortiguard(d *schema.ResourceData, sv string) (*models.Syste
 			}
 			tmp := int64(v2)
 			obj.OutbreakPreventionCacheTtl = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("outbreak_prevention_expiration"); ok {
@@ -1256,6 +1266,7 @@ func getObjectSystemFortiguard(d *schema.ResourceData, sv string) (*models.Syste
 			}
 			tmp := int64(v2)
 			obj.OutbreakPreventionExpiration = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("outbreak_prevention_force_off"); ok {
@@ -1275,6 +1286,7 @@ func getObjectSystemFortiguard(d *schema.ResourceData, sv string) (*models.Syste
 			}
 			tmp := int64(v2)
 			obj.OutbreakPreventionLicense = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("outbreak_prevention_timeout"); ok {
@@ -1285,6 +1297,7 @@ func getObjectSystemFortiguard(d *schema.ResourceData, sv string) (*models.Syste
 			}
 			tmp := int64(v2)
 			obj.OutbreakPreventionTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("persistent_connection"); ok {
@@ -1340,6 +1353,7 @@ func getObjectSystemFortiguard(d *schema.ResourceData, sv string) (*models.Syste
 			}
 			tmp := int64(v2)
 			obj.ProxyServerPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("proxy_username"); ok {
@@ -1386,6 +1400,7 @@ func getObjectSystemFortiguard(d *schema.ResourceData, sv string) (*models.Syste
 			}
 			tmp := int64(v2)
 			obj.SdnsServerPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("source_ip"); ok {
@@ -1459,6 +1474,7 @@ func getObjectSystemFortiguard(d *schema.ResourceData, sv string) (*models.Syste
 			}
 			tmp := int64(v2)
 			obj.VideofilterExpiration = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("videofilter_license"); ok {
@@ -1469,6 +1485,7 @@ func getObjectSystemFortiguard(d *schema.ResourceData, sv string) (*models.Syste
 			}
 			tmp := int64(v2)
 			obj.VideofilterLicense = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("webfilter_cache"); ok {
@@ -1488,6 +1505,7 @@ func getObjectSystemFortiguard(d *schema.ResourceData, sv string) (*models.Syste
 			}
 			tmp := int64(v2)
 			obj.WebfilterCacheTtl = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("webfilter_expiration"); ok {
@@ -1498,6 +1516,7 @@ func getObjectSystemFortiguard(d *schema.ResourceData, sv string) (*models.Syste
 			}
 			tmp := int64(v2)
 			obj.WebfilterExpiration = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("webfilter_force_off"); ok {
@@ -1517,6 +1536,7 @@ func getObjectSystemFortiguard(d *schema.ResourceData, sv string) (*models.Syste
 			}
 			tmp := int64(v2)
 			obj.WebfilterLicense = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("webfilter_timeout"); ok {
@@ -1527,6 +1547,7 @@ func getObjectSystemFortiguard(d *schema.ResourceData, sv string) (*models.Syste
 			}
 			tmp := int64(v2)
 			obj.WebfilterTimeout = &tmp
+
 		}
 	}
 	return &obj, diags

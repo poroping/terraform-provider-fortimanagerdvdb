@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/validators"
@@ -325,13 +325,8 @@ func refreshObjectSystemVneTunnel(d *schema.ResourceData, o *models.SystemVneTun
 
 	if o.Ipv4Address != nil {
 		v := *o.Ipv4Address
-		if current, ok := d.GetOk("ipv4_address"); ok {
-			if s, ok := current.(string); ok {
-				v = utils.ValidateConvIPMask2CIDR(s, v)
-			}
-		}
-
-		if err = d.Set("ipv4_address", v); err != nil {
+		v2 := utils.Ipv4NetmaskListToCidr(v)
+		if err = d.Set("ipv4_address", v2); err != nil {
 			return diag.Errorf("error reading ipv4_address: %v", err)
 		}
 	}
@@ -408,7 +403,9 @@ func getObjectSystemVneTunnel(d *schema.ResourceData, sv string) (*models.System
 				e := utils.AttributeVersionWarning("ipv4_address", sv)
 				diags = append(diags, e)
 			}
-			obj.Ipv4Address = &v2
+			tmp := utils.Ipv4Split(v2)
+			obj.Ipv4Address = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("mode"); ok {

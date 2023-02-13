@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
@@ -699,6 +699,7 @@ func getObjectWebProxyGlobal(d *schema.ResourceData, sv string) (*models.WebProx
 			}
 			tmp := int64(v2)
 			obj.ForwardServerAffinityTimeout = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("ldap_user_cache"); ok {
@@ -770,6 +771,7 @@ func getObjectWebProxyGlobal(d *schema.ResourceData, sv string) (*models.WebProx
 			}
 			tmp := int64(v2)
 			obj.MaxMessageLength = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("max_request_length"); ok {
@@ -780,6 +782,7 @@ func getObjectWebProxyGlobal(d *schema.ResourceData, sv string) (*models.WebProx
 			}
 			tmp := int64(v2)
 			obj.MaxRequestLength = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("max_waf_body_cache_length"); ok {
@@ -790,6 +793,7 @@ func getObjectWebProxyGlobal(d *schema.ResourceData, sv string) (*models.WebProx
 			}
 			tmp := int64(v2)
 			obj.MaxWafBodyCacheLength = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("proxy_fqdn"); ok {

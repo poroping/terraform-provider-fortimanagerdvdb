@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -554,6 +554,7 @@ func getObjectWanoptWebcache(d *schema.ResourceData, sv string) (*models.WanoptW
 			}
 			tmp := int64(v2)
 			obj.DefaultTtl = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("external"); ok {
@@ -573,6 +574,7 @@ func getObjectWanoptWebcache(d *schema.ResourceData, sv string) (*models.WanoptW
 			}
 			tmp := int64(v2)
 			obj.FreshFactor = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("host_validate"); ok {
@@ -628,6 +630,7 @@ func getObjectWanoptWebcache(d *schema.ResourceData, sv string) (*models.WanoptW
 			}
 			tmp := int64(v2)
 			obj.MaxObjectSize = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("max_ttl"); ok {
@@ -638,6 +641,7 @@ func getObjectWanoptWebcache(d *schema.ResourceData, sv string) (*models.WanoptW
 			}
 			tmp := int64(v2)
 			obj.MaxTtl = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("min_ttl"); ok {
@@ -648,6 +652,7 @@ func getObjectWanoptWebcache(d *schema.ResourceData, sv string) (*models.WanoptW
 			}
 			tmp := int64(v2)
 			obj.MinTtl = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("neg_resp_time"); ok {
@@ -658,6 +663,7 @@ func getObjectWanoptWebcache(d *schema.ResourceData, sv string) (*models.WanoptW
 			}
 			tmp := int64(v2)
 			obj.NegRespTime = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("reval_pnc"); ok {

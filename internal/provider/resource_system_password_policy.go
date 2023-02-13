@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
@@ -458,6 +458,7 @@ func getObjectSystemPasswordPolicy(d *schema.ResourceData, sv string) (*models.S
 			}
 			tmp := int64(v2)
 			obj.ExpireDay = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("expire_status"); ok {
@@ -477,6 +478,7 @@ func getObjectSystemPasswordPolicy(d *schema.ResourceData, sv string) (*models.S
 			}
 			tmp := int64(v2)
 			obj.MinChangeCharacters = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("min_lower_case_letter"); ok {
@@ -487,6 +489,7 @@ func getObjectSystemPasswordPolicy(d *schema.ResourceData, sv string) (*models.S
 			}
 			tmp := int64(v2)
 			obj.MinLowerCaseLetter = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("min_non_alphanumeric"); ok {
@@ -497,6 +500,7 @@ func getObjectSystemPasswordPolicy(d *schema.ResourceData, sv string) (*models.S
 			}
 			tmp := int64(v2)
 			obj.MinNonAlphanumeric = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("min_number"); ok {
@@ -507,6 +511,7 @@ func getObjectSystemPasswordPolicy(d *schema.ResourceData, sv string) (*models.S
 			}
 			tmp := int64(v2)
 			obj.MinNumber = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("min_upper_case_letter"); ok {
@@ -517,6 +522,7 @@ func getObjectSystemPasswordPolicy(d *schema.ResourceData, sv string) (*models.S
 			}
 			tmp := int64(v2)
 			obj.MinUpperCaseLetter = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("minimum_length"); ok {
@@ -527,6 +533,7 @@ func getObjectSystemPasswordPolicy(d *schema.ResourceData, sv string) (*models.S
 			}
 			tmp := int64(v2)
 			obj.MinimumLength = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("reuse_password"); ok {

@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/suppressors"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/validators"
@@ -1081,7 +1081,8 @@ func expandRouterRipDistance(d *schema.ResourceData, v interface{}, pre string, 
 		pre_append = fmt.Sprintf("%s.%d.prefix", pre, i)
 		if v1, ok := d.GetOk(pre_append); ok {
 			if v2, ok := v1.(string); ok {
-				tmp.Prefix = &v2
+				v3 := utils.Ipv4Split(v2)
+				tmp.Prefix = &v3
 			}
 		}
 
@@ -1286,7 +1287,8 @@ func expandRouterRipNetwork(d *schema.ResourceData, v interface{}, pre string, s
 		pre_append = fmt.Sprintf("%s.%d.prefix", pre, i)
 		if v1, ok := d.GetOk(pre_append); ok {
 			if v2, ok := v1.(string); ok {
-				tmp.Prefix = &v2
+				v3 := utils.Ipv4Split(v2)
+				tmp.Prefix = &v3
 			}
 		}
 
@@ -1447,6 +1449,7 @@ func getObjectRouterRip(d *schema.ResourceData, sv string) (*models.RouterRip, d
 			}
 			tmp := int64(v2)
 			obj.DefaultMetric = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("distance"); ok {
@@ -1491,6 +1494,7 @@ func getObjectRouterRip(d *schema.ResourceData, sv string) (*models.RouterRip, d
 			}
 			tmp := int64(v2)
 			obj.GarbageTimer = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("interface"); ok {
@@ -1518,6 +1522,7 @@ func getObjectRouterRip(d *schema.ResourceData, sv string) (*models.RouterRip, d
 			}
 			tmp := int64(v2)
 			obj.MaxOutMetric = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("neighbor"); ok {
@@ -1596,6 +1601,7 @@ func getObjectRouterRip(d *schema.ResourceData, sv string) (*models.RouterRip, d
 			}
 			tmp := int64(v2)
 			obj.RecvBufferSize = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("redistribute"); ok {
@@ -1623,6 +1629,7 @@ func getObjectRouterRip(d *schema.ResourceData, sv string) (*models.RouterRip, d
 			}
 			tmp := int64(v2)
 			obj.TimeoutTimer = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("update_timer"); ok {
@@ -1633,6 +1640,7 @@ func getObjectRouterRip(d *schema.ResourceData, sv string) (*models.RouterRip, d
 			}
 			tmp := int64(v2)
 			obj.UpdateTimer = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("version"); ok {

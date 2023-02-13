@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/validators"
 )
@@ -687,6 +687,7 @@ func getObjectRouterOspfArea(d *schema.ResourceData, sv string) (*models.RouterO
 			}
 			tmp := int64(v2)
 			obj.DefaultCost = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("filter_list"); ok {
@@ -732,6 +733,7 @@ func getObjectRouterOspfArea(d *schema.ResourceData, sv string) (*models.RouterO
 			}
 			tmp := int64(v2)
 			obj.NssaDefaultInformationOriginateMetric = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("nssa_default_information_originate_metric_type"); ok {

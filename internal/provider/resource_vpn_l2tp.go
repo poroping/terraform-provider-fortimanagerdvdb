@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -418,6 +418,7 @@ func getObjectVpnL2tp(d *schema.ResourceData, sv string) (*models.VpnL2tp, diag.
 			}
 			tmp := int64(v2)
 			obj.HelloInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("lcp_echo_interval"); ok {
@@ -428,6 +429,7 @@ func getObjectVpnL2tp(d *schema.ResourceData, sv string) (*models.VpnL2tp, diag.
 			}
 			tmp := int64(v2)
 			obj.LcpEchoInterval = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("lcp_max_echo_fails"); ok {
@@ -438,6 +440,7 @@ func getObjectVpnL2tp(d *schema.ResourceData, sv string) (*models.VpnL2tp, diag.
 			}
 			tmp := int64(v2)
 			obj.LcpMaxEchoFails = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("sip"); ok {

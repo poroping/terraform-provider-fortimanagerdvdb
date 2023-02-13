@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"github.com/poroping/forti-sdk-go/v2/models"
+	"github.com/poroping/fortimanager-devicedb-sdk-go/models"
 	"github.com/poroping/terraform-provider-fortimanagerdvdb/utils"
 )
 
@@ -663,6 +663,7 @@ func getObjectFirewallMulticastPolicy6(d *schema.ResourceData, sv string) (*mode
 			}
 			tmp := int64(v2)
 			obj.EndPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("fosid"); ok {
@@ -673,6 +674,7 @@ func getObjectFirewallMulticastPolicy6(d *schema.ResourceData, sv string) (*mode
 			}
 			tmp := int64(v2)
 			obj.Id = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("logtraffic"); ok {
@@ -701,6 +703,7 @@ func getObjectFirewallMulticastPolicy6(d *schema.ResourceData, sv string) (*mode
 			}
 			tmp := int64(v2)
 			obj.Protocol = &tmp
+
 		}
 	}
 	if v, ok := d.GetOk("srcaddr"); ok {
@@ -737,6 +740,7 @@ func getObjectFirewallMulticastPolicy6(d *schema.ResourceData, sv string) (*mode
 			}
 			tmp := int64(v2)
 			obj.StartPort = &tmp
+
 		}
 	}
 	if v1, ok := d.GetOk("status"); ok {
