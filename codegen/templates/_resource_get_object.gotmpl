@@ -34,8 +34,13 @@ func getObject{{.fpath}}(d *schema.ResourceData, sv string) (*models.{{.fpath}},
 			e := utils.AttributeVersionWarning("{{ if $value.NameReserved }}fos{{end}}{{(flatten $value.name)}}", sv)
 			diags = append(diags, e)
 			}{{ if eq (typeLookup $value.type) "int64" }}
-			tmp := int64(v2){{end}}
-			obj.{{if $value.name_begin_with_int}}The{{end}}{{(mixedCase $value.name)}} = &{{ if eq (typeLookup $value.type) "int64" }}tmp{{else}}v2{{end}}
+			tmp := int64(v2)
+			obj.{{if $value.name_begin_with_int}}The{{end}}{{(mixedCase $value.name)}} = &tmp
+			{{ else if (ipList $value.type) }}
+			tmp := utils.Ipv4Split(v2)
+			obj.{{if $value.name_begin_with_int}}The{{end}}{{(mixedCase $value.name)}} = &tmp
+			{{ else }}
+			obj.{{if $value.name_begin_with_int}}The{{end}}{{(mixedCase $value.name)}} = &v2{{end}}
 		}
 	}
 {{- end }}

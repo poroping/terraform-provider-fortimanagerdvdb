@@ -51,6 +51,7 @@ func main() {
 			"readExample":      readExample,
 			"debug":            debugx,
 			"flattenFunc":      flattenFunc,
+			"ipList":           ipList,
 		}
 		t := template.Must(template.New("main").Funcs(funcMap).ParseGlob("./templates/*.gotmpl"))
 
@@ -725,6 +726,16 @@ func flattenFunc(values map[string]interface{}) string {
 	} else {
 		return s
 	}
+}
+
+func ipList(s string) bool {
+	iplists := []string{"ipv4-classnet", "ipv4-classnet-host", "ipv4-classnet-any"}
+	for _, b := range iplists {
+		if b == s {
+			return true
+		}
+	}
+	return false
 }
 
 // Entire swagger schema
