@@ -18,27 +18,58 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
 
-func ValidateConvIPMask2CIDR(oNewIP, oOldIP string) string {
-	if oNewIP != oOldIP && strings.Contains(oNewIP, "/") && strings.Contains(oOldIP, " ") {
+func ValidateConvIPMask2CIDR(oNewIP string, oOldIPList []string) []string {
+	oOldNetmask := strings.Split(oOldIPList[1], ".")
+	if len(oOldNetmask) > 1 {
+		prefixSize, _ := net.IPMask(net.ParseIP(oOldIPList[1]).To4()).Size()
+		oOldIPList[1] = strconv.Itoa(prefixSize)
+	}
+	oOldIP := strings.Join(oOldIPList, "/")
+	if oNewIP != oOldIP && strings.Contains(oNewIP, "/") {
 		line := strings.Split(oOldIP, " ")
 		if len(line) >= 2 {
 			ip := line[0]
 			mask := line[1]
 			prefixSize, _ := net.IPMask(net.ParseIP(mask).To4()).Size()
-			return ip + "/" + strconv.Itoa(prefixSize)
+			return []string{ip, strconv.Itoa(prefixSize)}
 		}
 	}
-	return oOldIP
+	return strings.Split(oOldIP, " ")
 }
 
-func Ipv4Read(d *schema.ResourceData, get, ip string) *string {
+func Ipv4Split(s string) []string {
+	ip, m, err := net.ParseCIDR(s)
+	if err != nil {
+		log.Printf("[WARN] Unable to parse CIDR, %v", err)
+	}
+	mask := fmt.Sprintf("%d.%d.%d.%d", m.Mask[0], m.Mask[1], m.Mask[2], m.Mask[3])
+	return []string{ip.String(), mask}
+	// mask := strings.Split(l[1], ".")
+	// if len(mask) != 0 {
+	// 	prefixSize, _ := net.IPMask(net.ParseIP(l[1]).To4()).Size()
+	// 	l2 := []string{l[0], strconv.Itoa(prefixSize)}
+	// 	return l2
+	// }
+	// return l
+}
+
+func Ipv4Read(d *schema.ResourceData, get string, ip []string) *[]string {
 	if current, ok := d.GetOk(get); ok {
-		if s, ok := current.(string); ok {
-			tmp2 := ValidateConvIPMask2CIDR(s, ip)
-			return &tmp2
+		if s, ok := current.([]string); ok {
+			tmp2 := strings.Join(s, "/")
+			tmp3 := ValidateConvIPMask2CIDR(tmp2, ip)
+			return &tmp3
 		}
 	}
 	return nil
+}
+
+func Ipv4NetmaskListToCidr(ipList []string) string {
+	ip := ipList[0]
+	mask := ipList[1]
+	prefixSize, _ := net.IPMask(net.ParseIP(mask).To4()).Size()
+	return fmt.Sprintf("%s/%s", ip, strconv.Itoa(prefixSize))
+
 }
 
 func escapeFilter(filter string) string {

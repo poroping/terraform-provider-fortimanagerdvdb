@@ -4,26 +4,30 @@ import (
 	"fmt"
 	"log"
 	"reflect"
+	"strings"
 	"testing"
 )
 
 func TestValidateConvIPMask2CIDR(t *testing.T) {
 	var tests = []struct {
 		a      string
-		b      string
+		b      []string
 		result string
 	}{
 		{
-			"10.0.0.1 255.255.255.255", "10.0.0.1/32", "10.0.0.1/32",
+			"10.0.0.1 255.255.255.255", []string{"10.0.0.1", "32"}, "10.0.0.1/32",
 		},
 		{
-			"10.0.0.1/32", "10.0.0.1/32", "10.0.0.1/32",
+			"10.0.0.1/32", []string{"10.0.0.1", "32"}, "10.0.0.1/32",
 		},
 		{
-			"10.0.0.1 255.255.255.0", "10.0.0.1 255.255.255.0", "10.0.0.1 255.255.255.0",
+			"10.0.0.5/32", []string{"10.0.0.5", "255.255.255.255"}, "10.0.0.5/32",
 		},
 		{
-			"10.0.0.1 255.255.0.0", "10.0.0.1/16", "10.0.0.1/16",
+			"10.0.0.1 255.255.255.0", []string{"10.0.0.1", "255.255.255.0"}, "10.0.0.1/24",
+		},
+		{
+			"10.0.0.1 255.255.0.0", []string{"10.0.0.1", "255.255.0.0"}, "10.0.0.1/16",
 		},
 	}
 
@@ -32,7 +36,7 @@ func TestValidateConvIPMask2CIDR(t *testing.T) {
 		t.Run(testname, func(t *testing.T) {
 			ans := ValidateConvIPMask2CIDR(tt.a, tt.b)
 			log.Print(ans)
-			if ans != tt.result {
+			if strings.Join(ans, "/") != tt.result {
 				t.Errorf("got %v, want %v", ans, tt.result)
 			}
 		})
