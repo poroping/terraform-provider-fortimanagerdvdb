@@ -134,6 +134,7 @@ func resourceMetafieldsCreate(ctx context.Context, d *schema.ResourceData, meta 
 	urlparams.AllowAppend = &allow_append
 
 	if allow_append {
+		d.SetId(d.Get("name").(string))
 		return resourceMetafieldsUpdate(ctx, d, meta)
 	}
 
