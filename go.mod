@@ -2,11 +2,10 @@ module github.com/poroping/terraform-provider-fortimanagerdvdb
 
 go 1.18
 
-replace github.com/poroping/fortimanager-devicedb-sdk-go => /home/justinr/fortimanager-devicedb-sdk-go
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.17.0
-	github.com/poroping/fortimanager-devicedb-sdk-go v0.0.1-alpha
+	github.com/poroping/fortimanager-devicedb-sdk-go v0.0.1-alpha-4
 	golang.org/x/tools v0.1.10
 )
 

@@ -566,5 +566,6 @@ func providerResources() map[string]*schema.Resource {
 		"fortimanagerdvdb_wirelesscontroller_wtp":                             resourceWirelessControllerWtp(),
 		"fortimanagerdvdb_wirelesscontroller_wtpgroup":                        resourceWirelessControllerWtpGroup(),
 		"fortimanagerdvdb_wirelesscontroller_wtpprofile":                      resourceWirelessControllerWtpProfile(),
+		"fortimanagerdvdb_metafields":                                         resourceMetafields(),
 	}
 }
