@@ -147,6 +147,14 @@ func resourceModelDeviceCreate(ctx context.Context, d *schema.ResourceData, meta
 	urlparams.Scope = deviceparam
 
 	obj, diags := getObjectModelDevice(d, c.Config.Fv)
+
+	da := "add_model"
+	obj.DeviceAction = &da
+	flags := []string{"linked_to_model", "is_model"}
+	obj.Flags = flags
+	adm := "admin"
+	obj.AdmUSR = &adm
+
 	if diags.HasError() {
 		return diags
 	}
@@ -496,13 +504,6 @@ func getObjectModelDevice(d *schema.ResourceData, sv string) (*models.Device, di
 			}
 		}
 	}
-
-	da := "add_model"
-	obj.DeviceAction = &da
-	flags := []string{"linked_to_model", "is_model"}
-	obj.Flags = flags
-	adm := "admin"
-	obj.AdmUSR = &adm
 
 	return &obj, diags
 }
