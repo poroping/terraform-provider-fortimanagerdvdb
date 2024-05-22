@@ -5,7 +5,7 @@ go 1.18
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.17.0
-	github.com/poroping/fortimanager-devicedb-sdk-go v0.0.1-alpha-9
+	github.com/poroping/fortimanager-devicedb-sdk-go v0.0.1-alpha-10
 	golang.org/x/tools v0.1.10
 )
 
