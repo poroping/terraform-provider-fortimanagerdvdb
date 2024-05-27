@@ -570,5 +570,7 @@ func providerResources() map[string]*schema.Resource {
 		"fortimanagerdvdb_metafield_dynamic_mapping":                          resourceMetafieldDynamicMapping(),
 		"fortimanagerdvdb_model_device":                                       resourceModelDevice(),
 		"fortimanagerdvdb_package_install":                                    resourceInstallPackage(),
+		"fortimanagerdvdb_device_install":                                     resourceInstallDevice(),
+		"fortimanagerdvdb_install_script":                                     resourceInstallScript(),
 	}
 }
